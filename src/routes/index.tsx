@@ -575,16 +575,18 @@ function Index() {
           </div>
 
           <div className="mt-10 grid gap-6 lg:grid-cols-3">
-            <Card className="border-border/60 bg-card shadow-md">
+            <Card className="reveal border-border/60 bg-card shadow-md transition-transform hover:-translate-y-1 hover:shadow-xl">
               <CardContent className="flex flex-col items-center p-6 text-center">
                 <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary/10">
                   <Phone className="h-5 w-5 text-primary" />
                 </div>
                 <h3 className="mt-4 font-heading text-lg font-semibold text-foreground">
-                  Phone
+                  Call Us
                 </h3>
                 <p className="mt-2 text-sm text-muted-foreground">
-                  {PHONE_NUMBER}
+                  {PHONE_PRIMARY}
+                  <br />
+                  {PHONE_LANDLINE}
                 </p>
                 <Button
                   variant="primary-outline"
@@ -592,48 +594,42 @@ function Index() {
                   asChild
                   className="mt-4 font-heading font-semibold"
                 >
-                  <a href={`tel:${PHONE_NUMBER.replace(/\s/g, "")}`}>
+                  <a href={`tel:${PHONE_PRIMARY.replace(/\s/g, "")}`}>
                     Call Now
                   </a>
                 </Button>
               </CardContent>
             </Card>
 
-            <Card className="border-border/60 bg-card shadow-md">
+            <Card className="reveal border-border/60 bg-card shadow-md transition-transform hover:-translate-y-1 hover:shadow-xl">
               <CardContent className="flex flex-col items-center p-6 text-center">
                 <div className="flex h-12 w-12 items-center justify-center rounded-full bg-accent/10">
-                  <MessageCircle className="h-5 w-5 text-accent" />
+                  <Mail className="h-5 w-5 text-accent" />
                 </div>
                 <h3 className="mt-4 font-heading text-lg font-semibold text-foreground">
-                  WhatsApp
+                  Email
                 </h3>
-                <p className="mt-2 text-sm text-muted-foreground">
-                  Message us for quick replies.
+                <p className="mt-2 break-all text-sm text-muted-foreground">
+                  {EMAIL}
                 </p>
                 <Button
                   variant="gold"
                   size="sm"
                   asChild
-                  className="mt-4 font-heading font-semibold"
+                  className="mt-4 font-heading font-semibold btn-sheen"
                 >
-                  <a
-                    href={WHATSAPP_LINK}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Message Us Now
-                  </a>
+                  <a href={`mailto:${EMAIL}`}>Email Us</a>
                 </Button>
               </CardContent>
             </Card>
 
-            <Card className="border-border/60 bg-card shadow-md">
+            <Card className="reveal border-border/60 bg-card shadow-md transition-transform hover:-translate-y-1 hover:shadow-xl">
               <CardContent className="flex flex-col items-center p-6 text-center">
                 <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary/10">
                   <MapPin className="h-5 w-5 text-primary" />
                 </div>
                 <h3 className="mt-4 font-heading text-lg font-semibold text-foreground">
-                  Address
+                  Visit Us
                 </h3>
                 <p className="mt-2 text-sm text-muted-foreground">{ADDRESS}</p>
                 <Button
@@ -643,7 +639,7 @@ function Index() {
                   className="mt-4 font-heading font-semibold text-primary hover:bg-primary/10"
                 >
                   <a
-                    href="https://maps.google.com/?q=Kolkata"
+                    href={`https://maps.google.com/?q=${encodeURIComponent(ADDRESS)}`}
                     target="_blank"
                     rel="noopener noreferrer"
                   >
@@ -654,11 +650,17 @@ function Index() {
             </Card>
           </div>
 
-          <div className="mt-12 rounded-2xl bg-gradient-to-br from-primary via-brand-blue to-brand-blue-dark p-8 text-center text-primary-foreground md:p-12">
-            <h3 className="font-heading text-2xl font-bold md:text-3xl">
-              Get Free Consultation Today
+          <div className="reveal relative mt-12 overflow-hidden rounded-2xl bg-gradient-to-br from-primary via-brand-blue to-brand-blue-dark p-8 text-center text-primary-foreground md:p-14">
+            <div className="pointer-events-none absolute -top-16 -right-16 h-64 w-64 rounded-full bg-brand-gold/20 blur-3xl" />
+            <div className="pointer-events-none absolute -bottom-20 -left-16 h-64 w-64 rounded-full bg-brand-blue-light/40 blur-3xl" />
+            <div className="relative">
+            <span className="mb-3 inline-block rounded-full border border-brand-gold/40 bg-white/10 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.22em] text-brand-gold-light">
+              {TAGLINE}
+            </span>
+            <h3 className="font-heading text-3xl font-bold leading-tight md:text-4xl">
+              Get Your <span className="gold-text italic">Free Consultation</span> Today
             </h3>
-            <p className="mx-auto mt-3 max-w-xl text-white/90">
+            <p className="mx-auto mt-3 max-w-xl text-white/85">
               Talk to our experts and get personalized property and loan advice
               — completely free.
             </p>
@@ -666,7 +668,7 @@ function Index() {
               variant="gold"
               size="lg"
               asChild
-              className="mt-6 font-heading font-bold"
+              className="mt-6 font-heading font-bold btn-sheen shadow-lg shadow-brand-gold/20"
             >
               <a
                 href={WHATSAPP_LINK}
@@ -677,32 +679,48 @@ function Index() {
                 WhatsApp Us Now
               </a>
             </Button>
+            </div>
           </div>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="bg-foreground py-8 text-background">
+      <footer className="bg-brand-blue-dark py-10 text-white/80">
         <div className="container-tight">
-          <div className="flex flex-col items-center justify-between gap-4 md:flex-row">
-            <div className="flex items-center gap-2">
+          <div className="grid gap-8 md:grid-cols-3 md:gap-6">
+            <div className="flex items-start gap-3">
               <img
                 src="/logo.png"
                 alt="DHANSETU logo"
-                width={36}
-                height={36}
-                className="h-9 w-auto"
+                width={44}
+                height={44}
+                className="h-11 w-auto"
               />
               <div>
-                <p className="font-heading font-bold">DHANSETU</p>
-                <p className="text-xs text-background/70">
-                  Capital Advisory & Properties
+                <p className="font-heading text-xl font-bold text-white leading-none">DHANSETU</p>
+                <p className="mt-1 text-[10px] font-semibold uppercase tracking-[0.2em] text-brand-gold-light">
+                  Capital Advisory
                 </p>
+                <p className="mt-2 text-xs italic text-white/60">{TAGLINE}</p>
               </div>
             </div>
-            <p className="text-sm text-background/70">
-              © 2026 Dhansetu. All Rights Reserved.
-            </p>
+            <div className="text-sm">
+              <p className="font-heading font-semibold text-white">Reach Us</p>
+              <p className="mt-2 flex items-start gap-2"><MapPin className="mt-0.5 h-4 w-4 shrink-0 text-brand-gold" />{ADDRESS}</p>
+              <p className="mt-2 flex items-center gap-2"><Phone className="h-4 w-4 text-brand-gold" />{PHONE_PRIMARY} / {PHONE_LANDLINE}</p>
+              <p className="mt-2 flex items-center gap-2"><Mail className="h-4 w-4 text-brand-gold" /><a href={`mailto:${EMAIL}`} className="hover:text-brand-gold-light break-all">{EMAIL}</a></p>
+            </div>
+            <div className="text-sm md:text-right">
+              <p className="font-heading font-semibold text-white">Quick Links</p>
+              <div className="mt-2 flex flex-wrap gap-x-4 gap-y-1 md:justify-end">
+                {navLinks.map((l) => (
+                  <a key={l.href} href={`#${l.href}`} className="hover:text-brand-gold-light">{l.label}</a>
+                ))}
+              </div>
+            </div>
+          </div>
+          <div className="mt-8 border-t border-white/10 pt-4 text-center text-xs text-white/50">
+            © 2026 Dhansetu Capital Advisory. All Rights Reserved.
           </div>
         </div>
       </footer>
