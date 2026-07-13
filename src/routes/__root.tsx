@@ -77,21 +77,47 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      {
+        title: "DHANSETU | Capital Advisory & Properties - Kolkata",
+      },
+      {
+        name: "description",
+        content:
+          "DHANSETU - Capital Advisory & Properties in Kolkata. Your one-stop solution for real estate properties and loans. RERA approved projects, home loans, business loans, and property advisory.",
+      },
+      { name: "author", content: "DHANSETU" },
+      {
+        property: "og:title",
+        content: "DHANSETU | Capital Advisory & Properties - Kolkata",
+      },
+      {
+        property: "og:description",
+        content:
+          "Your Dream Home & Loan – One Solution. Real estate properties and loan advisory services in Kolkata.",
+      },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:site", content: "@Lovable" },
+      { name: "twitter:site", content: "@Dhansetu" },
     ],
     links: [
       {
         rel: "stylesheet",
         href: appCss,
       },
-      { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
+      {
+        rel: "preconnect",
+        href: "https://fonts.googleapis.com",
+      },
+      {
+        rel: "preconnect",
+        href: "https://fonts.gstatic.com",
+        crossOrigin: "anonymous",
+      },
+      {
+        rel: "stylesheet",
+        href: "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@600;700;800&display=swap",
+      },
+      { rel: "icon", href: "/logo.png", type: "image/png" },
     ],
   }),
   shellComponent: RootShell,
