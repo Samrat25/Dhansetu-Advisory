@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -338,7 +338,7 @@ function Index() {
             </p>
           </div>
 
-          <div className="mt-10 grid gap-6 md:grid-cols-2 lg:mt-14">
+          <div className="mt-10 grid gap-6 md:grid-cols-2 lg:mt-14 [&>*]:reveal">
             {/* Properties Card */}
             <Card className="group overflow-hidden border-border/60 bg-card shadow-lg transition-shadow hover:shadow-xl">
               <div className="aspect-[16/9] overflow-hidden">
@@ -464,7 +464,7 @@ function Index() {
             </p>
           </div>
 
-          <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:mt-14 lg:grid-cols-3">
+          <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:mt-14 lg:grid-cols-3 [&>*]:reveal">
             {[
               {
                 icon: Home,
