@@ -23,16 +23,40 @@ import {
   Menu,
   X,
   ArrowRight,
+  Mail,
 } from "lucide-react";
 
 export const Route = createFileRoute("/")({
   component: Index,
 });
 
-const WHATSAPP_NUMBER = "919999999999";
+const WHATSAPP_NUMBER = "918240349546";
 const WHATSAPP_LINK = `https://wa.me/${WHATSAPP_NUMBER}`;
-const PHONE_NUMBER = "+91 XXXXX XXXXX";
-const ADDRESS = "[Your Office Address, Kolkata]";
+const PHONE_PRIMARY = "+91 82403 49546";
+const PHONE_LANDLINE = "+91 33 7963 3264";
+const EMAIL = "contact@dhansetuadvisory.com";
+const ADDRESS = "18/1, Vivekananda Road, Dunlop, Kolkata - 108";
+const TAGLINE = "APNAR TAKAR SOMOSSAR SETU";
+
+function useReveal() {
+  useEffect(() => {
+    const els = document.querySelectorAll<HTMLElement>(".reveal");
+    if (!els.length) return;
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) {
+            e.target.classList.add("is-visible");
+            io.unobserve(e.target);
+          }
+        });
+      },
+      { threshold: 0.12, rootMargin: "0px 0px -40px 0px" }
+    );
+    els.forEach((el) => io.observe(el));
+    return () => io.disconnect();
+  }, []);
+}
 
 const navLinks = [
   { label: "Home", href: "home" },
@@ -45,6 +69,7 @@ const navLinks = [
 function Index() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  useReveal();
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
@@ -82,14 +107,14 @@ function Index() {
               alt="DHANSETU logo"
               width={44}
               height={44}
-              className="h-10 w-auto md:h-11"
+              className="h-11 w-auto md:h-12 drop-shadow-sm"
             />
             <div className="hidden flex-col items-start sm:flex">
-              <span className="font-heading text-lg font-bold leading-tight text-foreground md:text-xl">
+              <span className="font-heading text-xl font-bold leading-none text-foreground md:text-2xl tracking-tight">
                 DHANSETU
               </span>
-              <span className="text-[10px] font-medium uppercase tracking-wider text-muted-foreground">
-                Capital Advisory & Properties
+              <span className="text-[10px] font-semibold uppercase tracking-[0.18em] text-muted-foreground mt-0.5">
+                Capital Advisory
               </span>
             </div>
           </button>
@@ -115,7 +140,7 @@ function Index() {
               asChild
               className="font-heading font-semibold"
             >
-              <a href={`tel:${PHONE_NUMBER.replace(/\s/g, "")}`}>
+              <a href={`tel:${PHONE_PRIMARY.replace(/\s/g, "")}`}>
                 <Phone className="h-4 w-4" />
                 Call Now
               </a>
@@ -124,7 +149,7 @@ function Index() {
               variant="gold"
               size="sm"
               asChild
-              className="font-heading font-semibold"
+              className="font-heading font-semibold btn-sheen"
             >
               <a
                 href={WHATSAPP_LINK}
@@ -170,12 +195,12 @@ function Index() {
                   asChild
                   className="w-full font-heading font-semibold"
                 >
-                  <a href={`tel:${PHONE_NUMBER.replace(/\s/g, "")}`}>
+                  <a href={`tel:${PHONE_PRIMARY.replace(/\s/g, "")}`}>
                     <Phone className="h-4 w-4" />
                     Call Now
                   </a>
                 </Button>
-                <Button variant="gold" asChild className="w-full font-heading font-semibold">
+                <Button variant="gold" asChild className="w-full font-heading font-semibold btn-sheen">
                   <a
                     href={WHATSAPP_LINK}
                     target="_blank"
@@ -196,27 +221,40 @@ function Index() {
         id="home"
         className="relative overflow-hidden bg-gradient-to-br from-primary via-brand-blue to-brand-blue-dark pt-28 pb-16 text-primary-foreground md:pt-36 md:pb-24"
       >
+        {/* Decorative gold glow */}
+        <div className="pointer-events-none absolute -top-24 -right-24 h-96 w-96 rounded-full bg-brand-gold/20 blur-3xl" />
+        <div className="pointer-events-none absolute -bottom-32 -left-24 h-96 w-96 rounded-full bg-brand-blue-light/40 blur-3xl" />
         <div className="container-tight relative z-10">
           <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-14">
             <div className="flex flex-col items-start text-center lg:text-left">
-              <span className="mb-3 inline-block self-center rounded-full border border-white/20 bg-white/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-white backdrop-blur-sm lg:self-start">
-                Capital Advisory & Properties
+              <span
+                className="mb-4 inline-flex items-center gap-2 self-center rounded-full border border-brand-gold/40 bg-white/10 px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.22em] text-brand-gold-light backdrop-blur-sm lg:self-start animate-fade-in"
+                style={{ animationDelay: "0ms" }}
+              >
+                <span className="inline-block h-1.5 w-1.5 rounded-full bg-brand-gold" />
+                {TAGLINE}
               </span>
-              <h1 className="font-heading text-3xl font-extrabold leading-tight text-white sm:text-4xl md:text-5xl lg:text-6xl">
+              <h1
+                className="font-heading text-4xl font-extrabold leading-[1.05] tracking-tight text-white sm:text-5xl md:text-6xl lg:text-7xl animate-fade-up"
+                style={{ animationDelay: "80ms" }}
+              >
                 Your Dream Home & Loan{" "}
-                <span className="text-accent">– One Solution</span>
+                <span className="gold-text italic">— One Bridge.</span>
               </h1>
-              <p className="mt-5 max-w-xl self-center text-base leading-relaxed text-white/90 sm:text-lg lg:self-start">
-                DHANSETU helps you find the perfect property and the right loan
-                in Kolkata. Trusted real estate advisory backed by fast,
-                transparent financing support.
+              <p
+                className="mt-6 max-w-xl self-center text-base leading-relaxed text-white/85 sm:text-lg lg:self-start animate-fade-up"
+                style={{ animationDelay: "180ms" }}
+              >
+                DHANSETU is your bridge to the perfect property and the right
+                loan in Kolkata — honest advisory, 20+ banking partners,
+                approvals in as little as 7 days.
               </p>
               <div className="mt-8 flex w-full flex-col gap-3 self-center sm:w-auto sm:flex-row lg:self-start">
                 <Button
                   variant="gold"
                   size="lg"
                   asChild
-                  className="w-full font-heading font-bold sm:w-auto"
+                  className="w-full font-heading font-bold sm:w-auto btn-sheen shadow-lg shadow-brand-gold/20"
                 >
                   <a
                     href={WHATSAPP_LINK}
@@ -233,7 +271,7 @@ function Index() {
                   asChild
                   className="w-full border-white/30 bg-white/10 font-heading font-bold text-white hover:bg-white/20 hover:text-white sm:w-auto"
                 >
-                  <a href={`tel:${PHONE_NUMBER.replace(/\s/g, "")}`}>
+                  <a href={`tel:${PHONE_PRIMARY.replace(/\s/g, "")}`}>
                     <Phone className="h-5 w-5" />
                     Call Now
                   </a>
@@ -254,7 +292,7 @@ function Index() {
                 </span>
               </div>
             </div>
-            <div className="relative mx-auto w-full max-w-lg lg:max-w-none">
+            <div className="relative mx-auto w-full max-w-lg lg:max-w-none animate-fade-up" style={{ animationDelay: "260ms" }}>
               <div className="aspect-[4/3] overflow-hidden rounded-2xl border-4 border-white/10 shadow-2xl">
                 <img
                   src="/property-house.jpg"
@@ -265,7 +303,7 @@ function Index() {
                   loading="eager"
                 />
               </div>
-              <div className="absolute -bottom-4 -left-4 hidden rounded-xl bg-white p-4 shadow-xl md:block">
+              <div className="absolute -bottom-5 -left-5 hidden rounded-xl bg-white p-4 shadow-xl md:block animate-float-slow">
                 <div className="flex items-center gap-3">
                   <div className="flex h-12 w-12 items-center justify-center rounded-full bg-accent/10">
                     <TrendingUp className="h-6 w-6 text-accent" />
@@ -300,7 +338,7 @@ function Index() {
             </p>
           </div>
 
-          <div className="mt-10 grid gap-6 md:grid-cols-2 lg:mt-14">
+          <div className="mt-10 grid gap-6 md:grid-cols-2 lg:mt-14 [&>*]:reveal">
             {/* Properties Card */}
             <Card className="group overflow-hidden border-border/60 bg-card shadow-lg transition-shadow hover:shadow-xl">
               <div className="aspect-[16/9] overflow-hidden">
@@ -426,7 +464,7 @@ function Index() {
             </p>
           </div>
 
-          <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:mt-14 lg:grid-cols-3">
+          <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:mt-14 lg:grid-cols-3 [&>*]:reveal">
             {[
               {
                 icon: Home,
@@ -537,16 +575,18 @@ function Index() {
           </div>
 
           <div className="mt-10 grid gap-6 lg:grid-cols-3">
-            <Card className="border-border/60 bg-card shadow-md">
+            <Card className="reveal border-border/60 bg-card shadow-md transition-transform hover:-translate-y-1 hover:shadow-xl">
               <CardContent className="flex flex-col items-center p-6 text-center">
                 <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary/10">
                   <Phone className="h-5 w-5 text-primary" />
                 </div>
                 <h3 className="mt-4 font-heading text-lg font-semibold text-foreground">
-                  Phone
+                  Call Us
                 </h3>
                 <p className="mt-2 text-sm text-muted-foreground">
-                  {PHONE_NUMBER}
+                  {PHONE_PRIMARY}
+                  <br />
+                  {PHONE_LANDLINE}
                 </p>
                 <Button
                   variant="primary-outline"
@@ -554,48 +594,42 @@ function Index() {
                   asChild
                   className="mt-4 font-heading font-semibold"
                 >
-                  <a href={`tel:${PHONE_NUMBER.replace(/\s/g, "")}`}>
+                  <a href={`tel:${PHONE_PRIMARY.replace(/\s/g, "")}`}>
                     Call Now
                   </a>
                 </Button>
               </CardContent>
             </Card>
 
-            <Card className="border-border/60 bg-card shadow-md">
+            <Card className="reveal border-border/60 bg-card shadow-md transition-transform hover:-translate-y-1 hover:shadow-xl">
               <CardContent className="flex flex-col items-center p-6 text-center">
                 <div className="flex h-12 w-12 items-center justify-center rounded-full bg-accent/10">
-                  <MessageCircle className="h-5 w-5 text-accent" />
+                  <Mail className="h-5 w-5 text-accent" />
                 </div>
                 <h3 className="mt-4 font-heading text-lg font-semibold text-foreground">
-                  WhatsApp
+                  Email
                 </h3>
-                <p className="mt-2 text-sm text-muted-foreground">
-                  Message us for quick replies.
+                <p className="mt-2 break-all text-sm text-muted-foreground">
+                  {EMAIL}
                 </p>
                 <Button
                   variant="gold"
                   size="sm"
                   asChild
-                  className="mt-4 font-heading font-semibold"
+                  className="mt-4 font-heading font-semibold btn-sheen"
                 >
-                  <a
-                    href={WHATSAPP_LINK}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Message Us Now
-                  </a>
+                  <a href={`mailto:${EMAIL}`}>Email Us</a>
                 </Button>
               </CardContent>
             </Card>
 
-            <Card className="border-border/60 bg-card shadow-md">
+            <Card className="reveal border-border/60 bg-card shadow-md transition-transform hover:-translate-y-1 hover:shadow-xl">
               <CardContent className="flex flex-col items-center p-6 text-center">
                 <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary/10">
                   <MapPin className="h-5 w-5 text-primary" />
                 </div>
                 <h3 className="mt-4 font-heading text-lg font-semibold text-foreground">
-                  Address
+                  Visit Us
                 </h3>
                 <p className="mt-2 text-sm text-muted-foreground">{ADDRESS}</p>
                 <Button
@@ -605,7 +639,7 @@ function Index() {
                   className="mt-4 font-heading font-semibold text-primary hover:bg-primary/10"
                 >
                   <a
-                    href="https://maps.google.com/?q=Kolkata"
+                    href={`https://maps.google.com/?q=${encodeURIComponent(ADDRESS)}`}
                     target="_blank"
                     rel="noopener noreferrer"
                   >
@@ -616,11 +650,17 @@ function Index() {
             </Card>
           </div>
 
-          <div className="mt-12 rounded-2xl bg-gradient-to-br from-primary via-brand-blue to-brand-blue-dark p-8 text-center text-primary-foreground md:p-12">
-            <h3 className="font-heading text-2xl font-bold md:text-3xl">
-              Get Free Consultation Today
+          <div className="reveal relative mt-12 overflow-hidden rounded-2xl bg-gradient-to-br from-primary via-brand-blue to-brand-blue-dark p-8 text-center text-primary-foreground md:p-14">
+            <div className="pointer-events-none absolute -top-16 -right-16 h-64 w-64 rounded-full bg-brand-gold/20 blur-3xl" />
+            <div className="pointer-events-none absolute -bottom-20 -left-16 h-64 w-64 rounded-full bg-brand-blue-light/40 blur-3xl" />
+            <div className="relative">
+            <span className="mb-3 inline-block rounded-full border border-brand-gold/40 bg-white/10 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.22em] text-brand-gold-light">
+              {TAGLINE}
+            </span>
+            <h3 className="font-heading text-3xl font-bold leading-tight md:text-4xl">
+              Get Your <span className="gold-text italic">Free Consultation</span> Today
             </h3>
-            <p className="mx-auto mt-3 max-w-xl text-white/90">
+            <p className="mx-auto mt-3 max-w-xl text-white/85">
               Talk to our experts and get personalized property and loan advice
               — completely free.
             </p>
@@ -628,7 +668,7 @@ function Index() {
               variant="gold"
               size="lg"
               asChild
-              className="mt-6 font-heading font-bold"
+              className="mt-6 font-heading font-bold btn-sheen shadow-lg shadow-brand-gold/20"
             >
               <a
                 href={WHATSAPP_LINK}
@@ -639,32 +679,48 @@ function Index() {
                 WhatsApp Us Now
               </a>
             </Button>
+            </div>
           </div>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="bg-foreground py-8 text-background">
+      <footer className="bg-brand-blue-dark py-10 text-white/80">
         <div className="container-tight">
-          <div className="flex flex-col items-center justify-between gap-4 md:flex-row">
-            <div className="flex items-center gap-2">
+          <div className="grid gap-8 md:grid-cols-3 md:gap-6">
+            <div className="flex items-start gap-3">
               <img
                 src="/logo.png"
                 alt="DHANSETU logo"
-                width={36}
-                height={36}
-                className="h-9 w-auto"
+                width={44}
+                height={44}
+                className="h-11 w-auto"
               />
               <div>
-                <p className="font-heading font-bold">DHANSETU</p>
-                <p className="text-xs text-background/70">
-                  Capital Advisory & Properties
+                <p className="font-heading text-xl font-bold text-white leading-none">DHANSETU</p>
+                <p className="mt-1 text-[10px] font-semibold uppercase tracking-[0.2em] text-brand-gold-light">
+                  Capital Advisory
                 </p>
+                <p className="mt-2 text-xs italic text-white/60">{TAGLINE}</p>
               </div>
             </div>
-            <p className="text-sm text-background/70">
-              © 2026 Dhansetu. All Rights Reserved.
-            </p>
+            <div className="text-sm">
+              <p className="font-heading font-semibold text-white">Reach Us</p>
+              <p className="mt-2 flex items-start gap-2"><MapPin className="mt-0.5 h-4 w-4 shrink-0 text-brand-gold" />{ADDRESS}</p>
+              <p className="mt-2 flex items-center gap-2"><Phone className="h-4 w-4 text-brand-gold" />{PHONE_PRIMARY} / {PHONE_LANDLINE}</p>
+              <p className="mt-2 flex items-center gap-2"><Mail className="h-4 w-4 text-brand-gold" /><a href={`mailto:${EMAIL}`} className="hover:text-brand-gold-light break-all">{EMAIL}</a></p>
+            </div>
+            <div className="text-sm md:text-right">
+              <p className="font-heading font-semibold text-white">Quick Links</p>
+              <div className="mt-2 flex flex-wrap gap-x-4 gap-y-1 md:justify-end">
+                {navLinks.map((l) => (
+                  <a key={l.href} href={`#${l.href}`} className="hover:text-brand-gold-light">{l.label}</a>
+                ))}
+              </div>
+            </div>
+          </div>
+          <div className="mt-8 border-t border-white/10 pt-4 text-center text-xs text-white/50">
+            © 2026 Dhansetu Capital Advisory. All Rights Reserved.
           </div>
         </div>
       </footer>
