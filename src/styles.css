@@ -69,19 +69,21 @@
 
   --font-heading: var(--font-heading);
   --font-body: var(--font-body);
+  --font-display: var(--font-display);
 }
 
 :root {
   --radius: 0.625rem;
 
   /* Brand colors */
-  --brand-blue: oklch(0.38 0.15 260);
-  --brand-blue-light: oklch(0.45 0.15 260);
-  --brand-blue-dark: oklch(0.28 0.12 260);
-  --brand-gold: oklch(0.72 0.15 75);
-  --brand-gold-light: oklch(0.8 0.14 75);
+  --brand-blue: oklch(0.34 0.16 265);
+  --brand-blue-light: oklch(0.44 0.16 265);
+  --brand-blue-dark: oklch(0.24 0.13 265);
+  --brand-gold: oklch(0.78 0.14 82);
+  --brand-gold-light: oklch(0.86 0.12 85);
 
-  --font-heading: "Montserrat", sans-serif;
+  --font-heading: "Playfair Display", Georgia, serif;
+  --font-display: "Manrope", "Inter", sans-serif;
   --font-body: "Inter", sans-serif;
 
   --background: oklch(1 0 0);
