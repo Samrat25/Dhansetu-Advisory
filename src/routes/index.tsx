@@ -57,12 +57,26 @@ export const Route = createFileRoute("/")({
 });
 
 const WHATSAPP_NUMBER = "918240349546";
-const WHATSAPP_LINK = `https://wa.me/${WHATSAPP_NUMBER}`;
 const PHONE_PRIMARY = "+91 82403 49546";
 const PHONE_LANDLINE = "+91 33 7963 3264";
 const EMAIL = "contact@dhansetuadvisory.com";
 const ADDRESS = "18/1, Vivekananda Road, Dunlop, Kolkata - 108";
 const TAGLINE = "আপনার টাকার সমস্যার সেতু";
+
+// Helper function to create WhatsApp link with pre-filled message
+const getWhatsAppLink = (message: string) => {
+  const encodedMessage = encodeURIComponent(message);
+  return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodedMessage}`;
+};
+
+// Pre-filled messages for different contexts (20 words each)
+const WHATSAPP_MESSAGES = {
+  general: "Hello DHANSETU! I am interested in your property and loan services. Please provide more details about your offerings.",
+  properties: "Hi! I want to explore available properties in Kolkata. Please share details about flats, plots, and houses for sale.",
+  loans: "Hello! I need a loan for my property or business. Please guide me through the application process and interest rates.",
+  services: "Hi DHANSETU! I want to know more about your financial services including loans, insurance, and investment options. Please help.",
+  consultation: "Hello! I would like to schedule a free consultation with your expert team for property and loan advisory services.",
+};
 
 function useReveal() {
   useEffect(() => {
@@ -256,7 +270,7 @@ function Index() {
               className="font-heading font-semibold btn-sheen"
             >
               <a
-                href={WHATSAPP_LINK}
+                href={getWhatsAppLink(WHATSAPP_MESSAGES.general)}
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -306,7 +320,7 @@ function Index() {
                 </Button>
                 <Button variant="gold" asChild className="w-full font-heading font-semibold btn-sheen">
                   <a
-                    href={WHATSAPP_LINK}
+                    href={getWhatsAppLink(WHATSAPP_MESSAGES.general)}
                     target="_blank"
                     rel="noopener noreferrer"
                   >
@@ -377,7 +391,7 @@ function Index() {
                     className="w-full font-heading font-bold sm:w-auto btn-sheen shadow-lg shadow-brand-gold/20"
                   >
                     <a
-                      href={WHATSAPP_LINK}
+                      href={getWhatsAppLink(WHATSAPP_MESSAGES.general)}
                       target="_blank"
                       rel="noopener noreferrer"
                     >
@@ -514,7 +528,7 @@ function Index() {
                   asChild
                 >
                   <a
-                    href={WHATSAPP_LINK}
+                    href={getWhatsAppLink(WHATSAPP_MESSAGES.properties)}
                     target="_blank"
                     rel="noopener noreferrer"
                   >
@@ -574,7 +588,7 @@ function Index() {
                   asChild
                 >
                   <a
-                    href={WHATSAPP_LINK}
+                    href={getWhatsAppLink(WHATSAPP_MESSAGES.loans)}
                     target="_blank"
                     rel="noopener noreferrer"
                   >
@@ -653,7 +667,7 @@ function Index() {
                 className="font-heading font-bold btn-sheen shadow-lg shadow-brand-gold/20"
               >
                 <a
-                  href={WHATSAPP_LINK}
+                  href={getWhatsAppLink(WHATSAPP_MESSAGES.services)}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -1049,7 +1063,7 @@ function Index() {
                   className="mt-6 font-heading font-bold btn-sheen shadow-lg shadow-brand-gold/20"
                 >
                   <a
-                    href={WHATSAPP_LINK}
+                    href={getWhatsAppLink(WHATSAPP_MESSAGES.consultation)}
                     target="_blank"
                     rel="noopener noreferrer"
                   >
