@@ -59,7 +59,7 @@ export const Route = createFileRoute("/")({
 const WHATSAPP_NUMBER = "918240349546";
 const PHONE_PRIMARY = "+91 82403 49546";
 const PHONE_LANDLINE = "+91 33 7963 3264";
-const EMAIL = "contact@dhansetuadvisory.com";
+const EMAIL = "contact.dhansetuadvisory@gmail.com";
 const ADDRESS = "18/1, Vivekananda Road, Dunlop, Kolkata - 108";
 const TAGLINE = "আপনার টাকার সমস্যার সেতু";
 
