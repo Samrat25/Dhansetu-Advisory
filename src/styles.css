@@ -162,8 +162,29 @@
   }
 
   html {
-    scroll-behavior: smooth;
+    /* Disable native smooth scrolling to avoid conflicts with Lenis */
+    scroll-behavior: auto;
     scroll-padding-top: 5rem;
+  }
+  
+  html.lenis {
+    height: auto;
+  }
+  
+  .lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+  }
+  
+  .lenis.lenis-smooth [data-lenis-prevent] {
+    overscroll-behavior: contain;
+  }
+  
+  .lenis.lenis-stopped {
+    overflow: hidden;
+  }
+  
+  .lenis.lenis-scrolling iframe {
+    pointer-events: none;
   }
 
   body {

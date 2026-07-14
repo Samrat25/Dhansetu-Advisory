@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useState, useEffect, useMemo } from "react";
+import { useState, useEffect, useMemo, useRef } from "react";
+import Lenis from "lenis";
 import ShinyText from "@/components/ShinyText/ShinyText";
 import SpotlightCard from "@/components/SpotlightCard/SpotlightCard";
 import Aurora from "@/components/Aurora/Aurora";
@@ -94,6 +95,7 @@ const navLinks = [
 function Index() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const lenisRef = useRef<Lenis | null>(null);
   useReveal();
 
   const hyperspeedOptions = useMemo(() => ({
@@ -134,6 +136,34 @@ function Index() {
     }
   }), []);
 
+  // Initialize Lenis smooth scrolling
+  useEffect(() => {
+    const lenis = new Lenis({
+      duration: 1.2,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      orientation: 'vertical',
+      gestureOrientation: 'vertical',
+      smoothWheel: true,
+      wheelMultiplier: 1,
+      smoothTouch: false,
+      touchMultiplier: 2,
+      infinite: false,
+    });
+
+    lenisRef.current = lenis;
+
+    function raf(time: number) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+
+    requestAnimationFrame(raf);
+
+    return () => {
+      lenis.destroy();
+    };
+  }, []);
+
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener("scroll", handleScroll);
@@ -142,8 +172,12 @@ function Index() {
 
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
+    if (element && lenisRef.current) {
+      const offsetTop = element.offsetTop - 80; // Account for fixed header
+      lenisRef.current.scrollTo(offsetTop, {
+        duration: 1.5,
+        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      });
     }
     setIsMenuOpen(false);
   };
