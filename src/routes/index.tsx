@@ -60,7 +60,7 @@ const PHONE_PRIMARY = "+91 82403 49546";
 const PHONE_LANDLINE = "+91 33 7963 3264";
 const EMAIL = "contact@dhansetuadvisory.com";
 const ADDRESS = "18/1, Vivekananda Road, Dunlop, Kolkata - 108";
-const TAGLINE = "APNAR TAKAR SOMOSSAR SETU";
+const TAGLINE = "আপনার টাকার সমস্যার সেতু";
 
 function useReveal() {
   useEffect(() => {
@@ -320,11 +320,17 @@ function Index() {
                 />
               </h1>
               <p
+                className="mt-3 text-lg font-semibold text-brand-gold-light tracking-wide animate-fade-up md:text-xl lg:text-2xl"
+                style={{ animationDelay: "130ms" }}
+              >
+                বাড়ি কিনবেন? লোন লাগবে? সব পাবেন এক জায়গায়
+              </p>
+              <p
                 className="mt-6 max-w-xl self-center text-base leading-relaxed text-white/85 sm:text-lg lg:self-start animate-fade-up"
                 style={{ animationDelay: "180ms" }}
               >
                 DHANSETU is your bridge to the perfect property and the right
-                loan in Kolkata — honest advisory, 20+ banking partners,
+                loan in Kolkata — honest advisory, 50+ banking partners,
                 approvals in as little as 7 days.
               </p>
               <div className="mt-8 flex w-full flex-col gap-3 self-center sm:w-auto sm:flex-row lg:self-start">
@@ -364,7 +370,7 @@ function Index() {
                 </span>
                 <span className="flex items-center gap-1.5">
                   <BadgeCheck className="h-4 w-4 text-accent" />
-                  20+ Bank Partners
+                  50+ Bank Partners
                 </span>
                 <span className="flex items-center gap-1.5">
                   <BadgeCheck className="h-4 w-4 text-accent" />
@@ -504,7 +510,7 @@ function Index() {
                   Capital Advisory
                 </CardTitle>
                 <CardDescription className="text-sm text-muted-foreground">
-                  Loans made simple with 20+ banking partners.
+                  Loans made simple with 50+ banking partners.
                 </CardDescription>
               </CardHeader>
               <CardContent className="space-y-2">
@@ -512,9 +518,12 @@ function Index() {
                   "Personal Loan, Business Loan, Home Loan",
                   "Mortgage Loan, Land Purchase Loan, Gold Loan",
                   "Education Loan, Car Loan",
-                  "Mutual Fund, PMS, Bonds, Demat",
+                  "Mutual Fund, PMS, Bonds, Demat Account",
                   "Insurance (GI, LI, HI) & Any Investment",
-                  "Tied up with 20+ Banks & NBFCs",
+                  "Legal Advisory & Documentation Support",
+                  "Property Valuation Services",
+                  "Mutation Assistance",
+                  "Tied up with 50+ Banks & NBFCs",
                   "Low Interest Rate | Fast Approval in 7 Days",
                 ].map((item) => (
                   <div key={item} className="flex items-start gap-2">
@@ -557,7 +566,7 @@ function Index() {
                 />
               </h3>
               <p className="mt-2 text-sm text-muted-foreground">
-                Loans, Investments & Insurance — all under one roof with 20+ banking partners.
+                Loans, Investments & Insurance — all under one roof with 50+ banking partners.
               </p>
             </div>
 
@@ -579,6 +588,9 @@ function Index() {
                 { icon: BarChart3, label: "Bonds", desc: "Fixed income investments" },
                 { icon: Wallet, label: "Demat Account", desc: "Open your demat & trading" },
                 { icon: CircleDollarSign, label: "Other Investments", desc: "Customised investment solutions" },
+                { icon: ShieldCheck, label: "Legal Advisory", desc: "Property legal check, documentation & agreement verification" },
+                { icon: Building2, label: "Property Valuation", desc: "Certified property valuation for sale, loan or legal purposes" },
+                { icon: Layers, label: "Mutation Services", desc: "Land/property mutation assistance with government records" },
               ].map((service) => (
                 <SpotlightCard
                   key={service.label}
@@ -696,7 +708,7 @@ function Index() {
                 Building Trust, Fulfilling Dreams
               </h2>
               <p className="mt-4 text-base leading-relaxed text-muted-foreground">
-                Founded in <CountUp end={2026} duration={1.2} /> by <span className="font-semibold text-foreground">Paromita Sutradhar</span>, Dhansetu is committed to fulfilling your dreams.
+                Founded in <CountUp end={2016} duration={1.2} /> by <span className="font-semibold text-foreground">Paromita Sutradhar</span>, Dhansetu is committed to fulfilling your dreams.
                 We provide honest advice, fast service and complete support for
                 your Property and Finance needs.
               </p>
@@ -708,7 +720,7 @@ function Index() {
               <div className="mt-8 grid grid-cols-2 gap-4 sm:grid-cols-3">
                 {[
                   { value: 10, suffix: "+", label: "Years Experience" },
-                  { value: 20, suffix: "+", label: "Bank Partners" },
+                  { value: 50, suffix: "+", label: "Bank Partners" },
                   { value: 7, suffix: "", label: "Days Approval" },
                 ].map((stat) => (
                   <div
@@ -725,6 +737,77 @@ function Index() {
                 ))}
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Testimonials Section */}
+      <section className="section-padding bg-background/50 border-t border-b border-border/20">
+        <div className="container-tight">
+          <div className="mx-auto max-w-3xl text-center">
+            <span className="text-sm font-semibold uppercase tracking-wider text-accent">
+              Testimonials
+            </span>
+            <h2 className="mt-2 font-heading text-2xl font-bold text-foreground sm:text-3xl md:text-4xl">
+              What Our Clients Say
+            </h2>
+            <p className="mt-3 text-muted-foreground">
+              Real stories from our valued customers in Kolkata.
+            </p>
+          </div>
+
+          <div className="mt-10 grid gap-6 md:grid-cols-2 lg:max-w-4xl lg:mx-auto">
+            {/* Testimonial 1 */}
+            <SpotlightCard
+              className="reveal p-6 border border-border/40 bg-card/60 rounded-2xl shadow-lg relative flex flex-col justify-between"
+              spotlightColor="rgba(212, 168, 67, 0.12)"
+            >
+              <div>
+                <div className="flex gap-1 mb-4 text-brand-gold">
+                  {[...Array(5)].map((_, i) => (
+                    <span key={i} className="text-lg">★</span>
+                  ))}
+                </div>
+                <p className="font-heading text-lg font-medium italic leading-relaxed text-white/90">
+                  "৭ দিনে লোন অ্যাপ্রুভাল করিয়ে দিয়েছে। ধন্যবাদ ধনসেতু"
+                </p>
+              </div>
+              <div className="mt-6 flex items-center gap-3">
+                <div className="h-10 w-10 rounded-full bg-accent/20 flex items-center justify-center font-heading font-bold text-accent">
+                  গ
+                </div>
+                <div>
+                  <h4 className="text-sm font-bold text-foreground">গ্রাহক</h4>
+                  <p className="text-xs text-muted-foreground">কলকাতা</p>
+                </div>
+              </div>
+            </SpotlightCard>
+
+            {/* Testimonial 2 */}
+            <SpotlightCard
+              className="reveal p-6 border border-border/40 bg-card/60 rounded-2xl shadow-lg relative flex flex-col justify-between"
+              spotlightColor="rgba(212, 168, 67, 0.12)"
+            >
+              <div>
+                <div className="flex gap-1 mb-4 text-brand-gold">
+                  {[...Array(5)].map((_, i) => (
+                    <span key={i} className="text-lg">★</span>
+                  ))}
+                </div>
+                <p className="text-base leading-relaxed text-white/90 italic">
+                  "Got my loan approved in just 7 days. Thank you Dhansetu!"
+                </p>
+              </div>
+              <div className="mt-6 flex items-center gap-3">
+                <div className="h-10 w-10 rounded-full bg-primary/20 flex items-center justify-center font-heading font-bold text-primary">
+                  MR
+                </div>
+                <div>
+                  <h4 className="text-sm font-bold text-foreground">Mr. Roy</h4>
+                  <p className="text-xs text-muted-foreground">Kolkata</p>
+                </div>
+              </div>
+            </SpotlightCard>
           </div>
         </div>
       </section>

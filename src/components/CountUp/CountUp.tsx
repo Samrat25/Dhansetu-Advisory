@@ -15,33 +15,13 @@ export default function CountUp({
 }: CountUpProps) {
   const [count, setCount] = useState(0);
   const elementRef = useRef<HTMLSpanElement>(null);
-  const [hasStarted, setHasStarted] = useState(false);
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        if (entries[0].isIntersecting) {
-          setHasStarted(true);
-        }
-      },
-      { threshold: 0.1 }
-    );
-
-    if (elementRef.current) {
-      observer.observe(elementRef.current);
-    }
-
-    return () => {
-      observer.disconnect();
-    };
-  }, []);
-
-  useEffect(() => {
-    if (!hasStarted) return;
-
     const endVal = end;
     const durationMs = duration * 1000;
     const startTime = performance.now();
+
+    let rafId: number;
 
     const updateCount = (currentTime: number) => {
       const elapsed = currentTime - startTime;
@@ -53,12 +33,18 @@ export default function CountUp({
       setCount(currentVal);
 
       if (progress < 1) {
-        requestAnimationFrame(updateCount);
+        rafId = requestAnimationFrame(updateCount);
       }
     };
 
-    requestAnimationFrame(updateCount);
-  }, [hasStarted, end, duration]);
+    rafId = requestAnimationFrame(updateCount);
+
+    return () => {
+      if (rafId) {
+        cancelAnimationFrame(rafId);
+      }
+    };
+  }, [end, duration]);
 
   return (
     <span ref={elementRef} className="tabular-nums">
@@ -68,3 +54,4 @@ export default function CountUp({
     </span>
   );
 }
+
