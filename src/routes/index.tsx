@@ -66,7 +66,10 @@ const TAGLINE = "আপনার টাকার সমস্যার সেত
 // Helper function to create WhatsApp link with pre-filled message
 const getWhatsAppLink = (message: string) => {
   const encodedMessage = encodeURIComponent(message);
-  return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodedMessage}`;
+  const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodedMessage}`;
+  // Debug: Log the generated URL (remove this in production)
+  console.log('WhatsApp URL generated:', url);
+  return url;
 };
 
 // Pre-filled messages for different contexts (20 words each)
