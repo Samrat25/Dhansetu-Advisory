@@ -769,15 +769,15 @@ function Index() {
                       ))}
                     </div>
                     <p className="font-heading text-lg font-medium italic leading-relaxed text-white/90">
-                      "৭ দিনে লোন অ্যাপ্রুভাল করিয়ে দিয়েছে। ধন্যবাদ ধনসেতু"
+                      "৭ দিনের মধ্যে লোন অ্যাপ্রুভাল হয়ে গেছে। ধন্যবাদ ধনসেতু, আপনাদের জন্যই আমার স্বপ্নের বাড়ি হলো।"
                     </p>
                   </div>
                   <div className="mt-6 flex items-center gap-3">
                     <div className="h-10 w-10 rounded-full bg-accent/20 flex items-center justify-center font-heading font-bold text-accent">
-                      গ
+                      রা
                     </div>
                     <div>
-                      <h4 className="text-sm font-bold text-foreground">গ্রাহক</h4>
+                      <h4 className="text-sm font-bold text-foreground">মিঃ রায়</h4>
                       <p className="text-xs text-muted-foreground">কলকাতা</p>
                     </div>
                   </div>
@@ -793,17 +793,17 @@ function Index() {
                         <span key={i} className="text-lg">★</span>
                       ))}
                     </div>
-                    <p className="text-base leading-relaxed text-white/90 italic">
-                      "Got my loan approved in just 7 days. Thank you Dhansetu!"
+                    <p className="font-heading text-lg font-medium italic leading-relaxed text-white/90">
+                      "ফ্ল্যাট কেনার সময় সব লিগ্যাল কাগজপত্র ধনসেতু নিজে দেখে দিয়েছে। কোনো টেনশন ছাড়াই কাজ হয়ে গেল।"
                     </p>
                   </div>
                   <div className="mt-6 flex items-center gap-3">
                     <div className="h-10 w-10 rounded-full bg-primary/20 flex items-center justify-center font-heading font-bold text-primary">
-                      MR
+                      শ
                     </div>
                     <div>
-                      <h4 className="text-sm font-bold text-foreground">Mr. Roy</h4>
-                      <p className="text-xs text-muted-foreground">Kolkata</p>
+                      <h4 className="text-sm font-bold text-foreground">শর্মিষ্ঠা দে</h4>
+                      <p className="text-xs text-muted-foreground">ডানলপ</p>
                     </div>
                   </div>
                 </div>
@@ -819,16 +819,16 @@ function Index() {
                       ))}
                     </div>
                     <p className="font-heading text-lg font-medium italic leading-relaxed text-white/90">
-                      "খুব কম সুদে ব্যবসার লোন পেয়েছি ধনসেতুর মাধ্যমে। খুব ভালো সার্ভিস।"
+                      "ব্যবসার জন্য লোন দরকার ছিল, কিন্তু ব্যাংকে গিয়ে বারবার হয়রানি হচ্ছিলাম। ধনসেতু এক জায়গায় দাঁড়িয়ে সব ব্যবস্থা করে দিলো।"
                     </p>
                   </div>
                   <div className="mt-6 flex items-center gap-3">
                     <div className="h-10 w-10 rounded-full bg-accent/20 flex items-center justify-center font-heading font-bold text-accent">
-                      অ
+                      সু
                     </div>
                     <div>
-                      <h4 className="text-sm font-bold text-foreground">অমিত দেবনাথ</h4>
-                      <p className="text-xs text-muted-foreground">হাওড়া</p>
+                      <h4 className="text-sm font-bold text-foreground">সুব্রত ঘোষ</h4>
+                      <p className="text-xs text-muted-foreground">কলকাতা</p>
                     </div>
                   </div>
                 </div>
@@ -843,17 +843,17 @@ function Index() {
                         <span key={i} className="text-lg">★</span>
                       ))}
                     </div>
-                    <p className="text-base leading-relaxed text-white/90 italic">
-                      "DhanSetu legal team solved all our property registration hurdles smoothly. Recommended!"
+                    <p className="font-heading text-lg font-medium italic leading-relaxed text-white/90">
+                      "প্রপার্টি ভ্যালুয়েশন খুব দ্রুত এবং সঠিকভাবে করে দিয়েছে। ব্যাংক লোনের জন্য এটা খুব দরকার ছিল।"
                     </p>
                   </div>
                   <div className="mt-6 flex items-center gap-3">
                     <div className="h-10 w-10 rounded-full bg-primary/20 flex items-center justify-center font-heading font-bold text-primary">
-                      SS
+                      আ
                     </div>
                     <div>
-                      <h4 className="text-sm font-bold text-foreground">Sneha Sengupta</h4>
-                      <p className="text-xs text-muted-foreground">Salt Lake, Kolkata</p>
+                      <h4 className="text-sm font-bold text-foreground">আনন্দ বসাক</h4>
+                      <p className="text-xs text-muted-foreground">ব্যারাকপুর</p>
                     </div>
                   </div>
                 </div>
@@ -869,16 +869,16 @@ function Index() {
                       ))}
                     </div>
                     <p className="font-heading text-lg font-medium italic leading-relaxed text-white/90">
-                      "লোন আর ফ্ল্যাট কেনা দুটোরই দারুণ সমাধান এক ছাদের নিচে পেলাম।"
+                      "জমির মিউটেশন নিয়ে অনেকদিন ধরে ভুগছিলাম। ধনসেতুর টিম সরকারি অফিসের সব কাজ সামলে দিয়েছে, খুব স্বস্তি পেলাম।"
                     </p>
                   </div>
                   <div className="mt-6 flex items-center gap-3">
                     <div className="h-10 w-10 rounded-full bg-accent/20 flex items-center justify-center font-heading font-bold text-accent">
-                      স
+                      রি
                     </div>
                     <div>
-                      <h4 className="text-sm font-bold text-foreground">সুজয় দাস</h4>
-                      <p className="text-xs text-muted-foreground">Dunlop, কলকাতা</p>
+                      <h4 className="text-sm font-bold text-foreground">রিনা চ্যাটার্জী</h4>
+                      <p className="text-xs text-muted-foreground">কলকাতা</p>
                     </div>
                   </div>
                 </div>
