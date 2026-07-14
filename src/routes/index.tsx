@@ -314,7 +314,7 @@ function Index() {
                 style={{ animationDelay: "80ms" }}
               >
                 <BlurText
-                  text="Your Dream Home & Loan – One Solution"
+                  text="Your Home & Loan Solution - All Under One Roof"
                   animateBy="words"
                   className="font-heading font-extrabold"
                 />
@@ -415,7 +415,7 @@ function Index() {
           {/* DHANSETU Big Brand Header */}
           <div className="mx-auto max-w-3xl text-center reveal">
             <span className="text-sm font-semibold uppercase tracking-wider text-accent">
-              What We Offer
+              Our Services
             </span>
             <h2 className="mt-3 font-heading text-5xl font-extrabold tracking-tight text-foreground sm:text-6xl md:text-7xl lg:text-8xl">
               <ShinyText
@@ -746,10 +746,10 @@ function Index() {
         <div className="container-tight">
           <div className="mx-auto max-w-3xl text-center">
             <span className="text-sm font-semibold uppercase tracking-wider text-accent">
-              Testimonials
+              Client Testimonials
             </span>
             <h2 className="mt-2 font-heading text-2xl font-bold text-foreground sm:text-3xl md:text-4xl">
-              What Our Clients Say
+              Client Testimonials
             </h2>
             <p className="mt-3 text-muted-foreground">
               Real stories from our valued customers in Kolkata.
@@ -829,7 +829,7 @@ function Index() {
           </div>
 
           <div className="mt-10 grid gap-6 lg:grid-cols-3">
-            <Card className="reveal border-border/60 bg-card shadow-md transition-transform hover:-translate-y-1 hover:shadow-xl">
+            <Card className="reveal border-brand-blue/30 bg-card shadow-lg transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-brand-blue/15 hover:border-brand-blue-light/70">
               <CardContent className="flex flex-col items-center p-6 text-center">
                 <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary/10">
                   <Phone className="h-5 w-5 text-primary" />
@@ -855,7 +855,7 @@ function Index() {
               </CardContent>
             </Card>
 
-            <Card className="reveal border-border/60 bg-card shadow-md transition-transform hover:-translate-y-1 hover:shadow-xl">
+            <Card className="reveal border-brand-gold/30 bg-card shadow-lg transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-brand-gold/15 hover:border-brand-gold-light/70">
               <CardContent className="flex flex-col items-center p-6 text-center">
                 <div className="flex h-12 w-12 items-center justify-center rounded-full bg-accent/10">
                   <Mail className="h-5 w-5 text-accent" />
@@ -877,7 +877,7 @@ function Index() {
               </CardContent>
             </Card>
 
-            <Card className="reveal border-border/60 bg-card shadow-md transition-transform hover:-translate-y-1 hover:shadow-xl">
+            <Card className="reveal border-brand-blue/30 bg-card shadow-lg transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-brand-blue/15 hover:border-brand-blue-light/70">
               <CardContent className="flex flex-col items-center p-6 text-center">
                 <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary/10">
                   <MapPin className="h-5 w-5 text-primary" />
@@ -944,7 +944,7 @@ function Index() {
                     rel="noopener noreferrer"
                   >
                     <MessageCircle className="h-5 w-5" />
-                    WhatsApp Us Now
+                    Get Free Consultation
                   </a>
                 </Button>
               </Magnet>
