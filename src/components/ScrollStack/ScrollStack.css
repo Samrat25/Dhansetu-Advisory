@@ -1,0 +1,58 @@
+.scroll-stack-scroller {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  overflow-x: visible;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  will-change: scroll-position;
+}
+
+/* ScrollStack inner layout. Adjust padding for landing pages */
+.scroll-stack-inner {
+  padding: 5vh 1rem 15vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.scroll-stack-card-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 42rem;
+}
+
+.scroll-stack-card {
+  transform-origin: top center;
+  will-change: transform, filter;
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+  min-height: 12rem;
+  width: 100%;
+  max-width: 36rem;
+  margin: 20px auto;
+  padding: 2rem;
+  border-radius: 24px;
+  box-sizing: border-box;
+  background: rgba(22, 42, 99, 0.95);
+  border: 1px solid rgba(232, 163, 61, 0.25);
+  backdrop-filter: blur(10px);
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  position: relative;
+  transition: border-color 0.3s;
+}
+
+.scroll-stack-card:hover {
+  border-color: rgba(232, 163, 61, 0.6);
+}
+
+.scroll-stack-end {
+  width: 100%;
+  height: 20px;
+}

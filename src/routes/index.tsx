@@ -10,6 +10,7 @@ import CountUp from "@/components/CountUp/CountUp";
 import AnimatedList from "@/components/AnimatedList/AnimatedList";
 import FloatingLines from "@/components/FloatingLines/FloatingLines";
 import Hyperspeed from "@/components/Hyperspeed/Hyperspeed";
+import ScrollStack, { ScrollStackItem } from "@/components/ScrollStack/ScrollStack";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -756,58 +757,133 @@ function Index() {
             </p>
           </div>
 
-          <div className="mt-10 grid gap-6 md:grid-cols-2 lg:max-w-4xl lg:mx-auto">
-            {/* Testimonial 1 */}
-            <SpotlightCard
-              className="reveal p-6 border border-border/40 bg-card/60 rounded-2xl shadow-lg relative flex flex-col justify-between"
-              spotlightColor="rgba(212, 168, 67, 0.12)"
-            >
-              <div>
-                <div className="flex gap-1 mb-4 text-brand-gold">
-                  {[...Array(5)].map((_, i) => (
-                    <span key={i} className="text-lg">★</span>
-                  ))}
+          <div className="mt-10 max-w-2xl mx-auto">
+            <ScrollStack useWindowScroll={true} itemDistance={50} itemScale={0.03} itemStackDistance={20}>
+              {/* Testimonial 1 */}
+              <ScrollStackItem>
+                <div className="flex flex-col justify-between h-full">
+                  <div>
+                    <div className="flex gap-1 mb-4 text-brand-gold">
+                      {[...Array(5)].map((_, i) => (
+                        <span key={i} className="text-lg">★</span>
+                      ))}
+                    </div>
+                    <p className="font-heading text-lg font-medium italic leading-relaxed text-white/90">
+                      "৭ দিনে লোন অ্যাপ্রুভাল করিয়ে দিয়েছে। ধন্যবাদ ধনসেতু"
+                    </p>
+                  </div>
+                  <div className="mt-6 flex items-center gap-3">
+                    <div className="h-10 w-10 rounded-full bg-accent/20 flex items-center justify-center font-heading font-bold text-accent">
+                      গ
+                    </div>
+                    <div>
+                      <h4 className="text-sm font-bold text-foreground">গ্রাহক</h4>
+                      <p className="text-xs text-muted-foreground">কলকাতা</p>
+                    </div>
+                  </div>
                 </div>
-                <p className="font-heading text-lg font-medium italic leading-relaxed text-white/90">
-                  "৭ দিনে লোন অ্যাপ্রুভাল করিয়ে দিয়েছে। ধন্যবাদ ধনসেতু"
-                </p>
-              </div>
-              <div className="mt-6 flex items-center gap-3">
-                <div className="h-10 w-10 rounded-full bg-accent/20 flex items-center justify-center font-heading font-bold text-accent">
-                  গ
-                </div>
-                <div>
-                  <h4 className="text-sm font-bold text-foreground">গ্রাহক</h4>
-                  <p className="text-xs text-muted-foreground">কলকাতা</p>
-                </div>
-              </div>
-            </SpotlightCard>
+              </ScrollStackItem>
 
-            {/* Testimonial 2 */}
-            <SpotlightCard
-              className="reveal p-6 border border-border/40 bg-card/60 rounded-2xl shadow-lg relative flex flex-col justify-between"
-              spotlightColor="rgba(212, 168, 67, 0.12)"
-            >
-              <div>
-                <div className="flex gap-1 mb-4 text-brand-gold">
-                  {[...Array(5)].map((_, i) => (
-                    <span key={i} className="text-lg">★</span>
-                  ))}
+              {/* Testimonial 2 */}
+              <ScrollStackItem>
+                <div className="flex flex-col justify-between h-full">
+                  <div>
+                    <div className="flex gap-1 mb-4 text-brand-gold">
+                      {[...Array(5)].map((_, i) => (
+                        <span key={i} className="text-lg">★</span>
+                      ))}
+                    </div>
+                    <p className="text-base leading-relaxed text-white/90 italic">
+                      "Got my loan approved in just 7 days. Thank you Dhansetu!"
+                    </p>
+                  </div>
+                  <div className="mt-6 flex items-center gap-3">
+                    <div className="h-10 w-10 rounded-full bg-primary/20 flex items-center justify-center font-heading font-bold text-primary">
+                      MR
+                    </div>
+                    <div>
+                      <h4 className="text-sm font-bold text-foreground">Mr. Roy</h4>
+                      <p className="text-xs text-muted-foreground">Kolkata</p>
+                    </div>
+                  </div>
                 </div>
-                <p className="text-base leading-relaxed text-white/90 italic">
-                  "Got my loan approved in just 7 days. Thank you Dhansetu!"
-                </p>
-              </div>
-              <div className="mt-6 flex items-center gap-3">
-                <div className="h-10 w-10 rounded-full bg-primary/20 flex items-center justify-center font-heading font-bold text-primary">
-                  MR
+              </ScrollStackItem>
+
+              {/* Testimonial 3 */}
+              <ScrollStackItem>
+                <div className="flex flex-col justify-between h-full">
+                  <div>
+                    <div className="flex gap-1 mb-4 text-brand-gold">
+                      {[...Array(5)].map((_, i) => (
+                        <span key={i} className="text-lg">★</span>
+                      ))}
+                    </div>
+                    <p className="font-heading text-lg font-medium italic leading-relaxed text-white/90">
+                      "খুব কম সুদে ব্যবসার লোন পেয়েছি ধনসেতুর মাধ্যমে। খুব ভালো সার্ভিস।"
+                    </p>
+                  </div>
+                  <div className="mt-6 flex items-center gap-3">
+                    <div className="h-10 w-10 rounded-full bg-accent/20 flex items-center justify-center font-heading font-bold text-accent">
+                      অ
+                    </div>
+                    <div>
+                      <h4 className="text-sm font-bold text-foreground">অমিত দেবনাথ</h4>
+                      <p className="text-xs text-muted-foreground">হাওড়া</p>
+                    </div>
+                  </div>
                 </div>
-                <div>
-                  <h4 className="text-sm font-bold text-foreground">Mr. Roy</h4>
-                  <p className="text-xs text-muted-foreground">Kolkata</p>
+              </ScrollStackItem>
+
+              {/* Testimonial 4 */}
+              <ScrollStackItem>
+                <div className="flex flex-col justify-between h-full">
+                  <div>
+                    <div className="flex gap-1 mb-4 text-brand-gold">
+                      {[...Array(5)].map((_, i) => (
+                        <span key={i} className="text-lg">★</span>
+                      ))}
+                    </div>
+                    <p className="text-base leading-relaxed text-white/90 italic">
+                      "DhanSetu legal team solved all our property registration hurdles smoothly. Recommended!"
+                    </p>
+                  </div>
+                  <div className="mt-6 flex items-center gap-3">
+                    <div className="h-10 w-10 rounded-full bg-primary/20 flex items-center justify-center font-heading font-bold text-primary">
+                      SS
+                    </div>
+                    <div>
+                      <h4 className="text-sm font-bold text-foreground">Sneha Sengupta</h4>
+                      <p className="text-xs text-muted-foreground">Salt Lake, Kolkata</p>
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </SpotlightCard>
+              </ScrollStackItem>
+
+              {/* Testimonial 5 */}
+              <ScrollStackItem>
+                <div className="flex flex-col justify-between h-full">
+                  <div>
+                    <div className="flex gap-1 mb-4 text-brand-gold">
+                      {[...Array(5)].map((_, i) => (
+                        <span key={i} className="text-lg">★</span>
+                      ))}
+                    </div>
+                    <p className="font-heading text-lg font-medium italic leading-relaxed text-white/90">
+                      "লোন আর ফ্ল্যাট কেনা দুটোরই দারুণ সমাধান এক ছাদের নিচে পেলাম।"
+                    </p>
+                  </div>
+                  <div className="mt-6 flex items-center gap-3">
+                    <div className="h-10 w-10 rounded-full bg-accent/20 flex items-center justify-center font-heading font-bold text-accent">
+                      স
+                    </div>
+                    <div>
+                      <h4 className="text-sm font-bold text-foreground">সুজয় দাস</h4>
+                      <p className="text-xs text-muted-foreground">Dunlop, কলকাতা</p>
+                    </div>
+                  </div>
+                </div>
+              </ScrollStackItem>
+            </ScrollStack>
           </div>
         </div>
       </section>
