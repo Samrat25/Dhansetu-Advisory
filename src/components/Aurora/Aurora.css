@@ -1,0 +1,82 @@
+.aurora-container {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  background-color: var(--color-2);
+  z-index: 0;
+}
+
+.aurora-glow {
+  position: absolute;
+  width: 130%;
+  height: 130%;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.55;
+  mix-blend-mode: screen;
+  pointer-events: none;
+}
+
+.aurora-glow-1 {
+  background: radial-gradient(circle, var(--color-1) 0%, transparent 60%);
+  top: -40%;
+  left: -20%;
+  animation: aurora-move-1 var(--aurora-speed) ease-in-out infinite alternate;
+}
+
+.aurora-glow-2 {
+  background: radial-gradient(circle, var(--color-3) 0%, transparent 60%);
+  bottom: -40%;
+  right: -20%;
+  animation: aurora-move-2 var(--aurora-speed) ease-in-out infinite alternate;
+}
+
+.aurora-glow-3 {
+  background: radial-gradient(circle, var(--color-1) 0%, transparent 50%);
+  top: 15%;
+  left: 20%;
+  animation: aurora-move-3 var(--aurora-speed) ease-in-out infinite alternate;
+}
+
+.aurora-overlay {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 50%, transparent 10%, rgba(15, 31, 77, 0.4) 80%);
+  pointer-events: none;
+}
+
+@keyframes aurora-move-1 {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(10%, 15%) scale(1.1);
+  }
+  100% {
+    transform: translate(-10%, 5%) scale(0.95);
+  }
+}
+
+@keyframes aurora-move-2 {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(-15%, -10%) scale(0.9);
+  }
+  100% {
+    transform: translate(5%, -5%) scale(1.1);
+  }
+}
+
+@keyframes aurora-move-3 {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(15%, -15%) scale(1.05);
+  }
+  100% {
+    transform: translate(-5%, 10%) scale(0.95);
+  }
+}

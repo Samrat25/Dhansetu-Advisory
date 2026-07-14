@@ -1,5 +1,15 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
+import ShinyText from "@/components/ShinyText/ShinyText";
+import SpotlightCard from "@/components/SpotlightCard/SpotlightCard";
+import Aurora from "@/components/Aurora/Aurora";
+import BlurText from "@/components/BlurText/BlurText";
+import TiltedCard from "@/components/TiltedCard/TiltedCard";
+import Magnet from "@/components/Magnet/Magnet";
+import CountUp from "@/components/CountUp/CountUp";
+import AnimatedList from "@/components/AnimatedList/AnimatedList";
+import FloatingLines from "@/components/FloatingLines/FloatingLines";
+import Hyperspeed from "@/components/Hyperspeed/Hyperspeed";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -24,6 +34,20 @@ import {
   X,
   ArrowRight,
   Mail,
+  Landmark,
+  Briefcase,
+  Car,
+  GraduationCap,
+  Gem,
+  Mountain,
+  HeartPulse,
+  ShieldCheck,
+  BarChart3,
+  PiggyBank,
+  LineChart,
+  Wallet,
+  Layers,
+  CircleDollarSign,
 } from "lucide-react";
 
 export const Route = createFileRoute("/")({
@@ -71,6 +95,44 @@ function Index() {
   const [scrolled, setScrolled] = useState(false);
   useReveal();
 
+  const hyperspeedOptions = useMemo(() => ({
+    onSpeedUp: () => {},
+    onSlowDown: () => {},
+    distortion: 'turbulentDistortion',
+    length: 400,
+    roadWidth: 10,
+    islandWidth: 2,
+    lanesPerRoad: 4,
+    fov: 90,
+    fovSpeedUp: 150,
+    speedUp: 2,
+    carLightsFade: 0.4,
+    totalSideLightSticks: 20,
+    lightPairsPerRoadWay: 40,
+    shoulderLinesWidthPercentage: 0.05,
+    brokenLinesWidthPercentage: 0.1,
+    brokenLinesLengthPercentage: 0.5,
+    lightStickWidth: [0.12, 0.5] as [number, number],
+    lightStickHeight: [1.3, 1.7] as [number, number],
+    movingAwaySpeed: [60, 80] as [number, number],
+    movingCloserSpeed: [-120, -160] as [number, number],
+    carLightsLength: [400 * 0.03, 400 * 0.2] as [number, number],
+    carLightsRadius: [0.05, 0.14] as [number, number],
+    carWidthPercentage: [0.3, 0.5] as [number, number],
+    carShiftX: [-0.8, 0.8] as [number, number],
+    carFloorSeparation: [0, 5] as [number, number],
+    colors: {
+      roadColor: 0x080808,
+      islandColor: 0x0a0a0a,
+      background: 0x000000,
+      shoulderLines: 0x1a3fa0,
+      brokenLines: 0x1a3fa0,
+      leftCars: [0xe8a33d, 0xd49a3b, 0xffd166],
+      rightCars: [0x1a3fa0, 0x0f1f4d, 0x3b82f6],
+      sticks: 0xe8a33d
+    }
+  }), []);
+
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener("scroll", handleScroll);
@@ -89,10 +151,10 @@ function Index() {
     <div className="flex min-h-screen flex-col bg-background">
       {/* Header */}
       <header
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-200 ${
+        className={`fixed top-4 left-1/2 -translate-x-1/2 w-[calc(100%-2rem)] max-w-6xl z-50 rounded-2xl border transition-all duration-300 ${
           scrolled
-            ? "bg-background/95 shadow-md backdrop-blur-sm"
-            : "bg-transparent"
+            ? "border-border bg-card/90 shadow-md backdrop-blur-md"
+            : "border-white/10 bg-card/45 backdrop-blur-md"
         }`}
       >
         <div className="container-tight flex h-16 items-center justify-between">
@@ -111,7 +173,14 @@ function Index() {
             />
             <div className="hidden flex-col items-start sm:flex">
               <span className="font-heading text-xl font-bold leading-none text-foreground md:text-2xl tracking-tight">
-                DHANSETU
+                <ShinyText
+                  text="DHANSETU"
+                  speed={3}
+                  color="#e8a33d"
+                  shineColor="#ffffff"
+                  spread={80}
+                  className="font-heading text-xl font-bold leading-none md:text-2xl tracking-tight"
+                />
               </span>
               <span className="text-[10px] font-semibold uppercase tracking-[0.18em] text-muted-foreground mt-0.5">
                 Capital Advisory
@@ -125,7 +194,7 @@ function Index() {
               <button
                 key={link.href}
                 onClick={() => scrollToSection(link.href)}
-                className="text-sm font-medium text-foreground/80 transition-colors hover:text-primary"
+                className="text-sm font-medium text-foreground/80 transition-colors hover:text-accent"
               >
                 {link.label}
               </button>
@@ -178,18 +247,18 @@ function Index() {
 
         {/* Mobile Navigation */}
         {isMenuOpen && (
-          <div className="border-t bg-background px-4 py-4 shadow-lg lg:hidden">
+          <div className="border-t border-border/40 bg-card px-4 py-4 shadow-lg lg:hidden rounded-b-2xl">
             <nav className="flex flex-col gap-3">
               {navLinks.map((link) => (
                 <button
                   key={link.href}
                   onClick={() => scrollToSection(link.href)}
-                  className="rounded-md px-3 py-2 text-left text-base font-medium text-foreground/80 transition-colors hover:bg-muted hover:text-primary"
+                  className="rounded-md px-3 py-2 text-left text-base font-medium text-foreground/80 transition-colors hover:bg-muted hover:text-accent"
                 >
                   {link.label}
                 </button>
               ))}
-              <div className="mt-3 flex flex-col gap-2 border-t pt-4">
+              <div className="mt-3 flex flex-col gap-2 border-t border-border/20 pt-4">
                 <Button
                   variant="primary-outline"
                   asChild
@@ -219,12 +288,18 @@ function Index() {
       {/* Hero Section */}
       <section
         id="home"
-        className="relative overflow-hidden bg-gradient-to-br from-primary via-brand-blue to-brand-blue-dark pt-28 pb-16 text-primary-foreground md:pt-36 md:pb-24"
+        className="relative overflow-hidden bg-black pt-28 pb-16 text-primary-foreground md:pt-36 md:pb-24"
       >
+        {/* Hyperspeed Background */}
+        <div className="pointer-events-none absolute inset-0 z-0 opacity-60">
+          <Hyperspeed effectOptions={hyperspeedOptions} />
+        </div>
+        {/* Overlay gradient for readability */}
+        <div className="pointer-events-none absolute inset-0 z-[1] bg-gradient-to-b from-[#0f1f4d]/85 via-transparent to-[#0f1f4d]/90" />
         {/* Decorative gold glow */}
-        <div className="pointer-events-none absolute -top-24 -right-24 h-96 w-96 rounded-full bg-brand-gold/20 blur-3xl" />
-        <div className="pointer-events-none absolute -bottom-32 -left-24 h-96 w-96 rounded-full bg-brand-blue-light/40 blur-3xl" />
-        <div className="container-tight relative z-10">
+        <div className="pointer-events-none absolute -top-24 -right-24 z-[2] h-96 w-96 rounded-full bg-brand-gold/20 blur-3xl" />
+        <div className="pointer-events-none absolute -bottom-32 -left-24 z-[2] h-96 w-96 rounded-full bg-brand-blue-light/40 blur-3xl" />
+        <div className="container-tight relative z-10" style={{ position: 'relative', zIndex: 10 }}>
           <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-14">
             <div className="flex flex-col items-start text-center lg:text-left">
               <span
@@ -235,11 +310,14 @@ function Index() {
                 {TAGLINE}
               </span>
               <h1
-                className="font-heading text-4xl font-extrabold leading-[1.05] tracking-tight text-white sm:text-5xl md:text-6xl lg:text-7xl animate-fade-up"
+                className="font-heading text-4xl font-extrabold leading-[1.1] tracking-tight text-white sm:text-5xl md:text-6xl lg:text-7xl animate-fade-up"
                 style={{ animationDelay: "80ms" }}
               >
-                Your Dream Home & Loan{" "}
-                <span className="gold-text italic">— One Bridge.</span>
+                <BlurText
+                  text="Your Dream Home & Loan – One Solution"
+                  animateBy="words"
+                  className="font-heading font-extrabold"
+                />
               </h1>
               <p
                 className="mt-6 max-w-xl self-center text-base leading-relaxed text-white/85 sm:text-lg lg:self-start animate-fade-up"
@@ -250,21 +328,23 @@ function Index() {
                 approvals in as little as 7 days.
               </p>
               <div className="mt-8 flex w-full flex-col gap-3 self-center sm:w-auto sm:flex-row lg:self-start">
-                <Button
-                  variant="gold"
-                  size="lg"
-                  asChild
-                  className="w-full font-heading font-bold sm:w-auto btn-sheen shadow-lg shadow-brand-gold/20"
-                >
-                  <a
-                    href={WHATSAPP_LINK}
-                    target="_blank"
-                    rel="noopener noreferrer"
+                <Magnet range={90} strength={30}>
+                  <Button
+                    variant="gold"
+                    size="lg"
+                    asChild
+                    className="w-full font-heading font-bold sm:w-auto btn-sheen shadow-lg shadow-brand-gold/20"
                   >
-                    <MessageCircle className="h-5 w-5" />
-                    WhatsApp Us
-                  </a>
-                </Button>
+                    <a
+                      href={WHATSAPP_LINK}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <MessageCircle className="h-5 w-5" />
+                      WhatsApp Us
+                    </a>
+                  </Button>
+                </Magnet>
                 <Button
                   variant="outline"
                   size="lg"
@@ -303,7 +383,7 @@ function Index() {
                   loading="eager"
                 />
               </div>
-              <div className="absolute -bottom-5 -left-5 hidden rounded-xl bg-white p-4 shadow-xl md:block animate-float-slow">
+              <div className="absolute -bottom-5 -left-5 hidden rounded-xl bg-card border border-border/40 p-4 shadow-xl md:block animate-float-slow">
                 <div className="flex items-center gap-3">
                   <div className="flex h-12 w-12 items-center justify-center rounded-full bg-accent/10">
                     <TrendingUp className="h-6 w-6 text-accent" />
@@ -326,21 +406,33 @@ function Index() {
       {/* Services Section */}
       <section id="services" className="section-padding bg-muted/30">
         <div className="container-tight">
-          <div className="mx-auto max-w-2xl text-center">
-            <span className="text-sm font-semibold uppercase tracking-wider text-primary">
+          {/* DHANSETU Big Brand Header */}
+          <div className="mx-auto max-w-3xl text-center reveal">
+            <span className="text-sm font-semibold uppercase tracking-wider text-accent">
               What We Offer
             </span>
-            <h2 className="mt-2 font-heading text-2xl font-bold text-foreground sm:text-3xl md:text-4xl">
-              Our Services
+            <h2 className="mt-3 font-heading text-5xl font-extrabold tracking-tight text-foreground sm:text-6xl md:text-7xl lg:text-8xl">
+              <ShinyText
+                text="DHANSETU"
+                speed={3.5}
+                color="#e8a33d"
+                shineColor="#ffffff"
+                spread={90}
+                className="font-heading font-extrabold"
+              />
             </h2>
-            <p className="mt-3 text-muted-foreground">
-              Complete property and finance solutions under one trusted roof.
+            <p className="mt-1 font-heading text-base font-semibold uppercase tracking-[0.25em] text-muted-foreground sm:text-lg">
+              Capital Advisory & Properties
+            </p>
+            <p className="mx-auto mt-4 max-w-xl text-muted-foreground">
+              Complete property, loan & investment solutions under one trusted roof.
             </p>
           </div>
 
-          <div className="mt-10 grid gap-6 md:grid-cols-2 lg:mt-14 [&>*]:reveal">
+          {/* Properties & Capital Advisory Cards */}
+          <div className="mt-12 grid gap-6 md:grid-cols-2 [&>*]:reveal">
             {/* Properties Card */}
-            <Card className="group overflow-hidden border-border/60 bg-card shadow-lg transition-shadow hover:shadow-xl">
+            <TiltedCard spotlightColor="rgba(232, 163, 61, 0.2)" className="group overflow-hidden border-border/60 bg-card shadow-lg transition-shadow hover:shadow-xl">
               <div className="aspect-[16/9] overflow-hidden">
                 <img
                   src="/property-apartments.jpg"
@@ -355,20 +447,20 @@ function Index() {
                 <div className="mb-2 flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10">
                   <Building2 className="h-5 w-5 text-primary" />
                 </div>
-                <CardTitle className="font-heading text-xl font-bold text-foreground">
-                  DHANSETU PROPERTIES
+                <CardTitle className="font-heading text-lg font-bold text-foreground">
+                  Properties
                 </CardTitle>
                 <CardDescription className="text-sm text-muted-foreground">
                   Buy your dream property with complete legal support.
                 </CardDescription>
               </CardHeader>
-              <CardContent className="space-y-3">
+              <CardContent className="space-y-2.5">
                 {[
-                  "Sells Flats, Plots, Houses & Commercial Spaces",
+                  "Flats, Plots, Houses & Commercial Spaces",
                   "RERA Approved Projects in Kolkata & Nearby",
                   "Full Legal Documentation Support",
                 ].map((item) => (
-                  <div key={item} className="flex items-start gap-2.5">
+                  <div key={item} className="flex items-start gap-2">
                     <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-accent" />
                     <span className="text-sm text-foreground/80">{item}</span>
                   </div>
@@ -390,10 +482,10 @@ function Index() {
                   </a>
                 </Button>
               </CardContent>
-            </Card>
+            </TiltedCard>
 
             {/* Capital Advisory Card */}
-            <Card className="group overflow-hidden border-border/60 bg-card shadow-lg transition-shadow hover:shadow-xl">
+            <TiltedCard spotlightColor="rgba(232, 163, 61, 0.2)" className="group overflow-hidden border-border/60 bg-card shadow-lg transition-shadow hover:shadow-xl">
               <div className="aspect-[16/9] overflow-hidden">
                 <img
                   src="/capital-advisory.jpg"
@@ -408,20 +500,24 @@ function Index() {
                 <div className="mb-2 flex h-10 w-10 items-center justify-center rounded-lg bg-accent/10">
                   <TrendingUp className="h-5 w-5 text-accent" />
                 </div>
-                <CardTitle className="font-heading text-xl font-bold text-foreground">
-                  DHANSETU CAPITAL ADVISORY
+                <CardTitle className="font-heading text-lg font-bold text-foreground">
+                  Capital Advisory
                 </CardTitle>
                 <CardDescription className="text-sm text-muted-foreground">
                   Loans made simple with 20+ banking partners.
                 </CardDescription>
               </CardHeader>
-              <CardContent className="space-y-3">
+              <CardContent className="space-y-2">
                 {[
-                  "Home Loan, Business Loan, Loan Against Property",
+                  "Personal Loan, Business Loan, Home Loan",
+                  "Mortgage Loan, Land Purchase Loan, Gold Loan",
+                  "Education Loan, Car Loan",
+                  "Mutual Fund, PMS, Bonds, Demat",
+                  "Insurance (GI, LI, HI) & Any Investment",
                   "Tied up with 20+ Banks & NBFCs",
                   "Low Interest Rate | Fast Approval in 7 Days",
                 ].map((item) => (
-                  <div key={item} className="flex items-start gap-2.5">
+                  <div key={item} className="flex items-start gap-2">
                     <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-accent" />
                     <span className="text-sm text-foreground/80">{item}</span>
                   </div>
@@ -430,7 +526,7 @@ function Index() {
               <CardContent className="pt-0">
                 <Button
                   variant="gold"
-                  className="w-full font-heading font-semibold"
+                  className="w-full font-heading font-semibold btn-sheen"
                   asChild
                 >
                   <a
@@ -443,7 +539,82 @@ function Index() {
                   </a>
                 </Button>
               </CardContent>
-            </Card>
+            </TiltedCard>
+          </div>
+
+          {/* Services Grid — Full Financial Services */}
+          <div className="mt-14 reveal">
+            <div className="mb-8 text-center">
+              <h3 className="font-heading text-2xl font-bold text-foreground sm:text-3xl">
+                Our{" "}
+                <ShinyText
+                  text="Financial Services"
+                  speed={2.5}
+                  color="#D4A843"
+                  shineColor="#fff8e1"
+                  spread={120}
+                  className="font-heading font-bold"
+                />
+              </h3>
+              <p className="mt-2 text-sm text-muted-foreground">
+                Loans, Investments & Insurance — all under one roof with 20+ banking partners.
+              </p>
+            </div>
+
+            <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 [&>*]:reveal">
+              {[
+                { icon: Home, label: "Home Loan", desc: "Best rates for your dream home" },
+                { icon: Briefcase, label: "Personal Loan", desc: "Quick personal finance solutions" },
+                { icon: Landmark, label: "Business Loan", desc: "Fuel your business growth" },
+                { icon: Building2, label: "Mortgage Loan", desc: "Loan against your property" },
+                { icon: Mountain, label: "Land Purchase Loan", desc: "Finance your land purchase" },
+                { icon: Gem, label: "Gold Loan", desc: "Instant loan against gold" },
+                { icon: GraduationCap, label: "Education Loan", desc: "Invest in your future" },
+                { icon: Car, label: "Car Loan", desc: "Drive your dream car today" },
+                { icon: PiggyBank, label: "Mutual Fund", desc: "Smart SIP & lump sum investments" },
+                { icon: ShieldCheck, label: "General Insurance", desc: "Protect your assets" },
+                { icon: HeartPulse, label: "Health Insurance", desc: "Secure your family's health" },
+                { icon: Shield, label: "Life Insurance", desc: "Financial safety for loved ones" },
+                { icon: LineChart, label: "PMS", desc: "Portfolio Management Service" },
+                { icon: BarChart3, label: "Bonds", desc: "Fixed income investments" },
+                { icon: Wallet, label: "Demat Account", desc: "Open your demat & trading" },
+                { icon: CircleDollarSign, label: "Other Investments", desc: "Customised investment solutions" },
+              ].map((service) => (
+                <SpotlightCard
+                  key={service.label}
+                  className="group transition-all duration-300 hover:-translate-y-1"
+                  spotlightColor="rgba(212, 168, 67, 0.15)"
+                >
+                  <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br from-primary/20 to-accent/20 transition-colors duration-300 group-hover:from-primary/30 group-hover:to-accent/30">
+                    <service.icon className="h-5 w-5 text-primary transition-colors duration-300 group-hover:text-accent" />
+                  </div>
+                  <h4 className="mt-3 font-heading text-sm font-bold text-white">
+                    {service.label}
+                  </h4>
+                  <p className="mt-1 text-xs leading-relaxed text-white/60">
+                    {service.desc}
+                  </p>
+                </SpotlightCard>
+              ))}
+            </div>
+
+            <div className="mt-8 text-center">
+              <Button
+                variant="gold"
+                size="lg"
+                asChild
+                className="font-heading font-bold btn-sheen shadow-lg shadow-brand-gold/20"
+              >
+                <a
+                  href={WHATSAPP_LINK}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <MessageCircle className="h-5 w-5" />
+                  Enquire About Any Service
+                </a>
+              </Button>
+            </div>
           </div>
         </div>
       </section>
@@ -464,7 +635,7 @@ function Index() {
             </p>
           </div>
 
-          <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:mt-14 lg:grid-cols-3 [&>*]:reveal">
+          <AnimatedList className="mt-10 grid gap-6 sm:grid-cols-2 lg:mt-14 lg:grid-cols-3">
             {[
               {
                 icon: Home,
@@ -484,7 +655,7 @@ function Index() {
             ].map((feature) => (
               <Card
                 key={feature.title}
-                className="border-border/60 bg-card p-6 text-center shadow-md transition-shadow hover:shadow-lg"
+                className="border-border/60 bg-card p-6 text-center shadow-md transition-shadow hover:shadow-lg h-full"
               >
                 <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-primary/10">
                   <feature.icon className="h-6 w-6 text-primary" />
@@ -497,7 +668,7 @@ function Index() {
                 </p>
               </Card>
             ))}
-          </div>
+          </AnimatedList>
         </div>
       </section>
 
@@ -518,14 +689,14 @@ function Index() {
               </div>
             </div>
             <div className="order-1 lg:order-2">
-              <span className="text-sm font-semibold uppercase tracking-wider text-primary">
+              <span className="text-sm font-semibold uppercase tracking-wider text-accent">
                 About Us
               </span>
               <h2 className="mt-2 font-heading text-2xl font-bold text-foreground sm:text-3xl md:text-4xl">
                 Building Trust, Fulfilling Dreams
               </h2>
               <p className="mt-4 text-base leading-relaxed text-muted-foreground">
-                Founded in 2026, Dhansetu is committed to fulfilling your dreams.
+                Founded in <CountUp end={2026} duration={1.2} /> by <span className="font-semibold text-foreground">Paromita Sutradhar</span>, Dhansetu is committed to fulfilling your dreams.
                 We provide honest advice, fast service and complete support for
                 your Property and Finance needs.
               </p>
@@ -536,16 +707,16 @@ function Index() {
               </p>
               <div className="mt-8 grid grid-cols-2 gap-4 sm:grid-cols-3">
                 {[
-                  { value: "10+", label: "Years Experience" },
-                  { value: "20+", label: "Bank Partners" },
-                  { value: "7", label: "Days Approval" },
+                  { value: 10, suffix: "+", label: "Years Experience" },
+                  { value: 20, suffix: "+", label: "Bank Partners" },
+                  { value: 7, suffix: "", label: "Days Approval" },
                 ].map((stat) => (
                   <div
-                    key={stat.label}
-                    className="rounded-xl bg-card p-4 text-center shadow-sm"
+                     key={stat.label}
+                     className="rounded-xl bg-card p-4 text-center shadow-sm"
                   >
                     <p className="font-heading text-2xl font-bold text-primary">
-                      {stat.value}
+                      <CountUp end={stat.value} suffix={stat.suffix} />
                     </p>
                     <p className="mt-1 text-xs text-muted-foreground">
                       {stat.label}
@@ -562,7 +733,7 @@ function Index() {
       <section id="contact" className="section-padding bg-background">
         <div className="container-tight">
           <div className="mx-auto max-w-3xl text-center">
-            <span className="text-sm font-semibold uppercase tracking-wider text-primary">
+            <span className="text-sm font-semibold uppercase tracking-wider text-accent">
               Get In Touch
             </span>
             <h2 className="mt-2 font-heading text-2xl font-bold text-foreground sm:text-3xl md:text-4xl">
@@ -650,35 +821,50 @@ function Index() {
             </Card>
           </div>
 
-          <div className="reveal relative mt-12 overflow-hidden rounded-2xl bg-gradient-to-br from-primary via-brand-blue to-brand-blue-dark p-8 text-center text-primary-foreground md:p-14">
-            <div className="pointer-events-none absolute -top-16 -right-16 h-64 w-64 rounded-full bg-brand-gold/20 blur-3xl" />
-            <div className="pointer-events-none absolute -bottom-20 -left-16 h-64 w-64 rounded-full bg-brand-blue-light/40 blur-3xl" />
-            <div className="relative">
-            <span className="mb-3 inline-block rounded-full border border-brand-gold/40 bg-white/10 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.22em] text-brand-gold-light">
-              {TAGLINE}
-            </span>
-            <h3 className="font-heading text-3xl font-bold leading-tight md:text-4xl">
-              Get Your <span className="gold-text italic">Free Consultation</span> Today
-            </h3>
-            <p className="mx-auto mt-3 max-w-xl text-white/85">
-              Talk to our experts and get personalized property and loan advice
-              — completely free.
-            </p>
-            <Button
-              variant="gold"
-              size="lg"
-              asChild
-              className="mt-6 font-heading font-bold btn-sheen shadow-lg shadow-brand-gold/20"
-            >
-              <a
-                href={WHATSAPP_LINK}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <MessageCircle className="h-5 w-5" />
-                WhatsApp Us Now
-              </a>
-            </Button>
+          <div className="reveal relative mt-12 overflow-hidden rounded-2xl bg-black border border-border/40 p-8 text-center text-primary-foreground md:p-14">
+            {/* FloatingLines Background */}
+            <div className="pointer-events-none absolute inset-0 z-0 opacity-70">
+              <FloatingLines
+                linesGradient={["#1a3fa0", "#e8a33d", "#ffffff"]}
+                enabledWaves={['top', 'middle', 'bottom']}
+                lineCount={[8, 12, 16]}
+                lineDistance={[6, 5, 4]}
+                bendRadius={6.0}
+                bendStrength={-0.6}
+                interactive={true}
+                parallax={true}
+              />
+            </div>
+            {/* Overlay gradient for readability */}
+            <div className="pointer-events-none absolute inset-0 z-[1] bg-gradient-to-b from-[#0f1f4d]/85 via-transparent to-[#0f1f4d]/90" />
+            <div className="relative z-10">
+              <span className="mb-3 inline-block rounded-full border border-brand-gold/40 bg-white/10 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.22em] text-brand-gold-light">
+                {TAGLINE}
+              </span>
+              <h3 className="font-heading text-3xl font-bold leading-tight md:text-4xl">
+                Get Your <span className="gold-text italic">Free Consultation</span> Today
+              </h3>
+              <p className="mx-auto mt-3 max-w-xl text-white/85">
+                Talk to our experts and get personalized property and loan advice
+                — completely free.
+              </p>
+              <Magnet range={90} strength={30}>
+                <Button
+                  variant="gold"
+                  size="lg"
+                  asChild
+                  className="mt-6 font-heading font-bold btn-sheen shadow-lg shadow-brand-gold/20"
+                >
+                  <a
+                    href={WHATSAPP_LINK}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <MessageCircle className="h-5 w-5" />
+                    WhatsApp Us Now
+                  </a>
+                </Button>
+              </Magnet>
             </div>
           </div>
         </div>
