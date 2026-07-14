@@ -162,7 +162,6 @@ function Index() {
       gestureOrientation: 'vertical',
       smoothWheel: true,
       wheelMultiplier: 1,
-      smoothTouch: false,
       touchMultiplier: 2,
       infinite: false,
     });
@@ -825,11 +824,11 @@ function Index() {
                   </div>
                   <div className="mt-6 flex items-center gap-3">
                     <div className="h-10 w-10 rounded-full bg-accent/20 flex items-center justify-center font-heading font-bold text-accent">
-                      রা
+                      সু
                     </div>
                     <div>
-                      <h4 className="text-sm font-bold text-foreground">মিঃ রায়</h4>
-                      <p className="text-xs text-muted-foreground">কলকাতা</p>
+                      <h4 className="text-sm font-bold text-foreground">সুদীপ্ত ঘোষ</h4>
+                      <p className="text-xs text-muted-foreground">টালিগঞ্জ</p>
                     </div>
                   </div>
                 </div>
@@ -845,16 +844,16 @@ function Index() {
                       ))}
                     </div>
                     <p className="font-heading text-lg font-medium italic leading-relaxed text-white/90">
-                      "ফ্ল্যাট কেনার সময় সব লিগ্যাল কাগজপত্র ধনসেতু নিজে দেখে দিয়েছে। কোনো টেনশন ছাড়াই কাজ হয়ে গেল।"
+                      "জমির মিউটেশন নিয়ে অনেকদিন ধরে ভুগছিলাম। ধনসেতুর টিম সরকারি অফিসের সব কাজ সামলে দিয়েছে, খুব স্বস্তি পেলাম।"
                     </p>
                   </div>
                   <div className="mt-6 flex items-center gap-3">
                     <div className="h-10 w-10 rounded-full bg-primary/20 flex items-center justify-center font-heading font-bold text-primary">
-                      শ
+                      গো
                     </div>
                     <div>
-                      <h4 className="text-sm font-bold text-foreground">শর্মিষ্ঠা দে</h4>
-                      <p className="text-xs text-muted-foreground">ডানলপ</p>
+                      <h4 className="text-sm font-bold text-foreground">গোবিন্দ খানতুয়া</h4>
+                      <p className="text-xs text-muted-foreground">মেদিনীপুর</p>
                     </div>
                   </div>
                 </div>
@@ -875,11 +874,11 @@ function Index() {
                   </div>
                   <div className="mt-6 flex items-center gap-3">
                     <div className="h-10 w-10 rounded-full bg-accent/20 flex items-center justify-center font-heading font-bold text-accent">
-                      সু
+                      মা
                     </div>
                     <div>
-                      <h4 className="text-sm font-bold text-foreground">সুব্রত ঘোষ</h4>
-                      <p className="text-xs text-muted-foreground">কলকাতা</p>
+                      <h4 className="text-sm font-bold text-foreground">মানবেন্দ্র দণ্ডপাট</h4>
+                      <p className="text-xs text-muted-foreground">বরানগর</p>
                     </div>
                   </div>
                 </div>
@@ -903,8 +902,8 @@ function Index() {
                       আ
                     </div>
                     <div>
-                      <h4 className="text-sm font-bold text-foreground">আনন্দ বসাক</h4>
-                      <p className="text-xs text-muted-foreground">ব্যারাকপুর</p>
+                      <h4 className="text-sm font-bold text-foreground">আশিস দত্ত</h4>
+                      <p className="text-xs text-muted-foreground">বরানগর</p>
                     </div>
                   </div>
                 </div>
@@ -920,16 +919,66 @@ function Index() {
                       ))}
                     </div>
                     <p className="font-heading text-lg font-medium italic leading-relaxed text-white/90">
-                      "জমির মিউটেশন নিয়ে অনেকদিন ধরে ভুগছিলাম। ধনসেতুর টিম সরকারি অফিসের সব কাজ সামলে দিয়েছে, খুব স্বস্তি পেলাম।"
+                      "ফ্ল্যাট কেনার সময় সব লিগ্যাল কাগজপত্র ধনসেতু নিজে দেখে দিয়েছে। কোনো টেনশন ছাড়াই কাজ হয়ে গেল।"
                     </p>
                   </div>
                   <div className="mt-6 flex items-center gap-3">
                     <div className="h-10 w-10 rounded-full bg-accent/20 flex items-center justify-center font-heading font-bold text-accent">
-                      রি
+                      ত
                     </div>
                     <div>
-                      <h4 className="text-sm font-bold text-foreground">রিনা চ্যাটার্জী</h4>
-                      <p className="text-xs text-muted-foreground">কলকাতা</p>
+                      <h4 className="text-sm font-bold text-foreground">তন্ময় দাস</h4>
+                      <p className="text-xs text-muted-foreground">ডানলপ</p>
+                    </div>
+                  </div>
+                </div>
+              </ScrollStackItem>
+
+              {/* Testimonial 6 */}
+              <ScrollStackItem>
+                <div className="flex flex-col justify-between h-full">
+                  <div>
+                    <div className="flex gap-1 mb-4 text-brand-gold">
+                      {[...Array(5)].map((_, i) => (
+                        <span key={i} className="text-lg">★</span>
+                      ))}
+                    </div>
+                    <p className="font-heading text-lg font-medium italic leading-relaxed text-white/90">
+                      "ডিম্যাট অ্যাকাউন্ট খোলা থেকে শুরু করে ইনভেস্টমেন্ট পরামর্শ, সব কিছু ধনসেতু খুব সহজভাবে বুঝিয়ে দিয়েছে।"
+                    </p>
+                  </div>
+                  <div className="mt-6 flex items-center gap-3">
+                    <div className="h-10 w-10 rounded-full bg-primary/20 flex items-center justify-center font-heading font-bold text-primary">
+                      মো
+                    </div>
+                    <div>
+                      <h4 className="text-sm font-bold text-foreground">মোঃ সুলতান</h4>
+                      <p className="text-xs text-muted-foreground">কামারহাটি</p>
+                    </div>
+                  </div>
+                </div>
+              </ScrollStackItem>
+
+              {/* Testimonial 7 */}
+              <ScrollStackItem>
+                <div className="flex flex-col justify-between h-full">
+                  <div>
+                    <div className="flex gap-1 mb-4 text-brand-gold">
+                      {[...Array(5)].map((_, i) => (
+                        <span key={i} className="text-lg">★</span>
+                      ))}
+                    </div>
+                    <p className="font-heading text-lg font-medium italic leading-relaxed text-white/90">
+                      "লোনের জন্য অনেক জায়গায় ঘুরেছি, কিন্তু ধনসেতুর মতো সৎ এবং দ্রুত সার্ভিস কোথাও পাইনি।"
+                    </p>
+                  </div>
+                  <div className="mt-6 flex items-center gap-3">
+                    <div className="h-10 w-10 rounded-full bg-accent/20 flex items-center justify-center font-heading font-bold text-accent">
+                      রা
+                    </div>
+                    <div>
+                      <h4 className="text-sm font-bold text-foreground">রাহুল ব্যানার্জী</h4>
+                      <p className="text-xs text-muted-foreground">দমদম</p>
                     </div>
                   </div>
                 </div>
