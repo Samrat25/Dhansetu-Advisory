@@ -50,6 +50,10 @@ import {
   Wallet,
   Layers,
   CircleDollarSign,
+  CreditCard,
+  Bike,
+  Banknote,
+  ShieldAlert,
 } from "lucide-react";
 
 export const Route = createFileRoute("/")({
@@ -58,10 +62,11 @@ export const Route = createFileRoute("/")({
 
 const WHATSAPP_NUMBER = "918240349546";
 const PHONE_PRIMARY = "+91 82403 49546";
-const PHONE_LANDLINE = "+91 33 7963 3264";
+const PHONE_LANDLINE = "033-79633264";
 const EMAIL = "contact.dhansetuadvisory@gmail.com";
-const ADDRESS = "18/1, Vivekananda Road, Dunlop, Kolkata - 108";
-const TAGLINE = "আপনার টাকার সমস্যার সেতু";
+const ADDRESS = "18/1, Vivekananda Road, Dunlop, Kolkata - 700108";
+const TAGLINE = "All Your Financial Needs Under One Roof";
+const SLOGAN = "Your Financial Partner for a Better Tomorrow";
 
 // Helper function to create WhatsApp link with pre-filled message
 const getWhatsAppLink = (message: string) => {
@@ -223,10 +228,10 @@ function Index() {
           >
             <img
               src="/logo.png"
-              alt="DHANSETU logo"
-              width={44}
-              height={44}
-              className="h-11 w-auto md:h-12 drop-shadow-sm"
+              alt="DHANSETU Capital Advisory logo"
+              width={48}
+              height={48}
+              className="h-11 w-11 rounded-full object-cover border-2 border-brand-gold/60 shadow-md"
             />
             <div className="hidden flex-col items-start sm:flex">
               <span className="font-heading text-xl font-bold leading-none text-foreground md:text-2xl tracking-tight">
@@ -371,7 +376,7 @@ function Index() {
                 style={{ animationDelay: "80ms" }}
               >
                 <BlurText
-                  text="Your Home & Loan Solution - All Under One Roof"
+                  text="All Your Financial Needs Under One Roof"
                   animateBy="words"
                   className="font-heading font-extrabold"
                 />
@@ -380,15 +385,15 @@ function Index() {
                 className="mt-3 text-lg font-semibold text-brand-gold-light tracking-wide animate-fade-up md:text-xl lg:text-2xl"
                 style={{ animationDelay: "130ms" }}
               >
-                বাড়ি কিনবেন? লোন লাগবে? সব পাবেন এক জায়গায়
+                {SLOGAN}
               </p>
               <p
                 className="mt-6 max-w-xl self-center text-base leading-relaxed text-white/85 sm:text-lg lg:self-start animate-fade-up"
                 style={{ animationDelay: "180ms" }}
               >
-                DHANSETU is your bridge to the perfect property and the right
-                loan in Kolkata — honest advisory, 50+ banking partners,
-                approvals in as little as 7 days.
+                DHANSETU CAPITAL ADVISORY is your trusted partner for Loans,
+                Insurance, Investments, and Property Solutions in Kolkata — honest advisory,
+                50+ banking partners, approvals in as little as 7 days.
               </p>
               <div className="mt-8 flex w-full flex-col gap-3 self-center sm:w-auto sm:flex-row lg:self-start">
                 <Magnet range={90} strength={30}>
@@ -572,16 +577,16 @@ function Index() {
               </CardHeader>
               <CardContent className="space-y-2">
                 {[
-                  "Personal Loan, Business Loan, Home Loan",
-                  "Mortgage Loan, Land Purchase Loan, Gold Loan",
-                  "Education Loan, Car Loan",
-                  "Mutual Fund, PMS, Bonds, Demat Account",
-                  "Insurance (GI, LI, HI) & Any Investment",
-                  "Legal Advisory & Documentation Support",
-                  "Property Valuation Services",
-                  "Mutation Assistance",
-                  "Tied up with 50+ Banks & NBFCs",
-                  "Low Interest Rate | Fast Approval in 7 Days",
+                  "Home Loan, Personal Loan, Business Loan",
+                  "Mortgage Loan, Land / Plot Purchase Loan, Gold Loan",
+                  "Car Loan, Education Loan, Credit Card",
+                  "Cash Credit (CC) & Over Draft (OD) Loan",
+                  "Mutual Fund, PMS, Fixed Deposit (FD), Demat Account",
+                  "Health, Life, Motor (Car/Bike) & EMI Protect Insurance",
+                  "Property Legal Advisory & Documentation Support",
+                  "Certified Property Valuation Services",
+                  "Government Mutation & Land Record Assistance",
+                  "Tied up with 50+ Banks & NBFCs | Fast Approvals in 7 Days",
                 ].map((item) => (
                   <div key={item} className="flex items-start gap-2">
                     <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-accent" />
@@ -623,31 +628,44 @@ function Index() {
                 />
               </h3>
               <p className="mt-2 text-sm text-muted-foreground">
-                Loans, Investments & Insurance — all under one roof with 50+ banking partners.
+                Loans, Insurance, Investments & Advisory — all your financial needs under one roof.
               </p>
             </div>
 
             <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 [&>*]:reveal">
               {[
-                { icon: Home, label: "Home Loan", desc: "Best rates for your dream home" },
-                { icon: Briefcase, label: "Personal Loan", desc: "Quick personal finance solutions" },
-                { icon: Landmark, label: "Business Loan", desc: "Fuel your business growth" },
-                { icon: Building2, label: "Mortgage Loan", desc: "Loan against your property" },
-                { icon: Mountain, label: "Land Purchase Loan", desc: "Finance your land purchase" },
-                { icon: Gem, label: "Gold Loan", desc: "Instant loan against gold" },
-                { icon: GraduationCap, label: "Education Loan", desc: "Invest in your future" },
-                { icon: Car, label: "Car Loan", desc: "Drive your dream car today" },
-                { icon: PiggyBank, label: "Mutual Fund", desc: "Smart SIP & lump sum investments" },
-                { icon: ShieldCheck, label: "General Insurance", desc: "Protect your assets" },
-                { icon: HeartPulse, label: "Health Insurance", desc: "Secure your family's health" },
-                { icon: Shield, label: "Life Insurance", desc: "Financial safety for loved ones" },
-                { icon: LineChart, label: "PMS", desc: "Portfolio Management Service" },
-                { icon: BarChart3, label: "Bonds", desc: "Fixed income investments" },
-                { icon: Wallet, label: "Demat Account", desc: "Open your demat & trading" },
-                { icon: CircleDollarSign, label: "Other Investments", desc: "Customised investment solutions" },
-                { icon: ShieldCheck, label: "Legal Advisory", desc: "Property legal check, documentation & agreement verification" },
-                { icon: Building2, label: "Property Valuation", desc: "Certified property valuation for sale, loan or legal purposes" },
-                { icon: Layers, label: "Mutation Services", desc: "Land/property mutation assistance with government records" },
+                // LOANS
+                { icon: Home, label: "Home Loan", desc: "Build your dream home with lowest interest rates" },
+                { icon: Briefcase, label: "Personal Loan", desc: "Quick funds for all your personal needs" },
+                { icon: Landmark, label: "Business Loan", desc: "Fuel & expand your business growth easily" },
+                { icon: Building2, label: "Mortgage Loan", desc: "Unlock maximum value against your property" },
+                { icon: Mountain, label: "Land / Plot Purchase Loan", desc: "Finance & invest in your future land & plots" },
+                { icon: GraduationCap, label: "Education Loan", desc: "Bright future and higher education for your child" },
+                { icon: Car, label: "Car Loan", desc: "Drive your dream car with flexible EMIs" },
+                { icon: CreditCard, label: "Credit Card", desc: "More freedom, rewards & lifestyle privileges" },
+                { icon: Banknote, label: "Cash Credit (CC) Loan", desc: "Manage working capital & smooth cash flow" },
+                { icon: Landmark, label: "Over Draft (OD) Loan", desc: "Stay flexible with an instant credit overdraft line" },
+                { icon: Gem, label: "Gold Loan", desc: "Instant low-rate cash liquidity against gold" },
+
+                // INSURANCE
+                { icon: HeartPulse, label: "Health Insurance", desc: "Healthier you, safer family & secure future" },
+                { icon: Car, label: "Car Insurance", desc: "Drive safe & stay completely protected on the road" },
+                { icon: Bike, label: "Bike Insurance", desc: "Ride safe with instant two-wheeler coverage" },
+                { icon: ShieldAlert, label: "EMI Protect Insurance", desc: "Your loan EMIs, our comprehensive protection" },
+                { icon: ShieldCheck, label: "General Insurance", desc: "Wide coverage & complete asset protection" },
+                { icon: Shield, label: "Life Insurance", desc: "Financial security & safety for your loved ones" },
+
+                // INVESTMENTS & WEALTH CREATION
+                { icon: PiggyBank, label: "Mutual Fund", desc: "Smart SIP & lump sum disciplined wealth creation" },
+                { icon: Wallet, label: "Demat Account", desc: "Trade smart & invest better in equity markets" },
+                { icon: LineChart, label: "PMS", desc: "Portfolio Management Service for higher returns" },
+                { icon: Landmark, label: "Fixed Deposit (FD)", desc: "Safe investment with assured stable returns" },
+                { icon: BarChart3, label: "Bonds", desc: "Secure fixed-income institutional investments" },
+
+                // PROPERTY & ADVISORY
+                { icon: ShieldCheck, label: "Legal Advisory", desc: "Property legal check & agreement verification" },
+                { icon: Building2, label: "Property Valuation", desc: "Certified property valuation for sale & loan" },
+                { icon: Layers, label: "Mutation Services", desc: "Government land record & mutation assistance" },
               ].map((service) => (
                 <SpotlightCard
                   key={service.label}
@@ -825,16 +843,16 @@ function Index() {
                       ))}
                     </div>
                     <p className="font-heading text-lg font-medium italic leading-relaxed text-white/90">
-                      "৭ দিনের মধ্যে লোন অ্যাপ্রুভাল হয়ে গেছে। ধন্যবাদ ধনসেতু, আপনাদের জন্যই আমার স্বপ্নের বাড়ি হলো।"
+                      "Got my loan approved within 7 days. Thank you DhanSetu, my dream home became a reality because of you."
                     </p>
                   </div>
                   <div className="mt-6 flex items-center gap-3">
                     <div className="h-10 w-10 rounded-full bg-accent/20 flex items-center justify-center font-heading font-bold text-accent">
-                      সু
+                      SG
                     </div>
                     <div>
-                      <h4 className="text-sm font-bold text-foreground">সুদীপ্ত ঘোষ</h4>
-                      <p className="text-xs text-muted-foreground">টালিগঞ্জ</p>
+                      <h4 className="text-sm font-bold text-foreground">Sudipta Ghosh</h4>
+                      <p className="text-xs text-muted-foreground">Tollygunge</p>
                     </div>
                   </div>
                 </div>
@@ -850,16 +868,16 @@ function Index() {
                       ))}
                     </div>
                     <p className="font-heading text-lg font-medium italic leading-relaxed text-white/90">
-                      "জমির মিউটেশন নিয়ে অনেকদিন ধরে ভুগছিলাম। ধনসেতুর টিম সরকারি অফিসের সব কাজ সামলে দিয়েছে, খুব স্বস্তি পেলাম।"
+                      "Was struggling with land mutation for months. The DhanSetu team handled all the government paperwork effortlessly, such a relief!"
                     </p>
                   </div>
                   <div className="mt-6 flex items-center gap-3">
                     <div className="h-10 w-10 rounded-full bg-primary/20 flex items-center justify-center font-heading font-bold text-primary">
-                      গো
+                      GK
                     </div>
                     <div>
-                      <h4 className="text-sm font-bold text-foreground">গোবিন্দ খানতুয়া</h4>
-                      <p className="text-xs text-muted-foreground">মেদিনীপুর</p>
+                      <h4 className="text-sm font-bold text-foreground">Gobinda Khantua</h4>
+                      <p className="text-xs text-muted-foreground">Midnapore</p>
                     </div>
                   </div>
                 </div>
@@ -875,16 +893,16 @@ function Index() {
                       ))}
                     </div>
                     <p className="font-heading text-lg font-medium italic leading-relaxed text-white/90">
-                      "ব্যবসার জন্য লোন দরকার ছিল, কিন্তু ব্যাংকে গিয়ে বারবার হয়রানি হচ্ছিলাম। ধনসেতু এক জায়গায় দাঁড়িয়ে সব ব্যবস্থা করে দিলো।"
+                      "Needed a business loan and was exhausted running around banks. DhanSetu arranged everything under one roof smoothly."
                     </p>
                   </div>
                   <div className="mt-6 flex items-center gap-3">
                     <div className="h-10 w-10 rounded-full bg-accent/20 flex items-center justify-center font-heading font-bold text-accent">
-                      মা
+                      MD
                     </div>
                     <div>
-                      <h4 className="text-sm font-bold text-foreground">মানবেন্দ্র দণ্ডপাট</h4>
-                      <p className="text-xs text-muted-foreground">বরানগর</p>
+                      <h4 className="text-sm font-bold text-foreground">Manabendra Dandapat</h4>
+                      <p className="text-xs text-muted-foreground">Baranagar</p>
                     </div>
                   </div>
                 </div>
@@ -900,16 +918,16 @@ function Index() {
                       ))}
                     </div>
                     <p className="font-heading text-lg font-medium italic leading-relaxed text-white/90">
-                      "প্রপার্টি ভ্যালুয়েশন খুব দ্রুত এবং সঠিকভাবে করে দিয়েছে। ব্যাংক লোনের জন্য এটা খুব দরকার ছিল।"
+                      "Property valuation was completed swiftly and accurately, which was essential for our bank loan approval."
                     </p>
                   </div>
                   <div className="mt-6 flex items-center gap-3">
                     <div className="h-10 w-10 rounded-full bg-primary/20 flex items-center justify-center font-heading font-bold text-primary">
-                      আ
+                      AD
                     </div>
                     <div>
-                      <h4 className="text-sm font-bold text-foreground">আশিস দত্ত</h4>
-                      <p className="text-xs text-muted-foreground">বরানগর</p>
+                      <h4 className="text-sm font-bold text-foreground">Ashish Dutta</h4>
+                      <p className="text-xs text-muted-foreground">Baranagar</p>
                     </div>
                   </div>
                 </div>
@@ -925,16 +943,16 @@ function Index() {
                       ))}
                     </div>
                     <p className="font-heading text-lg font-medium italic leading-relaxed text-white/90">
-                      "ফ্ল্যাট কেনার সময় সব লিগ্যাল কাগজপত্র ধনসেতু নিজে দেখে দিয়েছে। কোনো টেনশন ছাড়াই কাজ হয়ে গেল।"
+                      "DhanSetu verified all legal property documents during our flat purchase. Complete peace of mind without any hassle."
                     </p>
                   </div>
                   <div className="mt-6 flex items-center gap-3">
                     <div className="h-10 w-10 rounded-full bg-accent/20 flex items-center justify-center font-heading font-bold text-accent">
-                      ত
+                      TD
                     </div>
                     <div>
-                      <h4 className="text-sm font-bold text-foreground">তন্ময় দাস</h4>
-                      <p className="text-xs text-muted-foreground">ডানলপ</p>
+                      <h4 className="text-sm font-bold text-foreground">Tanmoy Das</h4>
+                      <p className="text-xs text-muted-foreground">Dunlop</p>
                     </div>
                   </div>
                 </div>
@@ -950,16 +968,16 @@ function Index() {
                       ))}
                     </div>
                     <p className="font-heading text-lg font-medium italic leading-relaxed text-white/90">
-                      "ডিম্যাট অ্যাকাউন্ট খোলা থেকে শুরু করে ইনভেস্টমেন্ট পরামর্শ, সব কিছু ধনসেতু খুব সহজভাবে বুঝিয়ে দিয়েছে।"
+                      "From opening a Demat account to investment guidance, DhanSetu explained everything with utmost clarity and patience."
                     </p>
                   </div>
                   <div className="mt-6 flex items-center gap-3">
                     <div className="h-10 w-10 rounded-full bg-primary/20 flex items-center justify-center font-heading font-bold text-primary">
-                      মো
+                      MS
                     </div>
                     <div>
-                      <h4 className="text-sm font-bold text-foreground">মোঃ সুলতান</h4>
-                      <p className="text-xs text-muted-foreground">কামারহাটি</p>
+                      <h4 className="text-sm font-bold text-foreground">Md. Sultan</h4>
+                      <p className="text-xs text-muted-foreground">Kamarhati</p>
                     </div>
                   </div>
                 </div>
@@ -975,16 +993,16 @@ function Index() {
                       ))}
                     </div>
                     <p className="font-heading text-lg font-medium italic leading-relaxed text-white/90">
-                      "লোনের জন্য অনেক জায়গায় ঘুরেছি, কিন্তু ধনসেতুর মতো সৎ এবং দ্রুত সার্ভিস কোথাও পাইনি।"
+                      "Applied for loans at several places, but never experienced service as transparent and fast as DhanSetu."
                     </p>
                   </div>
                   <div className="mt-6 flex items-center gap-3">
                     <div className="h-10 w-10 rounded-full bg-accent/20 flex items-center justify-center font-heading font-bold text-accent">
-                      রা
+                      RB
                     </div>
                     <div>
-                      <h4 className="text-sm font-bold text-foreground">রাহুল ব্যানার্জী</h4>
-                      <p className="text-xs text-muted-foreground">দমদম</p>
+                      <h4 className="text-sm font-bold text-foreground">Rahul Banerjee</h4>
+                      <p className="text-xs text-muted-foreground">Dum Dum</p>
                     </div>
                   </div>
                 </div>
@@ -1020,20 +1038,35 @@ function Index() {
                   Call Us
                 </h3>
                 <p className="mt-2 text-sm text-muted-foreground">
-                  {PHONE_PRIMARY}
-                  <br />
-                  {PHONE_LANDLINE}
-                </p>
-                <Button
-                  variant="primary-outline"
-                  size="sm"
-                  asChild
-                  className="mt-4 font-heading font-semibold"
-                >
-                  <a href={`tel:${PHONE_PRIMARY.replace(/\s/g, "")}`}>
-                    Call Now
+                  <a href={`tel:${PHONE_PRIMARY.replace(/\s/g, "")}`} className="block hover:text-primary transition-colors">
+                    <span className="font-semibold text-foreground">Mobile:</span> {PHONE_PRIMARY}
                   </a>
-                </Button>
+                  <a href={`tel:${PHONE_LANDLINE.replace(/[-\s]/g, "")}`} className="block mt-1 hover:text-primary transition-colors">
+                    <span className="font-semibold text-foreground">Landline:</span> {PHONE_LANDLINE}
+                  </a>
+                </p>
+                <div className="mt-4 flex flex-wrap justify-center gap-2">
+                  <Button
+                    variant="primary-outline"
+                    size="sm"
+                    asChild
+                    className="font-heading font-semibold text-xs"
+                  >
+                    <a href={`tel:${PHONE_PRIMARY.replace(/\s/g, "")}`}>
+                      Call Mobile
+                    </a>
+                  </Button>
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    asChild
+                    className="font-heading font-semibold text-xs text-primary hover:bg-primary/10"
+                  >
+                    <a href={`tel:${PHONE_LANDLINE.replace(/[-\s]/g, "")}`}>
+                      Landline
+                    </a>
+                  </Button>
+                </div>
               </CardContent>
             </Card>
 
@@ -1143,9 +1176,9 @@ function Index() {
               <img
                 src="/logo.png"
                 alt="DHANSETU logo"
-                width={44}
-                height={44}
-                className="h-11 w-auto"
+                width={48}
+                height={48}
+                className="h-12 w-12 rounded-full object-cover border-2 border-brand-gold/60 shadow-md shrink-0"
               />
               <div>
                 <p className="font-heading text-xl font-bold text-white leading-none">DHANSETU</p>

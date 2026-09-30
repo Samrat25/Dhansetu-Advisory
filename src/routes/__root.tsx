@@ -78,22 +78,22 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       {
-        title: "DHANSETU | Capital Advisory & Properties - Kolkata",
+        title: "DHANSETU CAPITAL ADVISORY | All Your Financial Needs Under One Roof - Dunlop, Kolkata",
       },
       {
         name: "description",
         content:
-          "DHANSETU - Capital Advisory & Properties in Kolkata. Your one-stop solution for real estate properties and loans. RERA approved projects, home loans, business loans, and property advisory.",
+          "DHANSETU CAPITAL ADVISORY - All Your Financial Needs Under One Roof. Your Financial Partner for a Better Tomorrow. Expert solutions for Home Loans, Business Loans, Mortgages, Insurance, Investments, and Property Solutions in Kolkata.",
       },
-      { name: "author", content: "DHANSETU" },
+      { name: "author", content: "DHANSETU CAPITAL ADVISORY" },
       {
         property: "og:title",
-        content: "DHANSETU | Capital Advisory & Properties - Kolkata",
+        content: "DHANSETU CAPITAL ADVISORY | All Your Financial Needs Under One Roof - Dunlop, Kolkata",
       },
       {
         property: "og:description",
         content:
-          "Your Dream Home & Loan – One Solution. Real estate properties and loan advisory services in Kolkata.",
+          "All Your Financial Needs Under One Roof. Expert solutions for Loans, Insurance, Investments, and Property Solutions in Dunlop, Kolkata. Call 033-79633264 or +91 82403 49546.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
