@@ -54,6 +54,8 @@ import {
   Bike,
   Banknote,
   ShieldAlert,
+  Zap,
+  ArrowLeftRight,
 } from "lucide-react";
 
 export const Route = createFileRoute("/")({
@@ -63,27 +65,42 @@ export const Route = createFileRoute("/")({
 const WHATSAPP_NUMBER = "918240349546";
 const PHONE_PRIMARY = "+91 82403 49546";
 const PHONE_LANDLINE = "033-79633264";
-const EMAIL = "contact.dhansetuadvisory@gmail.com";
+const EMAIL = "contact@dhansetucapital.in";
 const ADDRESS = "18/1, Vivekananda Road, Dunlop, Kolkata - 700108";
 const TAGLINE = "All Your Financial Needs Under One Roof";
 const SLOGAN = "Your Financial Partner for a Better Tomorrow";
 
-// Helper function to create WhatsApp link with pre-filled message
+// Universal WhatsApp handler: triggers native app on mobile without redirecting to web
 const getWhatsAppLink = (message: string) => {
-  const encodedMessage = encodeURIComponent(message);
-  const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodedMessage}`;
-  // Debug: Log the generated URL (remove this in production)
-  console.log('WhatsApp URL generated:', url);
-  return url;
+  const encoded = encodeURIComponent(message);
+  return `https://api.whatsapp.com/send?phone=${WHATSAPP_NUMBER}&text=${encoded}`;
 };
 
-// Pre-filled messages for different contexts (20 words each)
+const openWhatsApp = (message: string) => {
+  const encoded = encodeURIComponent(message);
+  if (typeof window !== "undefined") {
+    const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+    if (isMobile) {
+      window.location.href = `whatsapp://send?phone=${WHATSAPP_NUMBER}&text=${encoded}`;
+      return;
+    }
+  }
+  window.open(`https://api.whatsapp.com/send?phone=${WHATSAPP_NUMBER}&text=${encoded}`, "_blank");
+};
+
+const handleWhatsAppClick = (message: string) => (e: React.MouseEvent) => {
+  e.preventDefault();
+  openWhatsApp(message);
+};
+
+// Pre-filled messages for different contexts
 const WHATSAPP_MESSAGES = {
-  general: "Hello DHANSETU! I am interested in your property and loan services. Please provide more details about your offerings.",
-  properties: "Hi! I want to explore available properties in Kolkata. Please share details about flats, plots, and houses for sale.",
-  loans: "Hello! I need a loan for my property or business. Please guide me through the application process and interest rates.",
-  services: "Hi DHANSETU! I want to know more about your financial services including loans, insurance, and investment options. Please help.",
-  consultation: "Hello! I would like to schedule a free consultation with your expert team for property and loan advisory services.",
+  general: "Hello DHANSETU! I am interested in your financial advisory, loan, and investment services. Please provide more details.",
+  instantLoan: "Hello DHANSETU! I need an Instant Loan / Insta Loan. Please share the eligibility criteria and fast disbursement details.",
+  loans: "Hello! I need a loan for my business, home, or personal needs. Please guide me through the interest rates and process.",
+  services: "Hi DHANSETU! I want to know more about your financial services including Instant Loans, Insurance, and Wealth Investments.",
+  consultation: "Hello! I would like to schedule a free financial consultation with your expert advisory team in Dunlop.",
+  career: "Hello DHANSETU HR! I would like to apply for career opportunities at DhanSetu Capital Advisory.",
 };
 
 function useReveal() {
@@ -110,6 +127,7 @@ const navLinks = [
   { label: "Home", href: "home" },
   { label: "Services", href: "services" },
   { label: "Why Us", href: "why-us" },
+  { label: "Careers", href: "careers" },
   { label: "About", href: "about" },
   { label: "Contact", href: "contact" },
 ];
@@ -391,9 +409,9 @@ function Index() {
                 className="mt-6 max-w-xl self-center text-base leading-relaxed text-white/85 sm:text-lg lg:self-start animate-fade-up"
                 style={{ animationDelay: "180ms" }}
               >
-                DHANSETU CAPITAL ADVISORY is your trusted partner for Loans,
-                Insurance, Investments, and Property Solutions in Kolkata — honest advisory,
-                50+ banking partners, approvals in as little as 7 days.
+                DHANSETU CAPITAL ADVISORY is your premier partner for Instant Loans,
+                Home & Business Credit, Insurance, and Wealth Investments in Kolkata — honest advisory,
+                50+ banking partners, approvals in as little as 24 hours.
               </p>
               <div className="mt-8 flex w-full flex-col gap-3 self-center sm:w-auto sm:flex-row lg:self-start">
                 <Magnet range={90} strength={30}>
@@ -404,12 +422,13 @@ function Index() {
                     className="w-full font-heading font-bold sm:w-auto btn-sheen shadow-lg shadow-brand-gold/20"
                   >
                     <a
-                      href={getWhatsAppLink(WHATSAPP_MESSAGES.general)}
+                      href={getWhatsAppLink(WHATSAPP_MESSAGES.instantLoan)}
+                      onClick={handleWhatsAppClick(WHATSAPP_MESSAGES.instantLoan)}
                       target="_blank"
                       rel="noopener noreferrer"
                     >
-                      <MessageCircle className="h-5 w-5" />
-                      WhatsApp Us
+                      <Zap className="h-5 w-5" />
+                      Instant Loan Enquiry
                     </a>
                   </Button>
                 </Magnet>
@@ -428,7 +447,7 @@ function Index() {
               <div className="mt-6 flex flex-wrap items-center justify-center gap-4 text-sm text-white/80 lg:justify-start">
                 <span className="flex items-center gap-1.5">
                   <BadgeCheck className="h-4 w-4 text-accent" />
-                  RERA Approved
+                  Instant Loan in 24h
                 </span>
                 <span className="flex items-center gap-1.5">
                   <BadgeCheck className="h-4 w-4 text-accent" />
@@ -443,8 +462,8 @@ function Index() {
             <div className="relative mx-auto w-full max-w-lg lg:max-w-none animate-fade-up" style={{ animationDelay: "260ms" }}>
               <div className="aspect-[4/3] overflow-hidden rounded-2xl border-4 border-white/10 shadow-2xl">
                 <img
-                  src="/property-house.jpg"
-                  alt="Modern residential property in Kolkata"
+                  src="/financial-hero.jpg"
+                  alt="DHANSETU Capital Advisory and Financial Wealth Management in Kolkata"
                   width={1024}
                   height={768}
                   className="h-full w-full object-cover"
@@ -454,14 +473,14 @@ function Index() {
               <div className="absolute -bottom-5 -left-5 hidden rounded-xl bg-card border border-border/40 p-4 shadow-xl md:block animate-float-slow">
                 <div className="flex items-center gap-3">
                   <div className="flex h-12 w-12 items-center justify-center rounded-full bg-accent/10">
-                    <TrendingUp className="h-6 w-6 text-accent" />
+                    <Zap className="h-6 w-6 text-accent" />
                   </div>
                   <div>
                     <p className="font-heading text-lg font-bold text-foreground">
-                      7 Days
+                      24 Hours
                     </p>
                     <p className="text-sm text-muted-foreground">
-                      Fast Loan Approval
+                      Instant Loan Approvals
                     </p>
                   </div>
                 </div>
@@ -490,74 +509,21 @@ function Index() {
               />
             </h2>
             <p className="mt-1 font-heading text-base font-semibold uppercase tracking-[0.25em] text-muted-foreground sm:text-lg">
-              Capital Advisory & Properties
+              Capital Advisory & Financial Services
             </p>
             <p className="mx-auto mt-4 max-w-xl text-muted-foreground">
-              Complete property, loan & investment solutions under one trusted roof.
+              Complete loan, insurance & wealth investment solutions under one trusted roof.
             </p>
           </div>
 
-          {/* Properties & Capital Advisory Cards */}
+          {/* Core Financial Pillars Showcase Cards */}
           <div className="mt-12 grid gap-6 md:grid-cols-2 [&>*]:reveal">
-            {/* Properties Card */}
+            {/* Instant Loans & Credit Solutions Card */}
             <TiltedCard spotlightColor="rgba(232, 163, 61, 0.2)" className="group overflow-hidden border-border/60 bg-card shadow-lg transition-shadow hover:shadow-xl">
               <div className="aspect-[16/9] overflow-hidden">
                 <img
-                  src="/property-apartments.jpg"
-                  alt="Modern apartment buildings in Kolkata"
-                  width={1024}
-                  height={768}
-                  className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                  loading="lazy"
-                />
-              </div>
-              <CardHeader className="pb-2">
-                <div className="mb-2 flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10">
-                  <Building2 className="h-5 w-5 text-primary" />
-                </div>
-                <CardTitle className="font-heading text-lg font-bold text-foreground">
-                  Properties
-                </CardTitle>
-                <CardDescription className="text-sm text-muted-foreground">
-                  Buy your dream property with complete legal support.
-                </CardDescription>
-              </CardHeader>
-              <CardContent className="space-y-2.5">
-                {[
-                  "Flats, Plots, Houses & Commercial Spaces",
-                  "RERA Approved Projects in Kolkata & Nearby",
-                  "Full Legal Documentation Support",
-                ].map((item) => (
-                  <div key={item} className="flex items-start gap-2">
-                    <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-accent" />
-                    <span className="text-sm text-foreground/80">{item}</span>
-                  </div>
-                ))}
-              </CardContent>
-              <CardContent className="pt-0">
-                <Button
-                  variant="primary-outline"
-                  className="w-full font-heading font-semibold"
-                  asChild
-                >
-                  <a
-                    href={getWhatsAppLink(WHATSAPP_MESSAGES.properties)}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    View Properties
-                    <ArrowRight className="h-4 w-4" />
-                  </a>
-                </Button>
-              </CardContent>
-            </TiltedCard>
-
-            {/* Capital Advisory Card */}
-            <TiltedCard spotlightColor="rgba(232, 163, 61, 0.2)" className="group overflow-hidden border-border/60 bg-card shadow-lg transition-shadow hover:shadow-xl">
-              <div className="aspect-[16/9] overflow-hidden">
-                <img
-                  src="/capital-advisory.jpg"
-                  alt="Financial growth and loan advisory concept"
+                  src="/loans-investments.jpg"
+                  alt="Loan consultation and instant approval at DhanSetu"
                   width={1024}
                   height={768}
                   className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
@@ -566,27 +532,22 @@ function Index() {
               </div>
               <CardHeader className="pb-2">
                 <div className="mb-2 flex h-10 w-10 items-center justify-center rounded-lg bg-accent/10">
-                  <TrendingUp className="h-5 w-5 text-accent" />
+                  <Zap className="h-5 w-5 text-accent" />
                 </div>
                 <CardTitle className="font-heading text-lg font-bold text-foreground">
-                  Capital Advisory
+                  Instant Loans & Credit Solutions
                 </CardTitle>
                 <CardDescription className="text-sm text-muted-foreground">
-                  Loans made simple with 50+ banking partners.
+                  Fast capital disbursement with 50+ banking partners in Kolkata.
                 </CardDescription>
               </CardHeader>
-              <CardContent className="space-y-2">
+              <CardContent className="space-y-2.5">
                 {[
-                  "Home Loan, Personal Loan, Business Loan",
-                  "Mortgage Loan, Land / Plot Purchase Loan, Gold Loan",
-                  "Car Loan, Education Loan, Credit Card",
-                  "Cash Credit (CC) & Over Draft (OD) Loan",
-                  "Mutual Fund, PMS, Fixed Deposit (FD), Demat Account",
-                  "Health, Life, Motor (Car/Bike) & EMI Protect Insurance",
-                  "Property Legal Advisory & Documentation Support",
-                  "Certified Property Valuation Services",
-                  "Government Mutation & Land Record Assistance",
-                  "Tied up with 50+ Banks & NBFCs | Fast Approvals in 7 Days",
+                  "Instant Loan / Insta Loan (24-Hour Approval & Disbursal)",
+                  "Home Loan, Business Loan, Personal Loan & Mortgage (LAP)",
+                  "Cash Credit (CC) & Over Draft (OD) Working Capital",
+                  "Balance Transfer (BT) to Lower Interest & Maximum Top-Up",
+                  "Minimal Documentation & Instant Bank Sanction",
                 ].map((item) => (
                   <div key={item} className="flex items-start gap-2">
                     <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-accent" />
@@ -601,11 +562,68 @@ function Index() {
                   asChild
                 >
                   <a
-                    href={getWhatsAppLink(WHATSAPP_MESSAGES.loans)}
+                    href={getWhatsAppLink(WHATSAPP_MESSAGES.instantLoan)}
+                    onClick={handleWhatsAppClick(WHATSAPP_MESSAGES.instantLoan)}
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    Apply For Loan
+                    <Zap className="h-4 w-4" />
+                    Apply for Instant Loan
+                  </a>
+                </Button>
+              </CardContent>
+            </TiltedCard>
+
+            {/* Wealth Investments & Insurance Card */}
+            <TiltedCard spotlightColor="rgba(232, 163, 61, 0.2)" className="group overflow-hidden border-border/60 bg-card shadow-lg transition-shadow hover:shadow-xl">
+              <div className="aspect-[16/9] overflow-hidden">
+                <img
+                  src="/capital-advisory.jpg"
+                  alt="Financial growth, investment planning and insurance"
+                  width={1024}
+                  height={768}
+                  className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  loading="lazy"
+                />
+              </div>
+              <CardHeader className="pb-2">
+                <div className="mb-2 flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10">
+                  <TrendingUp className="h-5 w-5 text-primary" />
+                </div>
+                <CardTitle className="font-heading text-lg font-bold text-foreground">
+                  Wealth Investments & Protection
+                </CardTitle>
+                <CardDescription className="text-sm text-muted-foreground">
+                  Grow and secure your family's future with tailored advice.
+                </CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-2.5">
+                {[
+                  "Health, Life, Motor (Car & Bike) & EMI Protect Insurance",
+                  "Free Demat Account Opening & Equity Trading Guidance",
+                  "Mutual Funds & Smart SIP Wealth Planning",
+                  "PMS (Portfolio Management Services) for High Net-Worth Clients",
+                  "Fixed Deposit (FD) Advisory with Guaranteed Stable Returns",
+                ].map((item) => (
+                  <div key={item} className="flex items-start gap-2">
+                    <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-accent" />
+                    <span className="text-sm text-foreground/80">{item}</span>
+                  </div>
+                ))}
+              </CardContent>
+              <CardContent className="pt-0">
+                <Button
+                  variant="primary-outline"
+                  className="w-full font-heading font-semibold"
+                  asChild
+                >
+                  <a
+                    href={getWhatsAppLink(WHATSAPP_MESSAGES.services)}
+                    onClick={handleWhatsAppClick(WHATSAPP_MESSAGES.services)}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Consult Wealth Advisor
                     <ArrowRight className="h-4 w-4" />
                   </a>
                 </Button>
@@ -634,12 +652,14 @@ function Index() {
 
             <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 [&>*]:reveal">
               {[
-                // LOANS
+                // LOANS & CREDIT
+                { icon: Zap, label: "Instant Loan / Insta Loan", desc: "Fast approval & quick cash disbursement in 24 hours" },
                 { icon: Home, label: "Home Loan", desc: "Build your dream home with lowest interest rates" },
                 { icon: Briefcase, label: "Personal Loan", desc: "Quick funds for all your personal needs" },
                 { icon: Landmark, label: "Business Loan", desc: "Fuel & expand your business growth easily" },
-                { icon: Building2, label: "Mortgage Loan", desc: "Unlock maximum value against your property" },
-                { icon: Mountain, label: "Land / Plot Purchase Loan", desc: "Finance & invest in your future land & plots" },
+                { icon: ArrowLeftRight, label: "Balance Transfer (BT)", desc: "Reduce existing loan EMI with lower interest rates" },
+                { icon: Building2, label: "Mortgage Loan (LAP)", desc: "Unlock maximum funds against your assets" },
+                { icon: Building2, label: "Commercial Loan", desc: "Funding for commercial spaces, shops & offices" },
                 { icon: GraduationCap, label: "Education Loan", desc: "Bright future and higher education for your child" },
                 { icon: Car, label: "Car Loan", desc: "Drive your dream car with flexible EMIs" },
                 { icon: CreditCard, label: "Credit Card", desc: "More freedom, rewards & lifestyle privileges" },
@@ -656,16 +676,11 @@ function Index() {
                 { icon: Shield, label: "Life Insurance", desc: "Financial security & safety for your loved ones" },
 
                 // INVESTMENTS & WEALTH CREATION
-                { icon: PiggyBank, label: "Mutual Fund", desc: "Smart SIP & lump sum disciplined wealth creation" },
+                { icon: PiggyBank, label: "Mutual Fund & SIP", desc: "Smart SIP & lump sum disciplined wealth creation" },
                 { icon: Wallet, label: "Demat Account", desc: "Trade smart & invest better in equity markets" },
-                { icon: LineChart, label: "PMS", desc: "Portfolio Management Service for higher returns" },
+                { icon: LineChart, label: "PMS Advisory", desc: "Portfolio Management Service for higher returns" },
                 { icon: Landmark, label: "Fixed Deposit (FD)", desc: "Safe investment with assured stable returns" },
-                { icon: BarChart3, label: "Bonds", desc: "Secure fixed-income institutional investments" },
-
-                // PROPERTY & ADVISORY
-                { icon: ShieldCheck, label: "Legal Advisory", desc: "Property legal check & agreement verification" },
-                { icon: Building2, label: "Property Valuation", desc: "Certified property valuation for sale & loan" },
-                { icon: Layers, label: "Mutation Services", desc: "Government land record & mutation assistance" },
+                { icon: BarChart3, label: "Bonds & Securities", desc: "Secure fixed-income institutional investments" },
               ].map((service) => (
                 <SpotlightCard
                   key={service.label}
@@ -694,6 +709,7 @@ function Index() {
               >
                 <a
                   href={getWhatsAppLink(WHATSAPP_MESSAGES.services)}
+                  onClick={handleWhatsAppClick(WHATSAPP_MESSAGES.services)}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -717,27 +733,27 @@ function Index() {
               Why Choose Us
             </h2>
             <p className="mt-3 text-muted-foreground">
-              We combine property expertise with financial know-how to give you
-              a hassle-free experience.
+              We combine deep financial expertise with 50+ banking partnerships to give you
+              a hassle-free loan and wealth investment experience.
             </p>
           </div>
 
           <AnimatedList className="mt-10 grid gap-6 sm:grid-cols-2 lg:mt-14 lg:grid-cols-3">
             {[
               {
-                icon: Home,
-                title: "One Stop Solution",
-                description: "Property + Loan Together. Find your property and finance it through the same trusted partner.",
+                icon: Zap,
+                title: "Instant & Fast Processing",
+                description: "24-Hour Approvals. Quick loan sanctions, minimum documentation, and fast cash disbursement.",
               },
               {
                 icon: Shield,
                 title: "No Hidden Charges",
-                description: "Transparent Process. Clear fee structure and honest advice at every step.",
+                description: "100% Transparent. Clear fee structures, honest advice, and direct bank rates with zero surprises.",
               },
               {
-                icon: Clock,
-                title: "10+ Years Experience",
-                description: "Trusted Service. Years of real estate and loan advisory expertise in Kolkata.",
+                icon: Landmark,
+                title: "50+ Bank & NBFC Partners",
+                description: "Maximum Options. Direct tie-ups with leading private and PSU banks to secure your lowest EMI.",
               },
             ].map((feature) => (
               <Card
@@ -759,6 +775,137 @@ function Index() {
         </div>
       </section>
 
+      {/* Careers Section */}
+      <section id="careers" className="section-padding bg-muted/20 border-t border-border/20">
+        <div className="container-tight">
+          <div className="mx-auto max-w-3xl text-center reveal">
+            <span className="text-sm font-semibold uppercase tracking-wider text-accent">
+              Join Our Team
+            </span>
+            <h2 className="mt-2 font-heading text-2xl font-bold text-foreground sm:text-3xl md:text-4xl">
+              Career Opportunities at <span className="gold-text">DHANSETU</span>
+            </h2>
+            <p className="mt-3 text-muted-foreground">
+              Are you passionate about finance, banking, and wealth creation? Build a thriving career with Kolkata's fastest-growing capital advisory firm.
+            </p>
+          </div>
+
+          <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-4 [&>*]:reveal">
+            {[
+              {
+                title: "Loan Sales Manager",
+                type: "Full-Time / Field",
+                icon: Landmark,
+                exp: "1-3 Years",
+                desc: "Drive Home Loan, Business Loan & Mortgage sales through direct client outreach and bank liaison.",
+              },
+              {
+                title: "Instant Loan Specialist",
+                type: "Full-Time / Dunlop",
+                icon: Zap,
+                exp: "0-2 Years",
+                desc: "Manage fast-track instant loan applications, client document verification, and rapid processing.",
+              },
+              {
+                title: "Insurance & Wealth Advisor",
+                type: "Full-Time / Flexible",
+                icon: ShieldCheck,
+                exp: "1+ Year",
+                desc: "Advise retail and HNI clients on Health/Life Insurance, Mutual Funds, and portfolio planning.",
+              },
+              {
+                title: "Channel Partner / DSA",
+                type: "Freelance / Commission",
+                icon: Briefcase,
+                exp: "Open to All",
+                desc: "Partner with DhanSetu to refer loan and investment leads. Enjoy highest payout commissions in Kolkata.",
+              },
+            ].map((job) => (
+              <Card
+                key={job.title}
+                className="group border-border/60 bg-card p-6 shadow-md transition-all duration-300 hover:-translate-y-2 hover:border-accent/40 hover:shadow-xl flex flex-col justify-between"
+              >
+                <div>
+                  <div className="flex items-center justify-between">
+                    <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-accent/10 text-accent group-hover:bg-accent group-hover:text-primary-foreground transition-colors">
+                      <job.icon className="h-5 w-5" />
+                    </div>
+                    <span className="text-[11px] font-semibold uppercase tracking-wider rounded-full bg-primary/10 text-primary px-2.5 py-0.5">
+                      {job.type}
+                    </span>
+                  </div>
+                  <h3 className="mt-4 font-heading text-lg font-bold text-foreground">
+                    {job.title}
+                  </h3>
+                  <p className="mt-1 text-xs text-accent font-medium">
+                    Experience: {job.exp}
+                  </p>
+                  <p className="mt-3 text-xs leading-relaxed text-muted-foreground">
+                    {job.desc}
+                  </p>
+                </div>
+                <div className="mt-6 pt-4 border-t border-border/40">
+                  <Button
+                    variant="primary-outline"
+                    size="sm"
+                    className="w-full text-xs font-heading font-semibold"
+                    asChild
+                  >
+                    <a
+                      href={getWhatsAppLink(`Hello DHANSETU HR! I am interested in applying for the ${job.title} position.`)}
+                      onClick={handleWhatsAppClick(`Hello DHANSETU HR! I am interested in applying for the ${job.title} position.`)}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Apply on WhatsApp
+                    </a>
+                  </Button>
+                </div>
+              </Card>
+            ))}
+          </div>
+
+          {/* Hiring CTA Banner */}
+          <div className="reveal mt-12 rounded-2xl border border-brand-gold/30 bg-gradient-to-r from-brand-blue-dark via-brand-blue to-brand-blue-dark p-8 text-center text-white md:p-10 shadow-xl">
+            <h3 className="font-heading text-2xl font-bold md:text-3xl">
+              Don't see the right role? Send us your CV!
+            </h3>
+            <p className="mx-auto mt-2 max-w-xl text-sm text-white/80">
+              We are always looking for driven talent to join our Dunlop, Kolkata team. Email your resume to <span className="font-semibold text-brand-gold">{EMAIL}</span> or reach our HR desk directly.
+            </p>
+            <div className="mt-6 flex flex-wrap justify-center gap-4">
+              <Button
+                variant="gold"
+                size="default"
+                asChild
+                className="font-heading font-bold btn-sheen"
+              >
+                <a href={`mailto:${EMAIL}?subject=Job%20Application%20-%20DhanSetu%20Capital`}>
+                  <Mail className="h-4 w-4" />
+                  Email Your Resume
+                </a>
+              </Button>
+              <Button
+                variant="outline"
+                size="default"
+                asChild
+                className="border-white/30 bg-white/10 font-heading font-bold text-white hover:bg-white/20"
+              >
+                <a
+                  href={getWhatsAppLink(WHATSAPP_MESSAGES.career)}
+                  onClick={handleWhatsAppClick(WHATSAPP_MESSAGES.career)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <MessageCircle className="h-4 w-4" />
+                  Chat with HR on WhatsApp
+                </a>
+              </Button>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* About Us Section */}
       <section id="about" className="section-padding bg-muted/30">
         <div className="container-tight">
@@ -766,8 +913,8 @@ function Index() {
             <div className="order-2 lg:order-1">
               <div className="aspect-[4/3] overflow-hidden rounded-2xl shadow-xl">
                 <img
-                  src="/property-house.jpg"
-                  alt="Premium property in Kolkata"
+                  src="/loans-investments.jpg"
+                  alt="DhanSetu Capital Advisory Team in Kolkata"
                   width={1024}
                   height={768}
                   className="h-full w-full object-cover"
@@ -780,23 +927,22 @@ function Index() {
                 About Us
               </span>
               <h2 className="mt-2 font-heading text-2xl font-bold text-foreground sm:text-3xl md:text-4xl">
-                Building Trust, Fulfilling Dreams
+                Building Trust, Fulfilling Financial Dreams
               </h2>
               <p className="mt-4 text-base leading-relaxed text-muted-foreground">
-                Founded in <CountUp end={2016} duration={1.2} /> by <span className="font-semibold text-foreground">Paromita Sutradhar</span>, Dhansetu is committed to fulfilling your dreams.
-                We provide honest advice, fast service and complete support for
-                your Property and Finance needs.
+                Founded in <CountUp end={2016} duration={1.2} /> by <span className="font-semibold text-foreground">Paromita Sutradhar</span>, Dhansetu Capital Advisory is committed to fulfilling your financial aspirations.
+                We provide honest advice, fast bank approvals and complete support for all
+                your Loan, Insurance and Investment needs.
               </p>
               <p className="mt-4 text-base leading-relaxed text-muted-foreground">
-                Whether you are buying your first home, investing in commercial
-                real estate, or need a quick loan approval, our team is with
-                you at every step.
+                Whether you need an Instant Loan in 24 hours, business expansion capital,
+                comprehensive family insurance, or disciplined wealth creation through Mutual Funds & SIPs, our advisory team is with you at every step.
               </p>
               <div className="mt-8 grid grid-cols-2 gap-4 sm:grid-cols-3">
                 {[
                   { value: 10, suffix: "+", label: "Years Experience" },
                   { value: 50, suffix: "+", label: "Bank Partners" },
-                  { value: 7, suffix: "", label: "Days Approval" },
+                  { value: 24, suffix: "h", label: "Instant Approval" },
                 ].map((stat) => (
                   <div
                      key={stat.label}
@@ -832,7 +978,7 @@ function Index() {
           </div>
 
           <div className="mt-10 max-w-2xl mx-auto">
-            <ScrollStack useWindowScroll={true} itemDistance={50} itemScale={0.03} itemStackDistance={20}>
+            <ScrollStack itemDistance={60} itemStackDistance={16} stackPosition={100}>
               {/* Testimonial 1 */}
               <ScrollStackItem>
                 <div className="flex flex-col justify-between h-full">
@@ -868,7 +1014,7 @@ function Index() {
                       ))}
                     </div>
                     <p className="font-heading text-lg font-medium italic leading-relaxed text-white/90">
-                      "Was struggling with land mutation for months. The DhanSetu team handled all the government paperwork effortlessly, such a relief!"
+                      "Needed an urgent business loan to stock up store inventory. The DhanSetu team got it processed and disbursed in 48 hours without endless bank rounds. Truly outstanding service!"
                     </p>
                   </div>
                   <div className="mt-6 flex items-center gap-3">
@@ -918,7 +1064,7 @@ function Index() {
                       ))}
                     </div>
                     <p className="font-heading text-lg font-medium italic leading-relaxed text-white/90">
-                      "Property valuation was completed swiftly and accurately, which was essential for our bank loan approval."
+                      "Applied for an Instant Loan during an unexpected medical emergency. DhanSetu arranged approval and disbursement on the very same day without any hassle."
                     </p>
                   </div>
                   <div className="mt-6 flex items-center gap-3">
@@ -943,7 +1089,7 @@ function Index() {
                       ))}
                     </div>
                     <p className="font-heading text-lg font-medium italic leading-relaxed text-white/90">
-                      "DhanSetu verified all legal property documents during our flat purchase. Complete peace of mind without any hassle."
+                      "Got our complete family health insurance and vehicle policies structured through DhanSetu. Very transparent guidance and lowest premium rates."
                     </p>
                   </div>
                   <div className="mt-6 flex items-center gap-3">
@@ -1023,7 +1169,7 @@ function Index() {
               Contact Us
             </h2>
             <p className="mt-3 text-muted-foreground">
-              Ready to find your dream home or get the best loan offer? Reach
+              Ready to get the best loan offer, instant funds, or grow your investments? Reach
               out today.
             </p>
           </div>
@@ -1143,7 +1289,7 @@ function Index() {
                 Get Your <span className="gold-text italic">Free Consultation</span> Today
               </h3>
               <p className="mx-auto mt-3 max-w-xl text-white/85">
-                Talk to our experts and get personalized property and loan advice
+                Talk to our experts and get personalized financial, loan, and investment advice
                 — completely free.
               </p>
               <Magnet range={90} strength={30}>
@@ -1155,6 +1301,7 @@ function Index() {
                 >
                   <a
                     href={getWhatsAppLink(WHATSAPP_MESSAGES.consultation)}
+                    onClick={handleWhatsAppClick(WHATSAPP_MESSAGES.consultation)}
                     target="_blank"
                     rel="noopener noreferrer"
                   >

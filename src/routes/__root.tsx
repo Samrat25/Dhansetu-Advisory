@@ -83,17 +83,17 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       {
         name: "description",
         content:
-          "DHANSETU CAPITAL ADVISORY - All Your Financial Needs Under One Roof. Your Financial Partner for a Better Tomorrow. Expert solutions for Home Loans, Business Loans, Mortgages, Insurance, Investments, and Property Solutions in Kolkata.",
+          "DHANSETU CAPITAL ADVISORY - All Your Financial Needs Under One Roof. Your Financial Partner for a Better Tomorrow. Expert solutions for Instant Loans, Home Loans, Business Loans, Mortgages, Insurance, and Wealth Investments in Dunlop, Kolkata.",
       },
       { name: "author", content: "DHANSETU CAPITAL ADVISORY" },
       {
         property: "og:title",
-        content: "DHANSETU CAPITAL ADVISORY | All Your Financial Needs Under One Roof - Dunlop, Kolkata",
+        content: "DHANSETU CAPITAL ADVISORY | Instant Loans, Insurance & Investments - Dunlop, Kolkata",
       },
       {
         property: "og:description",
         content:
-          "All Your Financial Needs Under One Roof. Expert solutions for Loans, Insurance, Investments, and Property Solutions in Dunlop, Kolkata. Call 033-79633264 or +91 82403 49546.",
+          "All Your Financial Needs Under One Roof. Expert solutions for Instant Loans, Business Loans, Insurance, and Investments in Dunlop, Kolkata. Call 033-79633264 or +91 82403 49546.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
