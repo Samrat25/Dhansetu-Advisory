@@ -16,32 +16,6 @@ export const Navbar: React.FC = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const handleNavClick = (href: string, e: React.MouseEvent) => {
-    if (typeof window !== "undefined" && (window.location.pathname === "/" || window.location.pathname === "")) {
-      const idMap: Record<string, string> = {
-        "/": "home",
-        "/services": "services",
-        "/why-us": "why-us",
-        "/careers": "careers",
-        "/about": "about",
-        "/contact": "contact",
-      };
-      const targetId = idMap[href];
-      if (targetId) {
-        const el = document.getElementById(targetId);
-        if (el) {
-          e.preventDefault();
-          const yOffset = -80;
-          const y = el.getBoundingClientRect().top + window.pageYOffset + yOffset;
-          window.scrollTo({ top: y, behavior: "smooth" });
-          setIsMenuOpen(false);
-          return;
-        }
-      }
-    }
-    setIsMenuOpen(false);
-  };
-
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
@@ -52,11 +26,7 @@ export const Navbar: React.FC = () => {
     >
       <div className="container-tight flex h-20 items-center justify-between">
         {/* Brand Logo & Name */}
-        <Link
-          to="/"
-          onClick={(e) => handleNavClick("/", e)}
-          className="flex items-center gap-3 group"
-        >
+        <Link to="/" className="flex items-center gap-3 group">
           <img
             src="/logo.png"
             alt="DHANSETU Logo"
@@ -74,16 +44,15 @@ export const Navbar: React.FC = () => {
           </div>
         </Link>
 
-        {/* Desktop Nav Links */}
+        {/* Desktop Nav Links - Direct SPA routing to separate pages */}
         <nav className="hidden items-center gap-6 lg:flex">
           {navLinks.map((link) => (
             <Link
               key={link.href}
               to={link.href}
-              onClick={(e) => handleNavClick(link.href, e)}
               activeOptions={{ exact: link.href === "/" }}
               activeProps={{
-                className: "text-brand-gold font-bold scale-105",
+                className: "text-brand-gold font-bold scale-105 border-b-2 border-brand-gold pb-0.5",
               }}
               inactiveProps={{
                 className: "text-white/80 hover:text-brand-gold transition-colors font-medium",
@@ -128,7 +97,7 @@ export const Navbar: React.FC = () => {
               <Link
                 key={link.href}
                 to={link.href}
-                onClick={(e) => handleNavClick(link.href, e)}
+                onClick={() => setIsMenuOpen(false)}
                 activeOptions={{ exact: link.href === "/" }}
                 activeProps={{
                   className: "text-brand-gold font-bold pl-2 border-l-2 border-brand-gold",
