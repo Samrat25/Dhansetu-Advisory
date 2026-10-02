@@ -16,6 +16,32 @@ export const Navbar: React.FC = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const handleNavClick = (href: string, e: React.MouseEvent) => {
+    if (typeof window !== "undefined" && (window.location.pathname === "/" || window.location.pathname === "")) {
+      const idMap: Record<string, string> = {
+        "/": "home",
+        "/services": "services",
+        "/why-us": "why-us",
+        "/careers": "careers",
+        "/about": "about",
+        "/contact": "contact",
+      };
+      const targetId = idMap[href];
+      if (targetId) {
+        const el = document.getElementById(targetId);
+        if (el) {
+          e.preventDefault();
+          const yOffset = -80;
+          const y = el.getBoundingClientRect().top + window.pageYOffset + yOffset;
+          window.scrollTo({ top: y, behavior: "smooth" });
+          setIsMenuOpen(false);
+          return;
+        }
+      }
+    }
+    setIsMenuOpen(false);
+  };
+
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
@@ -26,7 +52,11 @@ export const Navbar: React.FC = () => {
     >
       <div className="container-tight flex h-20 items-center justify-between">
         {/* Brand Logo & Name */}
-        <Link to="/" className="flex items-center gap-3 group">
+        <Link
+          to="/"
+          onClick={(e) => handleNavClick("/", e)}
+          className="flex items-center gap-3 group"
+        >
           <img
             src="/logo.png"
             alt="DHANSETU Logo"
@@ -50,6 +80,7 @@ export const Navbar: React.FC = () => {
             <Link
               key={link.href}
               to={link.href}
+              onClick={(e) => handleNavClick(link.href, e)}
               activeOptions={{ exact: link.href === "/" }}
               activeProps={{
                 className: "text-brand-gold font-bold scale-105",
@@ -73,7 +104,7 @@ export const Navbar: React.FC = () => {
             className="font-heading font-semibold btn-sheen shadow-md shadow-brand-gold/20"
           >
             <a href={`tel:${PHONE_PRIMARY.replace(/\s/g, "")}`}>
-              <Phone className="h-4 w-4" />
+              <Phone className="h-4 w-4 mr-1.5" />
               Call Now
             </a>
           </Button>
@@ -97,7 +128,7 @@ export const Navbar: React.FC = () => {
               <Link
                 key={link.href}
                 to={link.href}
-                onClick={() => setIsMenuOpen(false)}
+                onClick={(e) => handleNavClick(link.href, e)}
                 activeOptions={{ exact: link.href === "/" }}
                 activeProps={{
                   className: "text-brand-gold font-bold pl-2 border-l-2 border-brand-gold",
@@ -118,7 +149,7 @@ export const Navbar: React.FC = () => {
                 className="w-full font-heading font-semibold btn-sheen"
               >
                 <a href={`tel:${PHONE_PRIMARY.replace(/\s/g, "")}`}>
-                  <Phone className="h-4 w-4" />
+                  <Phone className="h-4 w-4 mr-2" />
                   Call Us Directly
                 </a>
               </Button>

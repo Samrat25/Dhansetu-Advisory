@@ -1,13 +1,11 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useState, useEffect, useMemo, useRef } from "react";
+import React, { useState, useEffect, useMemo, useRef } from "react";
 import Lenis from "lenis";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import EmiCalculator from "@/components/calculator/EmiCalculator";
-import ShinyText from "@/components/ShinyText/ShinyText";
 import SpotlightCard from "@/components/SpotlightCard/SpotlightCard";
 import BlurText from "@/components/BlurText/BlurText";
-import TiltedCard from "@/components/TiltedCard/TiltedCard";
 import Magnet from "@/components/Magnet/Magnet";
 import Hyperspeed from "@/components/Hyperspeed/Hyperspeed";
 import FloatingLines from "@/components/FloatingLines/FloatingLines";
@@ -16,9 +14,9 @@ import { Button } from "@/components/ui/button";
 import {
   Card,
   CardContent,
-  CardDescription,
   CardHeader,
   CardTitle,
+  CardDescription,
 } from "@/components/ui/card";
 import {
   Phone,
@@ -35,7 +33,6 @@ import {
   Mail,
   Landmark,
   Briefcase,
-  Car,
   HeartPulse,
   PiggyBank,
   Zap,
@@ -46,6 +43,10 @@ import {
   Sparkles,
   ChevronRight,
   Star,
+  Send,
+  ExternalLink,
+  Target,
+  Compass,
 } from "lucide-react";
 import {
   PHONE_PRIMARY,
@@ -56,6 +57,7 @@ import {
   SLOGAN,
   WHATSAPP_MESSAGES,
   getWhatsAppLink,
+  openWhatsApp,
   handleWhatsAppClick,
 } from "@/lib/constants";
 
@@ -86,6 +88,30 @@ function useReveal() {
 function Index() {
   const lenisRef = useRef<Lenis | null>(null);
   useReveal();
+
+  // Contact section form state
+  const [formData, setFormData] = useState({
+    name: "",
+    phone: "",
+    email: "",
+    service: "Instant Loan / Insta Loan",
+    amount: "₹ 5,00,000",
+    message: "",
+  });
+  const [formSubmitted, setFormSubmitted] = useState(false);
+
+  const handleFormSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    setFormSubmitted(true);
+    const text = `*New Inquiry - DhanSetu Homepage*
+*Name:* ${formData.name}
+*Phone:* ${formData.phone}
+*Email:* ${formData.email || "Not specified"}
+*Service Required:* ${formData.service}
+*Estimated Amount:* ${formData.amount}
+*Message:* ${formData.message || "Please provide consultation"}`;
+    openWhatsApp(text);
+  };
 
   const hyperspeedOptions = useMemo(
     () => ({
@@ -260,12 +286,12 @@ function Index() {
 
   return (
     <div className="flex min-h-screen flex-col bg-background text-foreground">
-      {/* Standard Header Navigation */}
+      {/* Standard Header Navigation with in-page scroll support */}
       <Navbar />
 
       <main className="flex-1">
         {/* ========================================================= */}
-        {/* HERO SECTION                                              */}
+        {/* HERO SECTION (id="home")                                  */}
         {/* ========================================================= */}
         <section
           id="home"
@@ -397,6 +423,7 @@ function Index() {
 
         {/* ========================================================= */}
         {/* ATTACHED DIRECTLY AFTER HERO: EMI CALCULATOR SECTION       */}
+        {/* (id="calculator")                                         */}
         {/* ========================================================= */}
         <section
           id="calculator"
@@ -422,9 +449,9 @@ function Index() {
         </section>
 
         {/* ========================================================= */}
-        {/* SERVICES TEASER SECTION (Links to /services)              */}
+        {/* OUR SERVICES SECTION (id="services")                      */}
         {/* ========================================================= */}
-        <section id="services-preview" className="section-padding bg-muted/20">
+        <section id="services" className="section-padding bg-muted/20">
           <div className="container-tight">
             <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
               <div className="max-w-2xl">
@@ -492,9 +519,9 @@ function Index() {
         </section>
 
         {/* ========================================================= */}
-        {/* WHY US TEASER SECTION (Links to /why-us)                   */}
+        {/* WHY US SECTION (id="why-us")                              */}
         {/* ========================================================= */}
-        <section id="why-us-preview" className="section-padding bg-gradient-to-b from-[#0a1435]/40 via-background to-background border-t border-border/20">
+        <section id="why-us" className="section-padding bg-gradient-to-b from-[#0a1435]/40 via-background to-background border-t border-border/20">
           <div className="container-tight">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
               <div className="lg:col-span-6 space-y-6">
@@ -591,9 +618,9 @@ function Index() {
         </section>
 
         {/* ========================================================= */}
-        {/* CAREER & OPPORTUNITY PROMO BANNER (Links to /careers)     */}
+        {/* CAREER & OPPORTUNITY PROMO (id="careers")                 */}
         {/* ========================================================= */}
-        <section id="careers-banner" className="py-16 bg-gradient-to-r from-[#0d1c47] via-[#142c6f] to-[#0d1c47] border-y border-border/30">
+        <section id="careers" className="py-16 bg-gradient-to-r from-[#0d1c47] via-[#142c6f] to-[#0d1c47] border-y border-border/30">
           <div className="container-tight">
             <div className="max-w-4xl mx-auto rounded-3xl bg-black/40 border border-brand-gold/40 p-8 sm:p-10 backdrop-blur-md flex flex-col md:flex-row items-center justify-between gap-8">
               <div className="space-y-3">
@@ -627,60 +654,132 @@ function Index() {
         </section>
 
         {/* ========================================================= */}
-        {/* ABOUT & LEADERSHIP PREVIEW (Links to /about)              */}
+        {/* ABOUT US FULL SECTION (id="about")                        */}
         {/* ========================================================= */}
-        <section id="about-preview" className="section-padding bg-background">
+        <section id="about" className="section-padding bg-background border-t border-border/20">
           <div className="container-tight">
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
-              <div className="lg:col-span-5 order-2 lg:order-1">
-                <div className="rounded-2xl overflow-hidden border-2 border-brand-gold/40 shadow-xl relative group">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center mb-16">
+              {/* Leader Photo & Credentials */}
+              <div className="lg:col-span-5">
+                <div className="rounded-3xl overflow-hidden border-2 border-brand-gold/40 shadow-2xl relative group">
                   <img
                     src="/loans-investments.jpg"
-                    alt="DhanSetu Leadership and Advisory Team Dunlop Kolkata"
-                    className="w-full h-80 object-cover transition-transform duration-500 group-hover:scale-105"
+                    alt="Paromita Sutradhar - Founder of DhanSetu Capital Advisory"
+                    className="w-full h-[400px] object-cover transition-transform duration-500 group-hover:scale-105"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#0b1536] via-transparent to-transparent" />
-                  <div className="absolute bottom-4 left-4 right-4 p-3 rounded-lg bg-card/80 backdrop-blur-sm border border-border/40">
-                    <p className="font-heading font-bold text-white text-sm">Paromita Sutradhar</p>
-                    <p className="text-xs text-brand-gold font-semibold">Founder & Managing Director</p>
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0b1536] via-[#0b1536]/30 to-transparent" />
+                  <div className="absolute bottom-6 left-6 right-6 p-4 rounded-xl bg-card/85 backdrop-blur-md border border-border/40">
+                    <p className="font-heading font-bold text-white text-base">
+                      Paromita Sutradhar
+                    </p>
+                    <p className="text-xs text-brand-gold font-semibold uppercase tracking-wider">
+                      Founder & Managing Director
+                    </p>
+                    <p className="text-xs text-white/70 mt-1">
+                      Dunlop, Kolkata Headquarters
+                    </p>
                   </div>
                 </div>
               </div>
 
-              <div className="lg:col-span-7 order-1 lg:order-2 space-y-5">
-                <span className="text-xs font-bold uppercase tracking-wider text-brand-gold">
-                  Founded 2016 • Dunlop, Kolkata
-                </span>
-                <h2 className="text-3xl sm:text-4xl font-extrabold font-heading text-white">
-                  Empowering Financial Growth Across Bengal
+              {/* Story & Background */}
+              <div className="lg:col-span-7 space-y-5">
+                <div className="inline-flex items-center gap-2 rounded-full bg-brand-gold/10 px-3 py-1 text-xs font-semibold text-brand-gold border border-brand-gold/30">
+                  <Award className="h-3.5 w-3.5" />
+                  <span>Founded 2016 in Dunlop, Kolkata</span>
+                </div>
+
+                <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold font-heading text-white leading-tight">
+                  About <span className="text-brand-gold">DhanSetu</span> Capital Advisory
                 </h2>
-                <p className="text-white/80 leading-relaxed text-sm sm:text-base">
-                  Established with a dedication to simplify capital access, DhanSetu Capital Advisory has grown from a local advisory firm into a multi-institution loan facilitator with over ₹500+ Crores in disbursed capital.
-                </p>
-                <p className="text-white/70 leading-relaxed text-sm">
-                  Whether you are purchasing your first home, launching an entrepreneurial venture, or planning long-term retirement wealth, our advisory team brings ethical transparency to every interaction.
+
+                <p className="text-white/85 leading-relaxed text-base">
+                  DhanSetu was established by <strong>Paromita Sutradhar</strong> to eliminate the frustrating delays, hidden commissions, and complex bank queues that borrowers across Bengal previously had to endure.
                 </p>
 
-                <div className="pt-2">
+                <p className="text-white/70 leading-relaxed text-sm">
+                  Today, we have grown into one of Kolkata's most dependable financial loan syndicators, having facilitated over <strong>₹500+ Crores</strong> in capital across <strong>50+ partner banks and NBFCs</strong>. Our full range of financial solutions includes Instant Loans, Home Loans, Business Credit, Mortgages, Insurance, and Mutual Fund portfolios.
+                </p>
+
+                {/* 3 Metrics Chips */}
+                <div className="grid grid-cols-3 gap-4 pt-2">
+                  <div className="p-3.5 rounded-xl bg-card/40 border border-border/30 text-center">
+                    <div className="text-2xl font-bold font-heading text-brand-gold">₹500+ Cr</div>
+                    <div className="text-[11px] text-white/60 mt-0.5">Disbursed</div>
+                  </div>
+                  <div className="p-3.5 rounded-xl bg-card/40 border border-border/30 text-center">
+                    <div className="text-2xl font-bold font-heading text-brand-gold">15,000+</div>
+                    <div className="text-[11px] text-white/60 mt-0.5">Happy Clients</div>
+                  </div>
+                  <div className="p-3.5 rounded-xl bg-card/40 border border-border/30 text-center">
+                    <div className="text-2xl font-bold font-heading text-brand-gold">50+</div>
+                    <div className="text-[11px] text-white/60 mt-0.5">Bank Partners</div>
+                  </div>
+                </div>
+
+                <div className="pt-2 flex flex-wrap gap-3">
                   <Button
-                    variant="outline"
+                    variant="gold"
                     size="default"
                     asChild
-                    className="border-white/20 text-white hover:bg-white/10 font-heading font-semibold"
+                    className="font-heading font-semibold shadow-md btn-sheen"
                   >
                     <Link to="/about">
-                      Learn About Our Story & Leadership
-                      <ArrowRight className="h-4 w-4 ml-2 text-brand-gold" />
+                      Read Full Story & Milestones
+                      <ArrowRight className="h-4 w-4 ml-1.5" />
                     </Link>
                   </Button>
                 </div>
+              </div>
+            </div>
+
+            {/* 4 Pillars of Excellence */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 pt-8 border-t border-border/20">
+              <div className="p-5 rounded-2xl bg-card/30 border border-border/30">
+                <div className="h-10 w-10 rounded-lg bg-brand-gold/15 text-brand-gold flex items-center justify-center mb-3">
+                  <Shield className="h-5 w-5" />
+                </div>
+                <h4 className="font-heading font-bold text-white text-base mb-1">Absolute Integrity</h4>
+                <p className="text-xs text-white/60 leading-relaxed">
+                  Transparent fee structures with zero surprise charges on bank sanction letters.
+                </p>
+              </div>
+
+              <div className="p-5 rounded-2xl bg-card/30 border border-border/30">
+                <div className="h-10 w-10 rounded-lg bg-brand-gold/15 text-brand-gold flex items-center justify-center mb-3">
+                  <Users2 className="h-5 w-5" />
+                </div>
+                <h4 className="font-heading font-bold text-white text-base mb-1">Client-First Advisory</h4>
+                <p className="text-xs text-white/60 leading-relaxed">
+                  We negotiate with multiple banks on your behalf to guarantee the lowest interest rate.
+                </p>
+              </div>
+
+              <div className="p-5 rounded-2xl bg-card/30 border border-border/30">
+                <div className="h-10 w-10 rounded-lg bg-brand-gold/15 text-brand-gold flex items-center justify-center mb-3">
+                  <Landmark className="h-5 w-5" />
+                </div>
+                <h4 className="font-heading font-bold text-white text-base mb-1">Institutional Ties</h4>
+                <p className="text-xs text-white/60 leading-relaxed">
+                  Direct underwriting channels across 50+ leading public, private banks, and NBFCs.
+                </p>
+              </div>
+
+              <div className="p-5 rounded-2xl bg-card/30 border border-border/30">
+                <div className="h-10 w-10 rounded-lg bg-brand-gold/15 text-brand-gold flex items-center justify-center mb-3">
+                  <Zap className="h-5 w-5" />
+                </div>
+                <h4 className="font-heading font-bold text-white text-base mb-1">Rapid Turnaround</h4>
+                <p className="text-xs text-white/60 leading-relaxed">
+                  Instant loan approvals in 24 hours and doorstep document pickup across Kolkata.
+                </p>
               </div>
             </div>
           </div>
         </section>
 
         {/* ========================================================= */}
-        {/* TESTIMONIALS / TRUST REVIEWS                              */}
+        {/* TESTIMONIALS / TRUST REVIEWS (id="testimonials")           */}
         {/* ========================================================= */}
         <section id="testimonials" className="section-padding bg-muted/20 border-t border-border/20">
           <div className="container-tight">
@@ -721,12 +820,282 @@ function Index() {
         </section>
 
         {/* ========================================================= */}
-        {/* CONTACT & CONSULTATION TEASER (Links to /contact)         */}
+        {/* FULL CONTACT US SECTION (id="contact")                    */}
         {/* ========================================================= */}
-        <section id="contact-teaser" className="section-padding bg-background relative overflow-hidden">
+        <section id="contact" className="section-padding bg-background border-t border-border/20">
           <div className="container-tight">
-            <div className="relative rounded-3xl bg-black border border-border/40 p-8 sm:p-14 text-center text-primary-foreground overflow-hidden">
-              {/* FloatingLines animation */}
+            <div className="mx-auto max-w-3xl text-center mb-14">
+              <span className="text-xs font-bold uppercase tracking-widest text-brand-gold">
+                Get In Touch
+              </span>
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold font-heading text-white mt-1">
+                Contact Our Dunlop Office
+              </h2>
+              <p className="mt-3 text-white/70 text-base max-w-2xl mx-auto">
+                Ready to secure the lowest loan rate or need expert advice? Reach out via phone, email, or send an instant inquiry below.
+              </p>
+            </div>
+
+            {/* 3 Contact Info Cards */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+              {/* Call Us Card */}
+              <SpotlightCard className="p-6 rounded-2xl bg-card/50 border border-border/30 flex flex-col items-center text-center">
+                <div className="h-12 w-12 rounded-xl bg-brand-gold/15 text-brand-gold flex items-center justify-center mb-4">
+                  <Phone className="h-6 w-6" />
+                </div>
+                <h3 className="text-lg font-bold font-heading text-white mb-2">Call Us Directly</h3>
+                <p className="text-sm font-semibold text-white/90">
+                  <a href={`tel:${PHONE_PRIMARY.replace(/\s/g, "")}`} className="hover:text-brand-gold transition-colors">
+                    Mobile: {PHONE_PRIMARY}
+                  </a>
+                </p>
+                <p className="text-sm font-semibold text-white/90 mt-1">
+                  <a href={`tel:${PHONE_LANDLINE.replace(/[-\s]/g, "")}`} className="hover:text-brand-gold transition-colors">
+                    Landline: {PHONE_LANDLINE}
+                  </a>
+                </p>
+                <div className="mt-4 flex gap-2">
+                  <Button variant="gold" size="sm" asChild className="font-heading font-semibold text-xs">
+                    <a href={`tel:${PHONE_PRIMARY.replace(/\s/g, "")}`}>Call Mobile</a>
+                  </Button>
+                  <Button variant="outline" size="sm" asChild className="font-heading font-semibold text-xs border-white/20 text-white hover:bg-white/10">
+                    <a href={`tel:${PHONE_LANDLINE.replace(/[-\s]/g, "")}`}>Landline</a>
+                  </Button>
+                </div>
+              </SpotlightCard>
+
+              {/* Email Us Card */}
+              <SpotlightCard className="p-6 rounded-2xl bg-card/50 border border-border/30 flex flex-col items-center text-center">
+                <div className="h-12 w-12 rounded-xl bg-brand-gold/15 text-brand-gold flex items-center justify-center mb-4">
+                  <Mail className="h-6 w-6" />
+                </div>
+                <h3 className="text-lg font-bold font-heading text-white mb-2">Email Address</h3>
+                <a
+                  href={`mailto:${EMAIL}`}
+                  className="text-sm font-semibold text-brand-gold hover:underline break-all"
+                >
+                  {EMAIL}
+                </a>
+                <p className="text-xs text-white/60 mt-2">
+                  Send your requirements or resumes anytime.
+                </p>
+                <Button variant="outline" size="sm" asChild className="mt-4 font-heading font-semibold text-xs border-white/20 text-white hover:bg-white/10">
+                  <a href={`mailto:${EMAIL}`}>Send Email</a>
+                </Button>
+              </SpotlightCard>
+
+              {/* Office Address Card */}
+              <SpotlightCard className="p-6 rounded-2xl bg-card/50 border border-border/30 flex flex-col items-center text-center">
+                <div className="h-12 w-12 rounded-xl bg-brand-gold/15 text-brand-gold flex items-center justify-center mb-4">
+                  <MapPin className="h-6 w-6" />
+                </div>
+                <h3 className="text-lg font-bold font-heading text-white mb-2">Visit Our Office</h3>
+                <p className="text-xs sm:text-sm text-white/80 leading-relaxed">
+                  {ADDRESS}
+                </p>
+                <p className="text-xs text-brand-gold font-semibold mt-1">
+                  Mon – Sat: 10:00 AM – 7:00 PM
+                </p>
+                <Button variant="outline" size="sm" asChild className="mt-4 font-heading font-semibold text-xs border-white/20 text-white hover:bg-white/10">
+                  <a
+                    href="https://maps.google.com/?q=Dunlop,+Kolkata+West+Bengal+700108"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Open in Maps
+                  </a>
+                </Button>
+              </SpotlightCard>
+            </div>
+
+            {/* Interactive Inquiry Form & Map Grid */}
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+              {/* Form Container */}
+              <div className="lg:col-span-7 bg-card/60 border border-border/40 rounded-3xl p-8 sm:p-10 shadow-2xl">
+                <div className="mb-6">
+                  <span className="text-xs font-bold text-brand-gold uppercase tracking-wider">
+                    Fast Callback Guaranteed
+                  </span>
+                  <h3 className="text-2xl sm:text-3xl font-bold font-heading text-white mt-1">
+                    Send a Free Consultation Inquiry
+                  </h3>
+                  <p className="text-white/70 text-sm mt-1">
+                    Fill out the form below. Our financial advisor will contact you within 15 minutes.
+                  </p>
+                </div>
+
+                {formSubmitted && (
+                  <div className="p-4 mb-6 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-sm flex items-center gap-3">
+                    <CheckCircle2 className="h-5 w-5 shrink-0" />
+                    <span>Inquiry submitted! We have routed your details to WhatsApp for immediate priority service.</span>
+                  </div>
+                )}
+
+                <form onSubmit={handleFormSubmit} className="space-y-4">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                      <label className="block text-xs font-semibold text-white/80 mb-1.5">
+                        Your Full Name *
+                      </label>
+                      <input
+                        type="text"
+                        required
+                        value={formData.name}
+                        onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                        placeholder="e.g. Rahul Sharma"
+                        className="w-full px-4 py-2.5 rounded-xl bg-background/80 border border-border/40 text-white text-sm focus:outline-none focus:border-brand-gold"
+                      />
+                    </div>
+
+                    <div>
+                      <label className="block text-xs font-semibold text-white/80 mb-1.5">
+                        Phone Number *
+                      </label>
+                      <input
+                        type="tel"
+                        required
+                        value={formData.phone}
+                        onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                        placeholder="e.g. +91 98765 43210"
+                        className="w-full px-4 py-2.5 rounded-xl bg-background/80 border border-border/40 text-white text-sm focus:outline-none focus:border-brand-gold"
+                      />
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                      <label className="block text-xs font-semibold text-white/80 mb-1.5">
+                        Email Address
+                      </label>
+                      <input
+                        type="email"
+                        value={formData.email}
+                        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                        placeholder="yourname@gmail.com"
+                        className="w-full px-4 py-2.5 rounded-xl bg-background/80 border border-border/40 text-white text-sm focus:outline-none focus:border-brand-gold"
+                      />
+                    </div>
+
+                    <div>
+                      <label className="block text-xs font-semibold text-white/80 mb-1.5">
+                        Service Required *
+                      </label>
+                      <select
+                        value={formData.service}
+                        onChange={(e) => setFormData({ ...formData, service: e.target.value })}
+                        className="w-full px-4 py-2.5 rounded-xl bg-background/80 border border-border/40 text-white text-sm focus:outline-none focus:border-brand-gold"
+                      >
+                        <option value="Instant Loan / Insta Loan">Instant Loan / Insta Loan (24h)</option>
+                        <option value="Home Loan">Home Loan</option>
+                        <option value="Business Loan">Business Loan</option>
+                        <option value="Personal Loan">Personal Loan</option>
+                        <option value="Mortgage (LAP)">Mortgage (LAP)</option>
+                        <option value="Car / Auto Loan">Car / Auto Loan</option>
+                        <option value="Life & Health Insurance">Life & Health Insurance</option>
+                        <option value="Mutual Funds & Investments">Mutual Funds & Investments</option>
+                        <option value="Channel Partner / DSA Inquiry">Channel Partner / DSA Inquiry</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <div>
+                    <label className="block text-xs font-semibold text-white/80 mb-1.5">
+                      Estimated Loan / Investment Amount
+                    </label>
+                    <input
+                      type="text"
+                      value={formData.amount}
+                      onChange={(e) => setFormData({ ...formData, amount: e.target.value })}
+                      placeholder="e.g. ₹ 10,00,000"
+                      className="w-full px-4 py-2.5 rounded-xl bg-background/80 border border-border/40 text-white text-sm focus:outline-none focus:border-brand-gold"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block text-xs font-semibold text-white/80 mb-1.5">
+                      Specific Requirements / Notes
+                    </label>
+                    <textarea
+                      rows={3}
+                      value={formData.message}
+                      onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                      placeholder="Tell us about your requirement, preferred banks, or timeline..."
+                      className="w-full px-4 py-2.5 rounded-xl bg-background/80 border border-border/40 text-white text-sm focus:outline-none focus:border-brand-gold"
+                    />
+                  </div>
+
+                  <Button
+                    type="submit"
+                    variant="gold"
+                    size="lg"
+                    className="w-full font-heading font-semibold shadow-lg shadow-brand-gold/25 btn-sheen mt-2"
+                  >
+                    <Send className="h-4 w-4 mr-2" />
+                    Submit Inquiry & Connect on WhatsApp
+                  </Button>
+                </form>
+              </div>
+
+              {/* Map & Office Direction Card */}
+              <div className="lg:col-span-5 space-y-6">
+                <div className="rounded-3xl border border-border/40 bg-card/60 p-6 sm:p-8 shadow-xl">
+                  <h3 className="text-xl font-bold font-heading text-white mb-2 flex items-center gap-2">
+                    <MapPin className="h-5 w-5 text-brand-gold" />
+                    Dunlop Headquarters
+                  </h3>
+                  <p className="text-xs sm:text-sm text-white/70 leading-relaxed mb-4">
+                    Conveniently located on Vivekananda Road, near Dunlop crossing. Easily reachable via Baranagar Metro Station, Belgharia Expressway, and Dunlop bus hub.
+                  </p>
+
+                  <div className="rounded-2xl overflow-hidden border border-border/30 h-64 bg-slate-900 relative">
+                    <iframe
+                      title="DhanSetu Office Location Dunlop Kolkata"
+                      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14728.847551065096!2d88.3732448!3d22.6517178!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39f89da3b2c28659%3A0xe104ff47db1e8a08!2sDunlop%2C%20Kolkata%2C%20West%20Bengal!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
+                      width="100%"
+                      height="100%"
+                      style={{ border: 0 }}
+                      allowFullScreen={false}
+                      loading="lazy"
+                      referrerPolicy="no-referrer-when-downgrade"
+                      className="grayscale contrast-125 opacity-80 hover:opacity-100 hover:grayscale-0 transition-all duration-300"
+                    />
+                  </div>
+
+                  <div className="mt-4 pt-4 border-t border-border/20 flex items-center justify-between">
+                    <span className="text-xs text-white/60">
+                      Open Mon - Sat 10 AM - 7 PM
+                    </span>
+                    <a
+                      href="https://maps.google.com/?q=Dunlop,+Kolkata+West+Bengal+700108"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-xs font-semibold text-brand-gold hover:underline flex items-center gap-1"
+                    >
+                      Open Google Maps
+                      <ExternalLink className="h-3 w-3" />
+                    </a>
+                  </div>
+                </div>
+
+                <div className="rounded-2xl border border-brand-gold/30 bg-gradient-to-r from-brand-gold/10 to-transparent p-6">
+                  <h4 className="text-white font-bold font-heading text-base mb-1">
+                    Want dedicated contact page details?
+                  </h4>
+                  <p className="text-xs text-white/70 mb-3">
+                    Visit our full contact page for extended routes, transport guides, and direct lines.
+                  </p>
+                  <Button variant="outline" size="sm" asChild className="border-brand-gold/40 text-brand-gold hover:bg-brand-gold/10 font-heading font-semibold text-xs">
+                    <Link to="/contact">
+                      Go to Full Contact Page
+                      <ArrowRight className="h-3 w-3 ml-1.5" />
+                    </Link>
+                  </Button>
+                </div>
+              </div>
+            </div>
+
+            {/* Bottom Consultation Banner with FloatingLines */}
+            <div className="relative mt-16 rounded-3xl bg-black border border-border/40 p-8 sm:p-14 text-center text-primary-foreground overflow-hidden">
               <div className="pointer-events-none absolute inset-0 z-0 opacity-70">
                 <FloatingLines
                   linesGradient={["#1a3fa0", "#e8a33d", "#ffffff"]}
@@ -740,7 +1109,6 @@ function Index() {
                 />
               </div>
 
-              {/* Overlay gradient */}
               <div className="pointer-events-none absolute inset-0 z-[1] bg-gradient-to-b from-[#0f1f4d]/85 via-transparent to-[#0f1f4d]/90" />
 
               <div className="relative z-10 max-w-2xl mx-auto space-y-4">
@@ -775,10 +1143,10 @@ function Index() {
                     asChild
                     className="border-white/30 text-white hover:bg-white/10 font-heading font-semibold"
                   >
-                    <Link to="/contact">
-                      <MapPin className="h-4 w-4 mr-2 text-brand-gold" />
-                      View Office & Contact Details
-                    </Link>
+                    <a href={`tel:${PHONE_PRIMARY.replace(/\s/g, "")}`}>
+                      <Phone className="h-5 w-5 mr-2 text-brand-gold" />
+                      Call {PHONE_PRIMARY}
+                    </a>
                   </Button>
                 </div>
               </div>

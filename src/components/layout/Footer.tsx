@@ -11,6 +11,30 @@ import {
 } from "@/lib/constants";
 
 export const Footer: React.FC = () => {
+  const handleNavClick = (href: string, e: React.MouseEvent) => {
+    if (typeof window !== "undefined" && (window.location.pathname === "/" || window.location.pathname === "")) {
+      const idMap: Record<string, string> = {
+        "/": "home",
+        "/services": "services",
+        "/why-us": "why-us",
+        "/careers": "careers",
+        "/about": "about",
+        "/contact": "contact",
+      };
+      const targetId = idMap[href];
+      if (targetId) {
+        const el = document.getElementById(targetId);
+        if (el) {
+          e.preventDefault();
+          const yOffset = -80;
+          const y = el.getBoundingClientRect().top + window.pageYOffset + yOffset;
+          window.scrollTo({ top: y, behavior: "smooth" });
+          return;
+        }
+      }
+    }
+  };
+
   return (
     <footer className="bg-[#080f26] border-t border-border/30 text-white/80 pt-16 pb-10">
       <div className="container-tight">
@@ -52,6 +76,7 @@ export const Footer: React.FC = () => {
                 <li key={link.href}>
                   <Link
                     to={link.href}
+                    onClick={(e) => handleNavClick(link.href, e)}
                     className="inline-flex items-center gap-1.5 text-white/70 hover:text-brand-gold transition-colors"
                   >
                     <ArrowRight className="h-3 w-3 text-brand-gold/70" />
