@@ -108,14 +108,14 @@ function ServicesPage() {
         {/* Page Hero Header */}
         <section className="relative py-20 bg-gradient-to-b from-[#0e1c4a] to-background overflow-hidden border-b border-border/20">
           <div className="container-tight relative z-10 text-center">
-            <div className="inline-flex items-center gap-2 rounded-full border border-brand-gold/40 bg-white/5 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-brand-gold">
-              <span>Financial Services Portfolio</span>
-            </div>
-            <h1 className="mt-4 font-heading text-4xl sm:text-5xl md:text-6xl font-extrabold text-white">
-              All Financial Needs <span className="gold-text">Under One Roof</span>
+            <span className="text-xs font-bold uppercase tracking-widest text-brand-gold">
+              Our Services
+            </span>
+            <h1 className="mt-3 font-heading text-4xl sm:text-5xl md:text-6xl font-extrabold text-white">
+              Our Services
             </h1>
             <p className="mx-auto mt-4 max-w-2xl text-base text-white/80 sm:text-lg">
-              Explore our complete suite of Instant Loans, Home & Business Credit, Insurance, and Wealth Investments in Dunlop, Kolkata.
+              Complete loan, insurance & wealth investment solutions under one trusted roof.
             </p>
             <div className="mt-8 flex flex-wrap justify-center gap-4">
               <Button variant="gold" size="lg" asChild className="font-heading font-bold btn-sheen">

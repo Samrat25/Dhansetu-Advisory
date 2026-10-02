@@ -428,14 +428,14 @@ function Index() {
           <div className="container-tight">
             <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
               <div className="max-w-2xl">
-                <span className="text-xs font-bold uppercase tracking-wider text-brand-gold">
-                  Our Comprehensive Solutions
+                <span className="text-xs font-bold uppercase tracking-widest text-brand-gold">
+                  Our Services
                 </span>
                 <h2 className="text-3xl sm:text-4xl font-extrabold font-heading text-white mt-1">
-                  Financial Services Under One Roof
+                  Our Services
                 </h2>
                 <p className="text-white/70 text-sm sm:text-base mt-2">
-                  From lightning-fast cash advances to multi-crore business lines and family wealth preservation.
+                  Complete loan, insurance & wealth investment solutions under one trusted roof.
                 </p>
               </div>
 
