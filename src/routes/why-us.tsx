@@ -54,9 +54,9 @@ function WhyUsPage() {
     },
     {
       icon: Landmark,
-      title: "50+ Leading Banking Partners",
-      desc: "We compare rates across HDFC, SBI, ICICI, Axis, Bajaj Finserv, Tata Capital, and 45+ premier institutions to lock in the lowest interest rates for you.",
-      highlight: "50+ Lenders",
+      title: "20+ Leading Banking Partners",
+      desc: "We compare rates across HDFC, SBI, ICICI, Axis, Bajaj Finserv, Tata Capital, and premier institutions to lock in the lowest interest rates for you.",
+      highlight: "20+ Lenders",
     },
     {
       icon: BadgePercent,
@@ -87,7 +87,7 @@ function WhyUsPage() {
   const comparisonRows = [
     {
       feature: "Number of Lenders",
-      dhansetu: "50+ Banks & NBFCs compared simultaneously",
+      dhansetu: "20+ Banks & NBFCs compared simultaneously",
       regularBank: "Only 1 bank's in-house fixed products",
     },
     {
@@ -126,7 +126,7 @@ function WhyUsPage() {
     {
       num: "02",
       title: "Multi-Lender Comparison",
-      desc: "We analyze deals across 50+ partner banks and NBFCs, shortlisting the top 3 with the lowest interest rate and maximum sanction value.",
+      desc: "We analyze deals across 20+ partner banks and NBFCs, shortlisting the top 3 with the lowest interest rate and maximum sanction value.",
     },
     {
       num: "03",
@@ -141,9 +141,9 @@ function WhyUsPage() {
   ];
 
   const metrics = [
-    { value: "₹500+ Cr", label: "Capital Disbursed", desc: "Across personal, business & mortgages" },
-    { value: "50+", label: "Banking Partners", desc: "India's leading banks & AAA-rated NBFCs" },
-    { value: "15,000+", label: "Clients Empowered", desc: "Individuals, professionals & enterprises" },
+    { value: "₹100+ Cr", label: "Capital Disbursed", desc: "Across personal, business & mortgages" },
+    { value: "20+", label: "Banking Partners", desc: "India's leading banks & AAA-rated NBFCs" },
+    { value: "₹200+ Cr", label: "Capital Facilitated", desc: "Cumulative credit volume processed" },
     { value: "98.4%", label: "Approval Success", desc: "High sanction rate with tailored matching" },
   ];
 

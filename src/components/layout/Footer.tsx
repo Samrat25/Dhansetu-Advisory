@@ -38,7 +38,7 @@ export const Footer: React.FC = () => {
               {TAGLINE}
             </p>
             <p className="text-xs leading-relaxed text-white/60">
-              Kolkata's trusted partner for Instant Loans, Home & Business Credit, Insurance, and Wealth Investments. 50+ banking partners under one roof.
+              Kolkata's trusted partner for Instant Loans, Home & Business Credit, Insurance, and Wealth Investments. 20+ banking partners under one roof.
             </p>
           </div>
 

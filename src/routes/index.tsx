@@ -147,7 +147,7 @@ function Index() {
     {
       title: "Why Us",
       href: "/why-us",
-      badge: "50+ Banking Partners",
+      badge: "20+ Banking Partners",
       desc: "Compare rates across SBI, HDFC, ICICI, Axis, Tata Capital, and Bajaj Finserv. Lowest rates starting from 8.5% p.a. with zero hidden fees.",
       icon: Landmark,
       cta: "See DhanSetu Advantage",
@@ -156,7 +156,7 @@ function Index() {
       title: "Career & Opportunity",
       href: "/careers",
       badge: "Hiring & DSA Program",
-      desc: "Join our core advisory team or enroll as a high-earning Channel Partner (DSA) with 50+ lenders, maximum payouts, and zero entry fees.",
+      desc: "Join our core advisory team or enroll as a high-earning Channel Partner (DSA) with 20+ lenders, maximum payouts, and zero entry fees.",
       icon: Briefcase,
       cta: "View Careers & DSA",
     },
@@ -164,7 +164,7 @@ function Index() {
       title: "About Us",
       href: "/about",
       badge: "Founded 2016",
-      desc: "Founded in Dunlop, Kolkata by Paromita Sutradhar. Over ₹500+ Cr in capital facilitated for 15,000+ satisfied clients across Bengal.",
+      desc: "Founded in Dunlop, Kolkata by Paromita Sutradhar. Over ₹100+ Cr in capital facilitated for 200+ satisfied clients across Bengal.",
       icon: Award,
       cta: "Read Company Story",
     },
@@ -213,7 +213,7 @@ function Index() {
         {/* ========================================================= */}
         <section
           id="home"
-          className="relative overflow-hidden bg-black pt-28 pb-16 text-primary-foreground md:pt-36 md:pb-24"
+          className="relative overflow-hidden bg-black pt-24 pb-12 text-primary-foreground sm:pt-28 sm:pb-16 md:pt-36 md:pb-24"
         >
           {/* Hyperspeed Background */}
           <div className="pointer-events-none absolute inset-0 z-0 opacity-60">
@@ -228,15 +228,15 @@ function Index() {
           <div className="pointer-events-none absolute -bottom-32 -left-24 z-[2] h-96 w-96 rounded-full bg-brand-blue-light/40 blur-3xl" />
 
           <div className="container-tight relative z-10">
-            <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-14">
+            <div className="grid items-center gap-8 lg:grid-cols-2 lg:gap-14">
               {/* Left Column: Headlines & CTAs */}
               <div className="flex flex-col items-start text-center lg:text-left">
-                <span className="mb-4 inline-flex items-center gap-2 self-center rounded-full border border-brand-gold/40 bg-white/10 px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.22em] text-brand-gold-light backdrop-blur-sm lg:self-start animate-fade-in">
+                <span className="mb-3.5 inline-flex items-center gap-2 self-center rounded-full border border-brand-gold/40 bg-white/10 px-3.5 py-1.5 text-[10px] sm:text-[11px] font-semibold uppercase tracking-[0.2em] text-brand-gold-light backdrop-blur-sm lg:self-start animate-fade-in">
                   <span className="inline-block h-1.5 w-1.5 rounded-full bg-brand-gold" />
                   {TAGLINE}
                 </span>
 
-                <h1 className="font-heading text-4xl font-extrabold leading-[1.1] tracking-tight text-white sm:text-5xl md:text-6xl lg:text-7xl animate-fade-up">
+                <h1 className="w-full font-heading text-3xl font-extrabold leading-tight tracking-tight text-white sm:text-4xl md:text-5xl lg:text-6xl animate-fade-up">
                   <BlurText
                     text="All Your Financial Needs Under One Roof"
                     animateBy="words"
@@ -244,20 +244,20 @@ function Index() {
                   />
                 </h1>
 
-                <p className="mt-3 text-lg font-semibold text-brand-gold-light tracking-wide animate-fade-up md:text-xl lg:text-2xl">
+                <p className="mt-2.5 sm:mt-3 text-base font-semibold text-brand-gold-light tracking-wide animate-fade-up sm:text-lg md:text-xl lg:text-2xl">
                   {SLOGAN}
                 </p>
 
-                <p className="mt-6 max-w-xl self-center text-base leading-relaxed text-white/85 sm:text-lg lg:self-start animate-fade-up">
-                  DHANSETU CAPITAL ADVISORY is your premier partner for Instant Loans, Home & Business Credit, Insurance, and Wealth Investments in Kolkata — honest advisory, 50+ banking partners, approvals in as little as 24 hours.
+                <p className="mt-4 sm:mt-6 max-w-xl self-center text-sm leading-relaxed text-white/85 sm:text-base md:text-lg lg:self-start animate-fade-up">
+                  DHANSETU CAPITAL ADVISORY is your premier partner for Instant Loans, Home & Business Credit, Insurance, and Wealth Investments in Kolkata — honest advisory, 20+ banking partners, approvals in as little as 24 hours.
                 </p>
 
-                <div className="mt-8 flex w-full flex-col gap-3 self-center sm:w-auto sm:flex-row lg:self-start">
-                  <Magnet range={90} strength={30}>
+                <div className="mt-6 sm:mt-8 flex w-full flex-col gap-3 self-center sm:w-auto sm:flex-row lg:self-start">
+                  <Magnet range={90} strength={30} className="w-full sm:w-auto">
                     <Button
                       variant="gold"
                       size="lg"
-                      className="w-full font-heading font-bold sm:w-auto btn-sheen shadow-lg shadow-brand-gold/20"
+                      className="w-full font-heading font-bold sm:w-auto btn-sheen shadow-lg shadow-brand-gold/20 py-3 sm:py-2.5"
                       onClick={handleWhatsAppClick(WHATSAPP_MESSAGES.instantLoan)}
                     >
                       <Zap className="h-5 w-5 mr-2" />
@@ -269,7 +269,7 @@ function Index() {
                     variant="outline"
                     size="lg"
                     onClick={scrollToCalculator}
-                    className="w-full border-brand-gold/40 bg-brand-gold/10 font-heading font-bold text-white hover:bg-brand-gold/20 sm:w-auto"
+                    className="w-full border-brand-gold/40 bg-brand-gold/10 font-heading font-bold text-white hover:bg-brand-gold/20 sm:w-auto py-3 sm:py-2.5"
                   >
                     <Calculator className="h-5 w-5 mr-2 text-brand-gold" />
                     Calculate EMI
@@ -279,7 +279,7 @@ function Index() {
                     variant="outline"
                     size="lg"
                     asChild
-                    className="w-full border-white/30 bg-white/10 font-heading font-bold text-white hover:bg-white/20 sm:w-auto"
+                    className="w-full border-white/30 bg-white/10 font-heading font-bold text-white hover:bg-white/20 sm:w-auto py-3 sm:py-2.5"
                   >
                     <a href={`tel:${PHONE_PRIMARY.replace(/\s/g, "")}`}>
                       <Phone className="h-5 w-5 mr-2" />
@@ -288,25 +288,25 @@ function Index() {
                   </Button>
                 </div>
 
-                <div className="mt-6 flex flex-wrap items-center justify-center gap-4 text-sm text-white/80 lg:justify-start">
-                  <span className="flex items-center gap-1.5">
-                    <BadgeCheck className="h-4 w-4 text-brand-gold" />
+                <div className="mt-6 flex flex-wrap items-center justify-center gap-2 sm:gap-4 text-xs sm:text-sm text-white/85 lg:justify-start">
+                  <span className="flex items-center gap-1.5 rounded-full bg-white/5 border border-white/10 px-3 py-1">
+                    <BadgeCheck className="h-3.5 w-3.5 sm:h-4 sm:w-4 text-brand-gold" />
                     Instant Loan in 24h
                   </span>
-                  <span className="flex items-center gap-1.5">
-                    <BadgeCheck className="h-4 w-4 text-brand-gold" />
-                    50+ Bank Partners
+                  <span className="flex items-center gap-1.5 rounded-full bg-white/5 border border-white/10 px-3 py-1">
+                    <BadgeCheck className="h-3.5 w-3.5 sm:h-4 sm:w-4 text-brand-gold" />
+                    20+ Bank Partners
                   </span>
-                  <span className="flex items-center gap-1.5">
-                    <BadgeCheck className="h-4 w-4 text-brand-gold" />
+                  <span className="flex items-center gap-1.5 rounded-full bg-white/5 border border-white/10 px-3 py-1">
+                    <BadgeCheck className="h-3.5 w-3.5 sm:h-4 sm:w-4 text-brand-gold" />
                     Dunlop, Kolkata HQ
                   </span>
                 </div>
               </div>
 
               {/* Right Column: Hero Visual Showcase */}
-              <div className="relative mx-auto w-full max-w-lg lg:max-w-none animate-fade-up">
-                <div className="aspect-[4/3] overflow-hidden rounded-2xl border-4 border-white/10 shadow-2xl relative group">
+              <div className="relative mx-auto mt-4 w-full max-w-md sm:max-w-lg lg:mt-0 lg:max-w-none animate-fade-up">
+                <div className="aspect-[16/10] sm:aspect-[4/3] overflow-hidden rounded-xl sm:rounded-2xl border-2 sm:border-4 border-white/10 shadow-2xl relative group">
                   <img
                     src="/financial-hero.jpg"
                     alt="DHANSETU Capital Advisory and Financial Services in Kolkata"
@@ -319,16 +319,16 @@ function Index() {
                 </div>
 
                 {/* Floating 24h Instant Loan Badge */}
-                <div className="absolute -bottom-5 -left-5 hidden rounded-xl bg-card border border-border/40 p-4 shadow-xl md:block animate-float-slow">
+                <div className="absolute -bottom-4 -left-4 hidden rounded-xl bg-card border border-border/40 p-3 sm:p-4 shadow-xl md:block animate-float-slow">
                   <div className="flex items-center gap-3">
-                    <div className="flex h-12 w-12 items-center justify-center rounded-full bg-brand-gold/15">
-                      <Zap className="h-6 w-6 text-brand-gold" />
+                    <div className="flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-full bg-brand-gold/15">
+                      <Zap className="h-5 w-5 sm:h-6 sm:w-6 text-brand-gold" />
                     </div>
                     <div>
-                      <p className="font-heading text-lg font-bold text-foreground">
+                      <p className="font-heading text-base sm:text-lg font-bold text-foreground">
                         24 Hours
                       </p>
-                      <p className="text-sm text-muted-foreground">
+                      <p className="text-xs sm:text-sm text-muted-foreground">
                         Instant Loan Approvals
                       </p>
                     </div>
@@ -344,18 +344,22 @@ function Index() {
         {/* ========================================================= */}
         <section
           id="calculator"
-          className="section-padding bg-gradient-to-b from-[#0a1435] via-background to-background border-b border-border/30 relative"
+          className="py-12 sm:py-16 md:py-24 bg-gradient-to-b from-[#0a1435] via-background to-background border-b border-border/30 relative overflow-hidden"
         >
+          {/* Ambient Glows */}
+          <div className="absolute top-0 right-1/4 -z-10 h-72 w-72 sm:h-96 sm:w-96 rounded-full bg-brand-gold/10 blur-[100px] pointer-events-none" />
+          <div className="absolute bottom-0 left-1/4 -z-10 h-72 w-72 sm:h-96 sm:w-96 rounded-full bg-brand-blue/20 blur-[100px] pointer-events-none" />
+
           <div className="container-tight">
-            <div className="mx-auto max-w-3xl text-center mb-12">
-              <span className="inline-flex items-center gap-2 rounded-full border border-brand-gold/40 bg-brand-gold/10 px-4 py-1 text-xs font-semibold uppercase tracking-wider text-brand-gold mb-3">
+            <div className="mx-auto max-w-3xl text-center mb-8 sm:mb-12">
+              <span className="inline-flex items-center gap-2 rounded-full border border-brand-gold/40 bg-brand-gold/10 px-3.5 py-1 text-xs font-semibold uppercase tracking-wider text-brand-gold mb-3">
                 <Calculator className="h-3.5 w-3.5" />
                 Smart Financial Tool
               </span>
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold font-heading text-white tracking-tight">
+              <h2 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold font-heading text-white tracking-tight">
                 Calculate Your <span className="text-brand-gold">Loan EMI</span> & Interest
               </h2>
-              <p className="mt-3 text-white/70 text-base sm:text-lg max-w-2xl mx-auto">
+              <p className="mt-2.5 text-white/70 text-sm sm:text-base md:text-lg max-w-2xl mx-auto">
                 Accurately estimate your monthly repayments across Instant Loans, Home Loans, Business Credit, and Mortgages before you apply.
               </p>
             </div>

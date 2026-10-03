@@ -106,7 +106,7 @@ function CareersPage() {
     },
     {
       icon: Handshake,
-      title: "Direct Access to 50+ Top Lenders",
+      title: "Direct Access to 20+ Top Lenders",
       desc: "You don't need individual empanelments. Submit files across HDFC, SBI, ICICI, Axis, Tata Capital, Bajaj Finserv, and NBFCs through DhanSetu.",
     },
     {

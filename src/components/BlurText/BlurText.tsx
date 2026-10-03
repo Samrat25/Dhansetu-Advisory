@@ -46,18 +46,18 @@ export default function BlurText({
 
   return (
     <motion.span
-      className={`inline-block ${className}`}
+      className={`inline break-words ${className}`}
       variants={containerVariants}
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, margin: "-50px" }}
+      viewport={{ once: true, margin: "0px" }}
     >
       {elements.map((el, i) => (
         <motion.span
           key={i}
           className="inline-block"
           variants={itemVariants}
-          style={{ marginRight: animateBy === 'words' ? '0.25em' : '0' }}
+          style={{ marginRight: animateBy === 'words' ? '0.22em' : '0' }}
         >
           {el === ' ' ? '\u00A0' : el}
         </motion.span>

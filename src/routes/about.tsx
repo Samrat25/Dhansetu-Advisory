@@ -54,7 +54,7 @@ function AboutPage() {
     {
       icon: Landmark,
       title: "Institutional Clout",
-      desc: "Direct partnerships with 50+ leading banks and NBFCs enable us to negotiate premier interest rates on your behalf.",
+      desc: "Direct partnerships with 20+ leading banks and NBFCs enable us to negotiate premier interest rates on your behalf.",
     },
     {
       icon: TrendingUp,
@@ -65,9 +65,9 @@ function AboutPage() {
 
   const milestones = [
     { year: "2016", title: "Foundation in Dunlop", desc: "Established by Paromita Sutradhar with a mission to simplify financial borrowing for Kolkata residents." },
-    { year: "2019", title: "Expanded to 25+ Lenders", desc: "Partnered directly with major private and public sector banks to offer competitive retail loan rates." },
-    { year: "2022", title: "₹250+ Cr Disbursals", desc: "Crossed the milestone of servicing over 10,000 satisfied families and business owners across Bengal." },
-    { year: "2026", title: "Full-Spectrum Capital Hub", desc: "Facilitated over ₹500+ Cr across 50+ institutional partners with Instant Loans, LAP, and Wealth Advisory." },
+    { year: "2019", title: "Expanded Lending Network", desc: "Partnered directly with major private and public sector banks to offer competitive retail loan rates." },
+    { year: "2022", title: "₹100+ Cr Disbursals", desc: "Crossed the milestone of servicing over 200+ satisfied families and business owners across Bengal." },
+    { year: "2026", title: "Full-Spectrum Capital Hub", desc: "Facilitated over ₹200+ Cr across 20+ institutional partners with Instant Loans, LAP, and Wealth Advisory." },
   ];
 
   return (
@@ -164,20 +164,20 @@ function AboutPage() {
                 </p>
 
                 <p className="text-white/70 leading-relaxed text-sm">
-                  Under the visionary leadership of <strong>Paromita Sutradhar</strong>, DhanSetu established strong institutional relationships with over 50 top private and PSU banks and premier NBFCs. Today, we bring together Instant Loans, Home Loans, Business Capital, Mortgages, Insurance, and Mutual Fund advisory all under one roof at our headquarters on Vivekananda Road, Dunlop, Kolkata.
+                  Under the visionary leadership of <strong>Paromita Sutradhar</strong>, DhanSetu established strong institutional relationships with over 20 top private and PSU banks and premier NBFCs. Today, we bring together Instant Loans, Home Loans, Business Capital, Mortgages, Insurance, and Mutual Fund advisory all under one roof at our headquarters on Vivekananda Road, Dunlop, Kolkata.
                 </p>
 
                 <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 pt-4 border-t border-border/30">
                   <div className="p-3 rounded-lg bg-card/40 border border-border/30">
-                    <div className="text-2xl font-bold font-heading text-brand-gold">₹500+ Cr</div>
+                    <div className="text-2xl font-bold font-heading text-brand-gold">₹100+ Cr</div>
                     <div className="text-xs text-white/60">Loans Facilitated</div>
                   </div>
                   <div className="p-3 rounded-lg bg-card/40 border border-border/30">
-                    <div className="text-2xl font-bold font-heading text-brand-gold">15,000+</div>
-                    <div className="text-xs text-white/60">Happy Clients</div>
+                    <div className="text-2xl font-bold font-heading text-brand-gold">₹200+ Cr</div>
+                    <div className="text-xs text-white/60">Capital Processed</div>
                   </div>
                   <div className="p-3 rounded-lg bg-card/40 border border-border/30">
-                    <div className="text-2xl font-bold font-heading text-brand-gold">50+</div>
+                    <div className="text-2xl font-bold font-heading text-brand-gold">20+</div>
                     <div className="text-xs text-white/60">Bank Partners</div>
                   </div>
                 </div>

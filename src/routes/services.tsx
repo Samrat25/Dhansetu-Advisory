@@ -172,7 +172,7 @@ function ServicesPage() {
                     Instant Loans & Credit Solutions
                   </CardTitle>
                   <CardDescription className="text-sm">
-                    Fast capital disbursement with 50+ banking partners in Kolkata.
+                    Fast capital disbursement with 20+ banking partners in Kolkata.
                   </CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-2.5">
@@ -315,7 +315,7 @@ function ServicesPage() {
               Our Lending Network
             </span>
             <h3 className="mt-2 font-heading text-2xl font-bold">
-              Tied Up With 50+ Leading Banks & NBFCs
+              Tied Up With 20+ Leading Banks & NBFCs
             </h3>
             <div className="mt-8 flex flex-wrap justify-center gap-3">
               {bankPartners.map((bank) => (
@@ -327,7 +327,7 @@ function ServicesPage() {
                 </div>
               ))}
               <div className="px-4 py-2 rounded-xl bg-brand-gold/10 border border-brand-gold/30 text-xs font-heading font-bold text-brand-gold">
-                + 40 More PSU & Private Banks
+                + 15 More PSU & Private Banks
               </div>
             </div>
           </div>

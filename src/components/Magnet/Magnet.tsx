@@ -4,17 +4,24 @@ interface MagnetProps {
   children: React.ReactElement;
   range?: number;
   strength?: number;
+  className?: string;
 }
 
 export default function Magnet({
   children,
   range = 80,
-  strength = 30
+  strength = 30,
+  className = '',
 }: MagnetProps) {
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const magnetRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    // Disable magnet effect on touch-only mobile devices for smooth touch interactions
+    if (typeof window !== 'undefined' && window.matchMedia && window.matchMedia('(pointer: coarse)').matches) {
+      return;
+    }
+
     const handleMouseMove = (e: MouseEvent) => {
       if (!magnetRef.current) return;
       const rect = magnetRef.current.getBoundingClientRect();
@@ -49,12 +56,11 @@ export default function Magnet({
     transition: position.x === 0 && position.y === 0
       ? 'transform 0.5s cubic-bezier(0.25, 1, 0.5, 1)'
       : 'transform 0.1s ease-out',
-    display: 'inline-block',
     willChange: 'transform'
   };
 
   return (
-    <div ref={magnetRef} style={style}>
+    <div ref={magnetRef} style={style} className={`inline-block ${className}`}>
       {children}
     </div>
   );
