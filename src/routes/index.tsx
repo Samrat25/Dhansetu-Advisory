@@ -340,6 +340,53 @@ function Index() {
         </section>
 
         {/* ========================================================= */}
+        {/* 20+ BANKING & NBFC PARTNERS SHOWCASE STRIP                */}
+        {/* ========================================================= */}
+        <section className="border-y border-border/20 bg-[#08122d]/80 py-6 sm:py-8 backdrop-blur-sm relative z-20">
+          <div className="container-tight">
+            <div className="flex flex-col items-center justify-between gap-4 lg:flex-row">
+              <div className="text-center lg:text-left shrink-0">
+                <span className="inline-flex items-center gap-1.5 rounded-full bg-brand-gold/10 border border-brand-gold/30 px-3 py-1 text-xs font-bold text-brand-gold uppercase tracking-wider">
+                  <Landmark className="h-3.5 w-3.5" />
+                  20+ Banking Partners
+                </span>
+                <p className="mt-1 text-xs text-white/60">
+                  Direct tie-ups with India's premier scheduled banks & NBFCs
+                </p>
+              </div>
+
+              {/* Bank partner chips */}
+              <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-2.5">
+                {[
+                  "State Bank of India",
+                  "HDFC Bank",
+                  "ICICI Bank",
+                  "Axis Bank",
+                  "Kotak Mahindra Bank",
+                  "Tata Capital",
+                  "Bajaj Finserv",
+                  "Bandhan Bank",
+                  "Punjab National Bank",
+                  "Bank of Baroda",
+                  "+ 10 More Lenders",
+                ].map((bank) => (
+                  <span
+                    key={bank}
+                    className={`rounded-xl px-3 py-1.5 text-xs font-heading font-semibold transition-colors ${
+                      bank === "+ 10 More Lenders"
+                        ? "bg-brand-gold/20 text-brand-gold border border-brand-gold/40 font-bold"
+                        : "bg-white/5 border border-white/10 text-white/85 hover:border-brand-gold/40 hover:text-white"
+                    }`}
+                  >
+                    {bank}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ========================================================= */}
         {/* ATTACHED DIRECTLY AFTER HERO: EMI CALCULATOR SECTION       */}
         {/* ========================================================= */}
         <section
