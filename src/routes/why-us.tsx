@@ -143,7 +143,7 @@ function WhyUsPage() {
   const metrics = [
     { value: "₹100+ Cr", label: "Capital Disbursed", desc: "Across personal, business & mortgages" },
     { value: "20+", label: "Banking Partners", desc: "India's leading banks & AAA-rated NBFCs" },
-    { value: "₹200+ Cr", label: "Capital Facilitated", desc: "Cumulative credit volume processed" },
+    { value: "200+", label: "Happy Clients", desc: "Families, professionals & enterprises across Bengal" },
     { value: "98.4%", label: "Approval Success", desc: "High sanction rate with tailored matching" },
   ];
 
@@ -219,7 +219,7 @@ function WhyUsPage() {
                 The DhanSetu <span className="text-brand-gold">Advantage</span>
               </h2>
               <p className="text-white/70 text-base sm:text-lg">
-                Navigating loans and investments shouldn't be stressful. Here is why thousands of clients trust us with their financial journey.
+                Navigating loans and investments shouldn't be stressful. Here is why clients trust us with their financial journey.
               </p>
             </div>
 

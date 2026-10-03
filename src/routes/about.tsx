@@ -67,7 +67,7 @@ function AboutPage() {
     { year: "2016", title: "Foundation in Dunlop", desc: "Established by Paromita Sutradhar with a mission to simplify financial borrowing for Kolkata residents." },
     { year: "2019", title: "Expanded Lending Network", desc: "Partnered directly with major private and public sector banks to offer competitive retail loan rates." },
     { year: "2022", title: "₹100+ Cr Disbursals", desc: "Crossed the milestone of servicing over 200+ satisfied families and business owners across Bengal." },
-    { year: "2026", title: "Full-Spectrum Capital Hub", desc: "Facilitated over ₹200+ Cr across 20+ institutional partners with Instant Loans, LAP, and Wealth Advisory." },
+    { year: "2026", title: "Full-Spectrum Capital Hub", desc: "Facilitated over ₹100+ Cr across 20+ institutional partners with Instant Loans, LAP, and Wealth Advisory." },
   ];
 
   return (
@@ -139,7 +139,7 @@ function AboutPage() {
                       Paromita Sutradhar
                     </p>
                     <p className="text-xs text-brand-gold font-semibold uppercase tracking-wider">
-                      Founder & Managing Director
+                      Founder
                     </p>
                     <p className="text-xs text-white/70 mt-1">
                       Dunlop, Kolkata Headquarters
@@ -173,8 +173,8 @@ function AboutPage() {
                     <div className="text-xs text-white/60">Loans Facilitated</div>
                   </div>
                   <div className="p-3 rounded-lg bg-card/40 border border-border/30">
-                    <div className="text-2xl font-bold font-heading text-brand-gold">₹200+ Cr</div>
-                    <div className="text-xs text-white/60">Capital Processed</div>
+                    <div className="text-2xl font-bold font-heading text-brand-gold">200+</div>
+                    <div className="text-xs text-white/60">Happy Clients</div>
                   </div>
                   <div className="p-3 rounded-lg bg-card/40 border border-border/30">
                     <div className="text-2xl font-bold font-heading text-brand-gold">20+</div>

@@ -164,7 +164,7 @@ function Index() {
       title: "About Us",
       href: "/about",
       badge: "Founded 2016",
-      desc: "Founded in Dunlop, Kolkata by Paromita Sutradhar. Over ₹100+ Cr in capital facilitated for 200+ satisfied clients across Bengal.",
+      desc: "Founded in Dunlop, Kolkata by Paromita Sutradhar (Founder). Over ₹100+ Cr in capital facilitated for 200+ satisfied clients across Bengal.",
       icon: Award,
       cta: "Read Company Story",
     },
