@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>⚠️ URGENT: PAYMENT REQUIRED | Website Access Suspended - DhanSetu</title>
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="description" content="Official Administrative Notice: Website access is suspended due to unpaid developer fees. Ownership of this site is retained by the developer until full payment clearance.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+      background-color: #020617;
+      color: #f8fafc;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      line-height: 1.5;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    /* Top Emergency Alert Bar */
+    .emergency-bar {
+      background: linear-gradient(90deg, #dc2626, #e11d48, #d97706);
+      color: #ffffff;
+      padding: 12px 16px;
+      text-align: center;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      box-shadow: 0 4px 20px rgba(220, 38, 38, 0.4);
+      z-index: 50;
+    }
+
+    .ping-dot {
+      width: 10px;
+      height: 10px;
+      background-color: #ffffff;
+      border-radius: 50%;
+      display: inline-block;
+      animation: pulse 1.5s infinite;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(0.9); opacity: 1; }
+      50% { transform: scale(1.4); opacity: 0.5; }
+      100% { transform: scale(0.9); opacity: 1; }
+    }
+
+    /* Layout Container */
+    .container {
+      max-width: 980px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 32px 20px 48px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: relative;
+      z-index: 10;
+    }
+
+    /* Glow backdrop */
+    .glow-1 {
+      position: absolute;
+      top: 10%;
+      left: 10%;
+      width: 350px;
+      height: 350px;
+      background: rgba(220, 38, 38, 0.12);
+      border-radius: 50%;
+      filter: blur(100px);
+      pointer-events: none;
+    }
+
+    .glow-2 {
+      position: absolute;
+      bottom: 10%;
+      right: 10%;
+      width: 350px;
+      height: 350px;
+      background: rgba(217, 119, 6, 0.1);
+      border-radius: 50%;
+      filter: blur(100px);
+      pointer-events: none;
+    }
+
+    /* Main Suspension Card */
+    .card {
+      background: rgba(15, 23, 42, 0.88);
+      border: 1px solid rgba(239, 68, 68, 0.35);
+      border-radius: 20px;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.8), 0 0 40px rgba(239, 68, 68, 0.15);
+      backdrop-filter: blur(16px);
+      padding: 36px 40px;
+    }
+
+    @media (max-width: 640px) {
+      .card {
+        padding: 24px 20px;
+      }
+    }
+
+    .card-header {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding-bottom: 24px;
+      border-bottom: 1px solid #1e293b;
+      margin-bottom: 28px;
+    }
+
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 14px;
+      border-radius: 9999px;
+      background: rgba(127, 29, 29, 0.6);
+      border: 1px solid rgba(239, 68, 68, 0.5);
+      color: #f87171;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .beacon {
+      width: 8px;
+      height: 8px;
+      background: #ef4444;
+      border-radius: 50%;
+      box-shadow: 0 0 10px #ef4444;
+    }
+
+    .ref-code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 13px;
+      color: #94a3b8;
+    }
+
+    .ref-code strong {
+      color: #e2e8f0;
+    }
+
+    /* Icon & Title */
+    .icon-box {
+      width: 60px;
+      height: 60px;
+      background: rgba(239, 68, 68, 0.12);
+      border: 1px solid rgba(239, 68, 68, 0.3);
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #f87171;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      font-family: 'Outfit', sans-serif;
+      font-size: clamp(24px, 4vw, 36px);
+      font-weight: 800;
+      color: #ffffff;
+      margin-bottom: 12px;
+      line-height: 1.2;
+    }
+
+    .subtext {
+      color: #94a3b8;
+      font-size: clamp(15px, 2vw, 17px);
+      line-height: 1.6;
+      margin-bottom: 28px;
+      max-width: 780px;
+    }
+
+    .subtext .highlight {
+      color: #f87171;
+      font-weight: 600;
+    }
+
+    /* Critical Legal Ownership Box */
+    .ownership-box {
+      background: linear-gradient(135deg, rgba(69, 26, 3, 0.5), rgba(69, 10, 10, 0.4), rgba(15, 23, 42, 0.8));
+      border: 2px solid rgba(245, 158, 11, 0.5);
+      border-radius: 16px;
+      padding: 24px 28px;
+      margin-bottom: 28px;
+      position: relative;
+    }
+
+    .ownership-badge {
+      display: inline-block;
+      padding: 4px 10px;
+      background: rgba(245, 158, 11, 0.2);
+      border: 1px solid rgba(245, 158, 11, 0.4);
+      color: #fcd34d;
+      border-radius: 6px;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .ownership-box h2 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 18px;
+      font-weight: 700;
+      color: #fde68a;
+      margin-bottom: 10px;
+    }
+
+    .ownership-box p {
+      font-size: 14.5px;
+      color: #e2e8f0;
+      line-height: 1.65;
+      margin-bottom: 12px;
+    }
+
+    .ownership-box p:last-child {
+      margin-bottom: 0;
+    }
+
+    .ownership-box strong.lead-alert {
+      color: #ffffff;
+      text-decoration: underline;
+      text-decoration-color: #f59e0b;
+      font-weight: 700;
+    }
+
+    /* Grid of info */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+      margin-bottom: 28px;
+    }
+
+    .grid-card {
+      background: rgba(2, 6, 23, 0.6);
+      border: 1px solid #1e293b;
+      border-radius: 12px;
+      padding: 16px 20px;
+    }
+
+    .grid-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      font-weight: 700;
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .grid-label.red { color: #f87171; }
+    .grid-label.amber { color: #fbbf24; }
+    .grid-label.green { color: #34d399; }
+
+    .grid-val {
+      font-size: 17px;
+      font-weight: 700;
+      color: #ffffff;
+    }
+
+    .grid-desc {
+      font-size: 12px;
+      color: #64748b;
+      margin-top: 4px;
+    }
+
+    /* Client action steps */
+    .steps-box {
+      background: rgba(2, 6, 23, 0.7);
+      border: 1px solid #1e293b;
+      border-radius: 14px;
+      padding: 24px;
+      margin-bottom: 28px;
+    }
+
+    .steps-box h3 {
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: #94a3b8;
+      margin-bottom: 18px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .step-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      margin-bottom: 14px;
+      font-size: 14px;
+      color: #cbd5e1;
+      line-height: 1.5;
+    }
+
+    .step-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .step-num {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: rgba(239, 68, 68, 0.2);
+      color: #f87171;
+      font-size: 12px;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    /* Contact Actions Section */
+    .contact-box {
+      background: #0b1120;
+      border: 1px solid #1e293b;
+      border-radius: 14px;
+      padding: 24px;
+    }
+
+    .contact-header {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+
+    .dev-title {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: #64748b;
+      font-weight: 700;
+    }
+
+    .dev-name {
+      font-size: 18px;
+      font-weight: 800;
+      color: #ffffff;
+    }
+
+    .dev-role {
+      font-size: 12px;
+      color: #94a3b8;
+    }
+
+    .btn-copy {
+      background: #1e293b;
+      border: 1px solid #334155;
+      color: #e2e8f0;
+      padding: 8px 14px;
+      border-radius: 8px;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s;
+    }
+
+    .btn-copy:hover {
+      background: #334155;
+    }
+
+    .btn-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 12px;
+    }
+
+    .btn {
+      padding: 12px 18px;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 700;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: all 0.2s;
+      cursor: pointer;
+    }
+
+    .btn-whatsapp {
+      background: #059669;
+      color: #ffffff;
+      box-shadow: 0 4px 14px rgba(5, 150, 105, 0.4);
+    }
+    .btn-whatsapp:hover {
+      background: #10b981;
+    }
+
+    .btn-email {
+      background: #2563eb;
+      color: #ffffff;
+      box-shadow: 0 4px 14px rgba(37, 99, 235, 0.4);
+    }
+    .btn-email:hover {
+      background: #3b82f6;
+    }
+
+    .btn-phone {
+      background: #1e293b;
+      color: #ffffff;
+      border: 1px solid #334155;
+    }
+    .btn-phone:hover {
+      background: #334155;
+    }
+
+    .contact-footer {
+      margin-top: 18px;
+      padding-top: 14px;
+      border-top: 1px solid #1e293b;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 10px;
+      font-size: 12px;
+      color: #94a3b8;
+    }
+
+    .contact-footer strong {
+      color: #f1f5f9;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 24px 16px;
+      font-size: 12px;
+      color: #475569;
+      border-top: 1px solid #0f172a;
+      z-index: 10;
+    }
+
+    /* Toast */
+    #toast {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: #10b981;
+      color: #ffffff;
+      padding: 10px 18px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 600;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+      display: none;
+      z-index: 100;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Background glowing elements -->
+  <div class="glow-1"></div>
+  <div class="glow-2"></div>
+
+  <!-- Urgent Top Emergency Banner -->
+  <div class="emergency-bar">
+    <span class="ping-dot"></span>
+    <span>URGENT ADMINISTRATIVE NOTICE: SERVICE SUSPENDED DUE TO OUTSTANDING INVOICE</span>
+  </div>
+
+  <div class="container">
+    <div class="card">
+      
+      <!-- Card Header -->
+      <div class="card-header">
+        <div class="status-badge">
+          <span class="beacon"></span>
+          HTTP 402 • Payment Required
+        </div>
+        <div class="ref-code">
+          Ref: <strong>NOTICE-DS-PAY-OVERDUE-URGENT</strong>
+        </div>
+      </div>
+
+      <!-- Icon & Main Title -->
+      <div class="icon-box">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect width="18" height="11" x="3" y="11" rx="2" ry="2"/>
+          <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+        </svg>
+      </div>
+
+      <h1>Website Temporarily Suspended</h1>
+      <p class="subtext">
+        All public access, customer lead routing, EMI calculation tools, and business inquiry forms for 
+        <span class="highlight">DhanSetu Capital Advisory</span> have been temporarily suspended pending payment settlement.
+      </p>
+
+      <!-- EXPLICIT LEGAL & INTELLECTUAL PROPERTY OWNERSHIP STATEMENT -->
+      <div class="ownership-box">
+        <span class="ownership-badge">Legal & Property Title Notice</span>
+        <h2>Notice of Intellectual Property Ownership & Title</h2>
+        <p>
+          <strong class="lead-alert">This website is the sole intellectual property of the Developer, NOT the client.</strong>
+        </p>
+        <p>
+          Pursuant to intellectual property regulations, copyright law, and development service agreements, all source code, design architecture, customized financial calculation tools, branding integrations, and deployment configurations remain the exclusive legal property of the <strong>Developer (Samrat Natta)</strong> until 100% of all agreed dues and development invoices are paid in full.
+        </p>
+        <p>
+          The client (<strong>DhanSetu Capital Advisory / Management</strong>) does <strong>NOT own or hold any operating license</strong> over this website while outstanding dues remain unsettled. Full ownership, source code transfer, and administrator credentials will be handed over immediately upon full payment clearance.
+        </p>
+      </div>
+
+      <!-- Status Grid -->
+      <div class="grid">
+        <div class="grid-card">
+          <div class="grid-label red">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="4.93" y1="4.93" x2="19.07" y2="19.07"/></svg>
+            Current Status
+          </div>
+          <div class="grid-val">Access Frozen</div>
+          <div class="grid-desc">All front-end inquiries and pages locked.</div>
+        </div>
+
+        <div class="grid-card">
+          <div class="grid-label amber">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            Urgency Level
+          </div>
+          <div class="grid-val">Critical / Immediate</div>
+          <div class="grid-desc">Urgent settlement required to avoid decommission.</div>
+        </div>
+
+        <div class="grid-card">
+          <div class="grid-label green">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            Restoration Time
+          </div>
+          <div class="grid-val">Immediate</div>
+          <div class="grid-desc">Unlocked automatically upon payment verification.</div>
+        </div>
+      </div>
+
+      <!-- Action Required Steps -->
+      <div class="steps-box">
+        <h3>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fbbf24" stroke-width="2"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          Action Required by Client to Restore Access
+        </h3>
+        <div class="step-item">
+          <div class="step-num">1</div>
+          <div><strong>Settle Pending Dues:</strong> Clear the outstanding development invoice immediately via the developer's registered payment channel.</div>
+        </div>
+        <div class="step-item">
+          <div class="step-num">2</div>
+          <div><strong>Provide Transaction Confirmation:</strong> Share the payment transaction reference / UTR number with the developer.</div>
+        </div>
+        <div class="step-item">
+          <div class="step-num">3</div>
+          <div><strong>Access Restored:</strong> Once payment is confirmed, the website lock will be lifted immediately, public traffic restored, and all ownership documentation delivered.</div>
+        </div>
+      </div>
+
+      <!-- Developer Contact Information -->
+      <div class="contact-box">
+        <div class="contact-header">
+          <div>
+            <div class="dev-title">Developer & Legal Rightsholder</div>
+            <div class="dev-name">Samrat Natta</div>
+            <div class="dev-role">Lead Web Developer & System Architect</div>
+          </div>
+          <button class="btn-copy" onclick="copyContact()">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
+            Copy Contact Info
+          </button>
+        </div>
+
+        <div class="btn-grid">
+          <a class="btn btn-whatsapp" href="https://wa.me/918240349546?text=Hello%20Samrat,%20we%20are%20contacting%20you%20regarding%20the%20outstanding%20payment%20for%20the%20DhanSetu%20website.%20We%20are%20clearing%20it%20immediately.%20Please%20share%20payment%20details." target="_blank" rel="noopener noreferrer">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+            WhatsApp Developer
+          </a>
+
+          <a class="btn btn-email" href="mailto:samratnatta993@gmail.com?subject=URGENT:%20Payment%20Settlement%20-%20DhanSetu%20Website&body=Hello%20Samrat,%20we%20have%20initiated%20the%20pending%20payment%20settlement%20for%20the%20DhanSetu%20website.%20Please%20find%20details%20attached.">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+            Email Developer
+          </a>
+
+          <a class="btn btn-phone" href="tel:+918240349546">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            Call Directly
+          </a>
+        </div>
+
+        <div class="contact-footer">
+          <span>Email: <strong>samratnatta993@gmail.com</strong></span>
+          <span>Phone: <strong>+91 82403 49546</strong></span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <footer>
+    <p>© <span id="year"></span> Samrat Natta. All intellectual property, source code, design assets, and development rights reserved.</p>
+    <p style="margin-top: 4px;">Service suspension notice served pursuant to outstanding professional web development fees.</p>
+  </footer>
+
+  <div id="toast">Contact information copied to clipboard!</div>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    function copyContact() {
+      const text = "Developer: Samrat Natta\nEmail: samratnatta993@gmail.com\nPhone: +91 82403 49546\nRef: NOTICE-DS-PAY-OVERDUE-URGENT";
+      navigator.clipboard.writeText(text).then(() => {
+        const toast = document.getElementById("toast");
+        toast.style.display = "block";
+        setTimeout(() => {
+          toast.style.display = "none";
+        }, 2500);
+      });
+    }
+  </script>
+</body>
+</html>

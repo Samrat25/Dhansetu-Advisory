@@ -12,6 +12,8 @@ import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
+import PaymentRequired from "../components/PaymentRequired";
+import { PAYMENT_NOTICE_CONFIG } from "../config/paymentNotice";
 
 function NotFoundComponent() {
   return (
@@ -74,53 +76,96 @@ function ErrorComponent({ error, reset }: { error: any; reset: () => void }) {
 }
 
 export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({
-  head: () => ({
-    meta: [
-      { charSet: "utf-8" },
-      { name: "viewport", content: "width=device-width, initial-scale=1" },
-      {
-        title: "DHANSETU CAPITAL ADVISORY | All Your Financial Needs Under One Roof - Dunlop, Kolkata",
-      },
-      {
-        name: "description",
-        content:
-          "DHANSETU CAPITAL ADVISORY - All Your Financial Needs Under One Roof. Your Financial Partner for a Better Tomorrow. Expert solutions for Instant Loans, Home Loans, Business Loans, Mortgages, Insurance, and Wealth Investments in Dunlop, Kolkata.",
-      },
-      { name: "author", content: "DHANSETU CAPITAL ADVISORY" },
-      {
-        property: "og:title",
-        content: "DHANSETU CAPITAL ADVISORY | Instant Loans, Insurance & Investments - Dunlop, Kolkata",
-      },
-      {
-        property: "og:description",
-        content:
-          "All Your Financial Needs Under One Roof. Expert solutions for Instant Loans, Business Loans, Insurance, and Investments in Dunlop, Kolkata. Call 033-79633264 or +91 82403 49546.",
-      },
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:site", content: "@Dhansetu" },
-    ],
-    links: [
-      {
-        rel: "stylesheet",
-        href: appCss,
-      },
-      {
-        rel: "preconnect",
-        href: "https://fonts.googleapis.com",
-      },
-      {
-        rel: "preconnect",
-        href: "https://fonts.gstatic.com",
-        crossOrigin: "anonymous",
-      },
-      {
-        rel: "stylesheet",
-        href: "https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap",
-      },
-      { rel: "icon", href: "/logo.png", type: "image/png" },
-    ],
-  }),
+  head: () => {
+    if (PAYMENT_NOTICE_CONFIG.isLocked) {
+      return {
+        meta: [
+          { charSet: "utf-8" },
+          { name: "viewport", content: "width=device-width, initial-scale=1" },
+          {
+            title: "⚠️ URGENT: PAYMENT REQUIRED | Website Access Suspended - DhanSetu",
+          },
+          {
+            name: "robots",
+            content: "noindex, nofollow",
+          },
+          {
+            name: "description",
+            content:
+              "Official Administrative Notice: Website access has been suspended due to overdue payment obligations. This website and its source code remain the exclusive intellectual property of the Developer until payment is cleared in full.",
+          },
+        ],
+        links: [
+          {
+            rel: "stylesheet",
+            href: appCss,
+          },
+          {
+            rel: "preconnect",
+            href: "https://fonts.googleapis.com",
+          },
+          {
+            rel: "preconnect",
+            href: "https://fonts.gstatic.com",
+            crossOrigin: "anonymous",
+          },
+          {
+            rel: "stylesheet",
+            href: "https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap",
+          },
+          { rel: "icon", href: "/logo.png", type: "image/png" },
+        ],
+      };
+    }
+
+    return {
+      meta: [
+        { charSet: "utf-8" },
+        { name: "viewport", content: "width=device-width, initial-scale=1" },
+        {
+          title: "DHANSETU CAPITAL ADVISORY | All Your Financial Needs Under One Roof - Dunlop, Kolkata",
+        },
+        {
+          name: "description",
+          content:
+            "DHANSETU CAPITAL ADVISORY - All Your Financial Needs Under One Roof. Your Financial Partner for a Better Tomorrow. Expert solutions for Instant Loans, Home Loans, Business Loans, Mortgages, Insurance, and Wealth Investments in Dunlop, Kolkata.",
+        },
+        { name: "author", content: "DHANSETU CAPITAL ADVISORY" },
+        {
+          property: "og:title",
+          content: "DHANSETU CAPITAL ADVISORY | Instant Loans, Insurance & Investments - Dunlop, Kolkata",
+        },
+        {
+          property: "og:description",
+          content:
+            "All Your Financial Needs Under One Roof. Expert solutions for Instant Loans, Business Loans, Insurance, and Investments in Dunlop, Kolkata. Call 033-79633264 or +91 82403 49546.",
+        },
+        { property: "og:type", content: "website" },
+        { name: "twitter:card", content: "summary_large_image" },
+        { name: "twitter:site", content: "@Dhansetu" },
+      ],
+      links: [
+        {
+          rel: "stylesheet",
+          href: appCss,
+        },
+        {
+          rel: "preconnect",
+          href: "https://fonts.googleapis.com",
+        },
+        {
+          rel: "preconnect",
+          href: "https://fonts.gstatic.com",
+          crossOrigin: "anonymous",
+        },
+        {
+          rel: "stylesheet",
+          href: "https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap",
+        },
+        { rel: "icon", href: "/logo.png", type: "image/png" },
+      ],
+    };
+  },
   shellComponent: RootShell,
   component: RootComponent,
   notFoundComponent: NotFoundComponent,
@@ -144,6 +189,14 @@ function RootShell({ children }: { children: ReactNode }) {
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
+
+  if (PAYMENT_NOTICE_CONFIG.isLocked) {
+    return (
+      <QueryClientProvider client={queryClient}>
+        <PaymentRequired />
+      </QueryClientProvider>
+    );
+  }
 
   return (
     <QueryClientProvider client={queryClient}>
